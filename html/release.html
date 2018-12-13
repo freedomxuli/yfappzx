@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title></title>
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/mui.picker.min.css">
+		<link rel="stylesheet" href="../css/mui.poppicker.css">
+		<style>
+			body{
+				background-color: #FFFFFF;
+				overflow: scroll;
+			}
+			.bottom-div-img{
+				margin-top: 0.5rem;
+				width: 1.5rem;
+			}
+			.bottom-div-img-1{
+				margin-top: 0.5rem;
+				width: 1.2rem;
+			}
+			.bottom-div-span{
+				font-size: 0.8rem;
+				color:  #0078B9;
+			}
+			.bottom-div-span-1{
+				font-size: 0.8rem;
+				color:  #999999;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+				box-shadow:none;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 20;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: center;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			.top-div-li{
+				margin-top: 2.8rem;
+			}
+			#selectzwlx{
+				display: none;
+			}
+			#selectpwlx{
+				display: none;
+			}
+			.top-margin{
+				margin-top: 10px;
+			}
+			#selectbzitems{
+				display: none;
+			}
+			.left-padding-0{
+				padding-left:0rem !important;
+			}
+			.padding-button{
+				padding: 3rem 0rem 5rem 0rem;
+			}
+			.width-button-90{
+				margin: 0 auto;
+				width: 90%;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">发布需求</span>
+			</div>
+		</header>
+		<section>
+			<div class="top-div-li">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" id='hwlx'>
+							选择货物类型
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id='selectzwlx'>
+						<a class="mui-navigate-right" id='zwlxitems'>
+							选择重货类型
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id='selectpwlx'>
+						<a class="mui-navigate-right" id='pwlxitems'>
+							选择泡货类型
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" id='bzyqitems'>
+							选择外包装要求
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="selectbzitems">
+						<a>
+							选择外包装类型
+						</a>
+						<div>
+							<div class="mui-input-row mui-checkbox">
+								<label>纸箱</label>
+								<input name="bzcheck" value="1" type="checkbox" >
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>木箱</label>
+								<input name="bzcheck" value="2" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>托盘</label>
+								<input name="bzcheck" value="3" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>袋装</label>
+								<input name="bzcheck" value="4" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>桶装</label>
+								<input name="bzcheck" value="5" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>裸装</label>
+								<input name="bzcheck" value="6" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>设备</label>
+								<input name="bzcheck" value="7" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox">
+								<label>异形</label>
+								<input name="bzcheck" value="8" type="checkbox">
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label class="left-padding-0">有效时间：</label>
+							<input type="number" class="mui-input-clear left-padding-0" placeholder="请输入3～168整数">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label class="left-padding-0">目的地：</label>
+							<input type="text" class="mui-input-clear left-padding-0" placeholder="请输入目的地">
+						</div>
+					</li>
+					<li class="mui-table-view-cell" id='selectzk'>
+						<a class="mui-navigate-right" id='zkitems'>
+							选择折扣
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label class="left-padding-0">开放券额：</label>
+							<input type="text" class="mui-input-clear left-padding-0" placeholder="请输入1000～50000整数">
+						</div>
+					</li>
+					<li class="mui-table-view-cell" id='selectfcsj'>
+						<a class="mui-navigate-right" id='fcsjitems'>
+							选择发车时间
+						</a>
+					</li>
+					<li class="padding-button">
+						<button type="button" class="mui-btn mui-btn-primary mui-btn-block top-margin width-button-90">确认发布</button>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" data-webview="buylist.html">
+				<img class="bottom-div-img" src="../img/buylist/quan1.png" />
+				<div class="bottom-div-span-1">运费券</div>
+			</a>
+			<a class="mui-tab-item" data-webview="orderlist.html">
+				<img class="bottom-div-img-1" src="../img/buylist/order2.png" />
+				<div class="bottom-div-span">发布</div>
+			</a>
+			<a class="mui-tab-item" data-webview="my.html">
+				<img class="bottom-div-img-1" src="../img/buylist/my1.png" />
+				<div class="bottom-div-span-1">我的</div>
+			</a>
+		</nav>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.picker.min.js"></script>
+	<script src="../js/mui.poppicker.js"></script>
+	<script src="../js/app.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		mui('.mui-bar-tab').on('tap','.mui-tab-item',function(){
+			var curr = plus.webview.currentWebview();
+			var wvs = plus.webview.all();
+			for(var i = 0, len = wvs.length; i < len; i++) {
+				if(wvs[i].id == curr.id)
+					continue;
+				plus.webview.close(wvs[i],'none');
+			}
+			var webview = this.getAttribute('data-webview');
+			var webview_id = this.getAttribute('data-webview') + new Date().getTime();
+			if(webview) {
+				mui.openWindow({
+					url: webview,
+					id: webview_id,
+					createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						aniShow: 'none'
+					},
+					extras: {
+						refresh: true
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+				var openw = plus.webview.getWebviewById(webview);
+				if(openw) {
+					mui.fire(openw, 'refresh');
+				}
+			}
+		})
+		var HWLXPickerButton = document.getElementById('hwlx');
+		var HWLXPicker = new mui.PopPicker();
+		HWLXPicker.setData([{
+			value: '1',
+			text: '重物'
+		}, {
+			value: '2',
+			text: '泡物'
+		}, {
+			value: '3',
+			text: '货品不限'
+		}]);
+		HWLXPickerButton.addEventListener('tap', function(event) {
+			HWLXPicker.show(function(items) {
+				HWLXPickerButton.innerText = items[0].text;
+				if(items[0].value == 1){
+					document.getElementById('selectzwlx').style.display="block";
+					document.getElementById('selectpwlx').style.display="none";
+				}
+				else if(items[0].value == 2){
+					document.getElementById('selectpwlx').style.display="block";
+					document.getElementById('selectzwlx').style.display="none";
+				}else
+				{
+					document.getElementById('selectzwlx').style.display="none";
+					document.getElementById('selectpwlx').style.display="none";
+				}
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		var ZWLXPickerButton = document.getElementById('zwlxitems');
+		var ZWLXPicker = new mui.PopPicker();
+		ZWLXPicker.setData([{
+			value: '1',
+			text: '1T/1m³内'
+		}, {
+			value: '2',
+			text: '1T/2m³内'
+		}, {
+			value: '3',
+			text: '1T/3m³内'
+		}, {
+			value: '4',
+			text: '1T/4m³内'
+		}]);
+		ZWLXPickerButton.addEventListener('tap', function(event) {
+			ZWLXPicker.show(function(items) {
+				ZWLXPickerButton.innerText = items[0].text;
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		var PWLXPickerButton = document.getElementById('pwlxitems');
+		var PWLXPicker = new mui.PopPicker();
+		PWLXPicker.setData([{
+			value: '1',
+			text: '1T/4m³内'
+		}, {
+			value: '2',
+			text: '1T/6m³内'
+		}, {
+			value: '3',
+			text: '1T/8m³内'
+		}, {
+			value: '4',
+			text: '1T/10m³内'
+		}]);
+		PWLXPickerButton.addEventListener('tap', function(event) {
+			PWLXPicker.show(function(items) {
+				WLXPickerButton.innerText = items[0].text;
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		var BZPickerButton = document.getElementById('bzyqitems');
+		var BZPicker = new mui.PopPicker();
+		BZPicker.setData([{
+			value: '1',
+			text: '外包装要求'
+		}, {
+			value: '2',
+			text: '外包装不限'
+		}]);
+		BZPickerButton.addEventListener('tap', function(event) {
+			BZPicker.show(function(items) {
+				BZPickerButton.innerText = items[0].text;
+				if(items[0].value == 1)
+				{
+					document.getElementById('selectbzitems').style.display = "block";
+				}else
+				{
+					document.getElementById('selectbzitems').style.display = "none";
+				}
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		var ZKPickerButton = document.getElementById('zkitems');
+		var ZKPicker = new mui.PopPicker();
+		ZKPicker.setData([{
+			value: '5',
+			text: '5折'
+		}, {
+			value: '5.5',
+			text: '5.5折'
+		}, {
+			value: '6',
+			text: '6折'
+		}, {
+			value: '6.5',
+			text: '6.5折'
+		}, {
+			value: '7',
+			text: '7折'
+		}, {
+			value: '7.5',
+			text: '7.5折'
+		}, {
+			value: '8',
+			text: '8折'
+		}, {
+			value: '8.5',
+			text: '8.5折'
+		}, {
+			value: '9',
+			text: '9折'
+		}]);
+		ZKPickerButton.addEventListener('tap', function(event) {
+			ZKPicker.show(function(items) {
+				ZKPickerButton.innerText = items[0].text;
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		var FCSJPickerButton = document.getElementById('fcsjitems');
+		var FCSJPicker = new mui.PopPicker();
+		FCSJPicker.setData([{
+			value: '1',
+			text: '货到发车'
+		}, {
+			value: '2',
+			text: '今晚发车'
+		}, {
+			value: '3',
+			text: '天天发车'
+		}]);
+		FCSJPickerButton.addEventListener('tap', function(event) {
+			FCSJPicker.show(function(items) {
+				FCSJPickerButton.innerText = items[0].text;
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+	</script>
+</html>

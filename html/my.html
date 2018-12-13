@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title></title>
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			body{
+				background-color: #FFFFFF;
+				overflow: scroll;
+			}
+			.bottom-div-img{
+				margin-top: 0.5rem;
+				width: 1.5rem;
+			}
+			.bottom-div-img-1{
+				margin-top: 0.5rem;
+				width: 1.2rem;
+			}
+			.bottom-div-span{
+				font-size: 0.8rem;
+				color:  #0078B9;
+			}
+			.bottom-div-span-1{
+				font-size: 0.8rem;
+				color:  #999999;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+				box-shadow:none;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 20;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: center;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			.content-title-pic{
+				display: flex;
+				flex-direction: row;
+				margin-top: 2rem;
+				width: 100%;
+				background-color:#0078B9 ;
+				padding: 2rem 0rem 1rem 1rem;
+				z-index: 999999 !important;
+			}
+			.content-title-pic-img{
+				border-radius:2rem ;
+				height: 4rem;
+				width: 4rem;
+				vertical-align: middle;
+			}
+			.content-title-pic-div{
+				flex: 1;
+			}
+			.content-title-pic-div1{
+				flex: 4;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-content: center;
+				padding: 0rem 0rem 0rem 0.5rem;
+			}
+			.content-title-pic-span{
+				color: #FFFFFF;
+				font-weight:bold ;
+			}
+			.content-title-pic-span1{
+				padding: 0.5rem 0rem 0rem 0rem;
+			}
+			.content-title-pic-img1{
+				width:0.8rem;
+			}
+			.content-title-list{
+				display: flex;
+				flex-direction: row;
+				background-color: #0078B9;
+				padding: 0.2rem 0rem 1.5rem 0rem;
+			}
+			.content-title-list-div{
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+				font-size: 0.9rem;
+				color: #FFFFFF;
+			}
+			.content-center-div{
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				padding: 1.5rem 0rem 0.6rem 0rem;
+			}
+			.content-center-div-child
+			{
+				flex: 1;
+				border-right: 1px solid #EEEEEF;
+				text-align: center;
+			}
+			.content-center-div-child1
+			{
+				flex: 1;
+				border-right: 1px solid #EEEEEF;
+				justify-content: center;
+				text-align: center;
+			}
+			.content-center-div-child-img{
+				height: 1.8rem;
+			}
+			.content-center-div-child-span1
+			{
+				font-size: 0.9rem;
+				color: rgb(51,51,51);
+			}
+			.content-center-div-child-span2
+			{
+				font-size: 0.9rem;
+				color: rgb(153,153,153);
+			}
+			.div-space1{
+				height:10px;
+				background-color: #EEEEEF;
+			}
+			.content-bottom-title
+			{
+				font-size: 1rem;
+				color: rgb(34,34,34);
+				padding: 0.8rem 1rem 0.8rem 1rem;
+				border-bottom:1px solid #EEEEEF;
+				display: flex;
+				flex-direction:row ;
+			}
+			.content-bottom-title-name{
+				flex: 30;
+				color: rgb(102,102,102);
+			}
+			.content-bottom-title-div
+			{
+				flex: 3;
+			}
+			.content-bottom-title-div1
+			{
+				flex: 1;
+			}
+			.content-bottom-title-img
+			{
+				width: 1.4rem;
+				vertical-align: middle;
+			}
+			.content-bottom-title-img1
+			{
+				height: 0.6rem;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">我的</span>
+			</div>
+			<div class="top-box-item" id="setting">
+				<img class="top-div-img" src="../img/my/setting.png" />
+			</div>
+		</header>
+		<section>
+			<div class="content-title-pic">
+				<div class="content-title-pic-div"><img class="content-title-pic-img" src="../img/buycontent/titpic.png" /></div>
+				<div class="content-title-pic-div1">
+					<div class="content-title-pic-span">轩程物流</div>
+					<div class="content-title-pic-span1">
+						<img class="content-title-pic-img1" src="../img/my/star.png" />
+						<img class="content-title-pic-img1" src="../img/my/star.png" />
+						<img class="content-title-pic-img1" src="../img/my/star.png" />
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--<section>
+			<div class="content-title-list">
+				<div class="content-title-list-div">
+					<div class="content-title-list-div-num">0</div>
+					<div class="content-title-list-div-name">收藏夹</div>
+				</div>
+				<div class="content-title-list-div">
+					<div class="content-title-list-div-num">0</div>
+					<div class="content-title-list-div-name">关注数</div>
+				</div>
+				<div class="content-title-list-div">
+					<div class="content-title-list-div-num">0</div>
+					<div class="content-title-list-div-name">足迹</div>
+				</div>
+				<div class="content-title-list-div">
+					<div class="content-title-list-div-num">0</div>
+					<div class="content-title-list-div-name">购买数量</div>
+				</div>
+				<div class="content-title-list-div">
+					<div class="content-title-list-div-num">0</div>
+					<div class="content-title-list-div-name">商品数量</div>
+				</div>
+			</div>
+		</section>-->
+		<section>
+			<div class="content-center-div">
+				<div class="content-center-div-child" id="mysx">
+					<img class="content-center-div-child-img" src="../img/my/collect.png" />
+					<div class="content-center-div-child-span1">我的授信</div>
+					<div class="content-center-div-child-span2">诚为本，信为天</div>
+				</div>
+				<div class="content-center-div-child" id="myewm">
+					<img class="content-center-div-child-img" src="../img/my/collect.png" />
+					<div class="content-center-div-child-span1">我的收款码</div>
+					<div class="content-center-div-child-span2">让客户扫一扫</div>
+				</div>
+				<div class="content-center-div-child1" id="share">
+					<img class="content-center-div-child-img" src="../img/my/name.png" />
+					<div class="content-center-div-child-span1">我的名片</div>
+					<div class="content-center-div-child-span2">分享名片有礼</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="div-space1">&nbsp;</div>
+		</section>
+		<section>
+			<div class="content-bottom-title">
+				我的服务
+			</div>
+			<!--<div class="content-bottom-title" id="qbClass">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/cardbox.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;券包</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>-->
+			<div class="content-bottom-title">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/card.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;钱包</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>
+			<!--<div class="content-bottom-title" id="jyjl">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/card.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;交易记录</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>-->
+			<!--<div class="content-bottom-title" id="sqyfq">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/card.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;申请运费券</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>
+			<div class="content-bottom-title" id="smsq">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/card.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;授予运费券</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>-->
+			<div class="content-bottom-title" id="fb">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/cardbox.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;发布</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>
+			<div class="content-bottom-title">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/bank.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;银行卡</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>
+			<div class="content-bottom-title">
+				<div class="content-bottom-title-div"><img class="content-bottom-title-img" src="../img/my/contact.png" /></div>
+				<div class="content-bottom-title-name">&nbsp;&nbsp;我的客服</div>
+				<div class="content-bottom-title-div1"><img class="content-bottom-title-img1" src="../img/my/next.png" /></div>
+			</div>
+		</section>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" data-webview="buylist.html">
+				<img class="bottom-div-img" src="../img/buylist/quan1.png" />
+				<div class="bottom-div-span-1">运费券</div>
+			</a>
+			<a class="mui-tab-item" data-webview="release.html">
+				<img class="bottom-div-img-1" src="../img/buylist/order1.png" />
+				<div class="bottom-div-span-1">发布</div>
+			</a>
+			<a class="mui-tab-item" data-webview="my.html">
+				<img class="bottom-div-img-1" src="../img/buylist/my2.png" />
+				<div class="bottom-div-span">我的</div>
+			</a>
+		</nav>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/app.js"></script>
+	<script>
+			mui.init();
+			var shares = {};
+		
+			mui.plusReady(function() {
+				plus.share.getServices(function(s) {
+					if (s && s.length > 0) {
+						for (var i = 0; i < s.length; i++) {
+							var t = s[i];
+							shares[t.id] = t;
+						}
+					}
+				}, function() {
+					console.log("获取分享服务列表失败");
+				});
+			});
+			
+			//分享链接点击事件
+			document.getElementById("share").addEventListener('tap', function() {
+				var ids = [{
+						id: "weixin",
+						ex: "WXSceneSession"
+					}, {
+						id: "weixin",
+						ex: "WXSceneTimeline"
+					}],
+					bts = [{
+						title: "发送给微信好友"
+					}, {
+						title: "分享到微信朋友圈"
+					}];
+				plus.nativeUI.actionSheet({
+					cancel: "取消",
+					buttons: bts
+				}, function(e) {
+					var i = e.index;
+					if (i > 0) {
+						var s_id = ids[i - 1].id;
+						var share = shares[s_id];
+						if (share) {
+							if (share.authenticated) {
+								shareMessage(share, ids[i - 1].ex);
+							} else {
+								share.authorize(function() {
+									shareMessage(share, ids[i - 1].ex);
+								}, function(e) {
+									console.log("认证授权失败：" + e.code + " - " + e.message);
+								});
+							}
+						} else {
+							mui.toast("无法获取分享服务，请检查manifest.json中分享插件参数配置，并重新打包")
+						}
+					}
+				});
+			});
+			
+			function shareMessage(share, ex) {
+				var msg = {
+					extra: {
+						scene: ex
+					}
+				};
+				msg.href = "http://www.chahuobao.net";
+				msg.title = "发啥货";
+				msg.content = "发啥货都省钱";
+				msg.thumbs = ["_www/images/logo.png"];
+				share.send(msg, function() {
+					console.log("分享到\"" + share.description + "\"成功！ ");
+				}, function(e) {
+					console.log("分享到\"" + share.description + "\"失败: " + e.code + " - " + e.message);
+				});
+			}
+		
+			(function($) {
+				$('.mui-bar-tab').on('tap','.mui-tab-item',function(){
+					var curr = plus.webview.currentWebview();
+					var wvs = plus.webview.all();
+					for(var i = 0, len = wvs.length; i < len; i++) {
+						if(wvs[i].id == curr.id)
+							continue;
+						plus.webview.close(wvs[i],'none');
+					}
+					var webview = this.getAttribute('data-webview');
+					var webview_id = this.getAttribute('data-webview') + new Date().getTime();
+					if(webview) {
+						mui.openWindow({
+							url: webview,
+							id: webview_id,
+							createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								aniShow: 'none'
+							},
+							extras: {
+								refresh: true
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							}
+						});
+						var openw = plus.webview.getWebviewById(webview);
+						if(openw) {
+							mui.fire(openw, 'refresh');
+						}
+					}
+				})
+			})(mui);
+			document.getElementById('mysx').addEventListener('tap',function(){
+				clicked('mysx.html', {}, 'slide-in-right');
+			})
+			document.getElementById('myewm').addEventListener('tap',function(){
+				clicked('receiveewm.html', {}, 'slide-in-right');
+			})
+			document.getElementById('setting').addEventListener('tap',function(){
+				clicked('setting.html', {}, 'slide-in-right');
+			})
+			document.getElementById('fb').addEventListener('tap',function(){
+				clicked('release.html', {}, 'slide-in-right');
+			})
+//			document.getElementById('jyjl').addEventListener('tap',function(){
+//				clicked('tradelist.html', {}, 'slide-in-right');
+//			})
+//			document.getElementById('qbClass').addEventListener('tap',function(){
+//				clicked('MyCard.html', {}, 'slide-in-right');
+//			})
+//			document.getElementById('smsq').addEventListener('tap',function(){
+//				clicked('smsq.html', {}, 'slide-in-right');
+//			})
+//			document.getElementById('sqyfq').addEventListener('tap',function(){
+//				clicked('sqyfq.html', {}, 'slide-in-right');
+//			})
+		</script>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>补充信息</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			body{
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.5;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			#head-img1 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#sfz-img {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#sfz-img1 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#mtz-img {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			.head {
+				height: 40px;
+			}
+			#head {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#sfz {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#sfz1 {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#mtz {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			.head-img {
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+<!--		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">重置密码</h1>
+		</header>-->
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">补充信息</span>
+			</div>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>线路起点:</label>
+							<input id='XLQD' type="password" class="mui-input-clear mui-input" placeholder="请输入线路起点">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>线路终点:</label>
+							<input id='XLZD' type="password" class="mui-input-clear mui-input" placeholder="请输入线路终点">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>支付密码:</label>
+							<input id='paypassword' type="password" class="mui-input-clear mui-input" placeholder="请输入支付密码">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="head" class="mui-navigate-right">营业执照
+							<span class="mui-pull-right head">
+								<img class="head-img mui-action-preview" id="head-img1" src=""/>
+							</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="sfz" class="mui-navigate-right">身份证正面
+							<span class="mui-pull-right head">
+								<img class="head-img mui-action-preview" id="sfz-img" src=""/>
+							</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="sfz1" class="mui-navigate-right">身份证正面
+							<span class="mui-pull-right head">
+								<img class="head-img mui-action-preview" id="sfz-img1" src=""/>
+							</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="mtz" class="mui-navigate-right">门头照
+							<span class="mui-pull-right head">
+								<img class="head-img mui-action-preview" id="mtz-img" src=""/>
+							</span>
+						</a>
+					</li>
+				</ul>
+			<div class="mui-content-padded">
+				<button id='chongzhimima' class="mui-btn mui-btn-block mui-btn-primary">提交审核</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script>
+			setTimeout(function () {
+				defaultImg(); 
+			},500);
+		    //更换头像
+			mui(".mui-table-view-cell").on("tap", "#head", function(e) {
+				if(mui.os.plus){
+					var a = [{
+						title: "拍照"
+					}, {
+						title: "从手机相册选择"
+					}];
+					plus.nativeUI.actionSheet({
+						title: "修改头像",
+						cancel: "取消",
+						buttons: a
+					}, function(b) {
+						switch (b.index) {
+							case 0:
+								break;
+							case 1:
+								getImage();
+								break;
+							case 2:
+								galleryImg();
+								break;
+							default:
+								break
+						}
+					})	
+				}
+				
+			});
+			function getImage() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function(e) {
+				plus.io.resolveLocalFileSystemURL(e, function(entry) {
+					var s = entry.toLocalURL() + "?version=" + new Date().getTime();
+					console.log(s);
+					//document.getElementById("head-img").src = s;
+					document.getElementById("head-img1").src = s;
+					//变更大图预览的src
+					//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
+					document.querySelector("#__mui-imageview__group .mui-slider-item img").src = s + "?version=" + new Date().getTime();
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(s) {
+				console.log("error" + s);
+			}, {
+				filename: "_doc/head.jpg"
+			})
+		}
+
+		function galleryImg() {
+			plus.gallery.pick(function(a) {
+				plus.io.resolveLocalFileSystemURL(a, function(entry) {
+					plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
+						root.getFile("head.jpg", {}, function(file) {
+							//文件已存在
+							file.remove(function() {
+								console.log("file remove success");
+								entry.copyTo(root, 'head.jpg', function(e) {
+										var e = e.fullPath + "?version=" + new Date().getTime();
+										//document.getElementById("head-img").src = e;
+										document.getElementById("head-img1").src = e;
+										//变更大图预览的src
+										//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
+										document.querySelector("#__mui-imageview__group .mui-slider-item img").src = e + "?version=" + new Date().getTime();;
+									},
+									function(e) {
+										console.log('copy image fail:' + e.message);
+									});
+							}, function() {
+								console.log("delete image fail:" + e.message);
+							});
+						}, function() {
+							//文件不存在
+							entry.copyTo(root, 'head.jpg', function(e) {
+									var path = e.fullPath + "?version=" + new Date().getTime();
+									//document.getElementById("head-img").src = path;
+									document.getElementById("head-img1").src = path;
+									//变更大图预览的src
+									//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
+									document.querySelector("#__mui-imageview__group .mui-slider-item img").src = path;
+								},
+								function(e) {
+									console.log('copy image fail:' + e.message);
+								});
+						});
+					}, function(e) {
+						console.log("get _www folder fail");
+					})
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(a) {}, {
+				filter: "image"
+			})
+		};
+
+		function defaultImg() {
+			if(mui.os.plus){
+				plus.io.resolveLocalFileSystemURL("_doc/head.jpg", function(entry) {
+					var s = entry.fullPath + "?version=" + new Date().getTime();;
+					//document.getElementById("head-img").src = s;
+					document.getElementById("head-img1").src = s;
+				}, function(e) {
+					//document.getElementById("head-img").src = '../img/buycontent/titpic.png';
+					document.getElementById("head-img1").src = '../img/buycontent/titpic.png';
+				})
+			}else{
+				//document.getElementById("head-img").src = '../img/buycontent/titpic.png';
+				document.getElementById("head-img1").src = '../img/buycontent/titpic.png';
+			}
+			
+		}
+		document.getElementById("head-img1").addEventListener('tap', function(e) {
+			e.stopPropagation();
+		});
+		</script>
+	</body>
+</html>

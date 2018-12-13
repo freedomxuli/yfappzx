@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+			}
+			.bottom-div-img{
+				margin-top: 0.5rem;
+				width: 1.5rem;
+			}
+			.bottom-div-img-1{
+				margin-top: 0.5rem;
+				width: 1.2rem;
+			}
+			.bottom-div-span{
+				font-size: 0.8rem;
+				color:  #0078B9;
+			}
+			.bottom-div-span-1{
+				font-size: 0.8rem;
+				color:  #999999;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.5;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: center;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #FFFFFF;
+			}
+			.mui-control-item{
+				flex: 1;
+				border-bottom:1px solid #EEEEEE !important;
+			}
+			.top-select-div .mui-active{
+				color: rgb(24,146,211) !important;
+				font-weight: bold;
+				border-bottom:3px solid rgb(24,146,211) !important;
+			}
+			.top-select-div{
+				display: flex;
+				flex-direction: row;
+			}
+			.center-li-title{
+				display:flex;
+				justify-content: center;
+				padding: 1.2rem 0rem 0.8rem 1rem;
+			}
+			.center-li-title-div1{
+				flex:3;
+				font-size: 1rem;
+				font-family: "微软雅黑";
+			}
+			.center-li-title-img1{
+				width:1.4rem !important;
+				vertical-align:middle;
+			}
+			.center-li-title-div2{
+				flex:1;
+				font-size: 0.9rem;
+				text-align: center;
+				font-family: "微软雅黑";
+				color: rgb(255,0,0);
+			}
+			.center-li-title-div3{
+				flex:1;
+				font-size: 0.9rem;
+				text-align: center;
+				font-family: "微软雅黑";
+				color: rgb(24,146,211);
+			}
+			.center-li-title-img2{
+				width: 0.4rem !important;
+				vertical-align:middle;
+			}
+			.center-li-content{
+				display:flex;
+				justify-content: center;
+				padding: 0rem 0.2rem 0.8rem 0.2rem;
+			}
+			.center-li-content-div1{
+				flex: 1.5;
+			}
+			.center-li-content-img1{
+				width: 5rem;
+				text-align: center;
+			}
+			.center-li-content-div2{
+				flex: 4;
+			}
+			.center-li-content-span1{
+				font-size: 0.8rem;
+			}
+			.center-li-content-kind1{
+				font-weight:bold ;
+			}
+			.center-li-content-kind2{
+				font-family: "微软雅黑";
+				font-weight:bold ;
+				color: rgb(255,0,0);
+			}
+			.center-li-content-kind3{
+				color: rgb(153,153,153);
+			}
+			.center-ckxq{
+				color: rgb(24,146,211);
+			}
+			.center-li-content-img2{
+				width: 0.5rem;
+				margin-left: 0.3rem;
+				vertical-align: middle;
+			}
+			.center-li-content-div3{
+				flex: 1;
+			}
+			.center-li-content-span2{
+				font-size: 0.8rem;
+				color: rgb(153,153,153);
+			}
+			.center-li-content-div3{
+				text-align: right;
+				color: rgb(153,153,153);
+				padding: 0rem 0.6rem 0rem 0rem;
+			}
+			.center-li-content-button{
+				text-align: right;
+				padding: 0.4rem 1rem 1rem 0rem;
+				border-bottom:1px solid #EEEEEF;
+			}
+			.mui-btn{
+				font-weight:bold ;
+			}
+			.mui-btn-xs{
+				background-color: #CCCCCC;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">我的订单</span>
+			</div>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="top-select-div">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							全部
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							未支付
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+							待评价
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+							已完成
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="">
+										<div class="center-li-title">
+											<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" />&nbsp;<span>轩程物流</span>&nbsp;&nbsp;<img class="center-li-title-img2" src="../img/buycontent/next.png" /></div>
+											<div class="center-li-title-div2"> <span>未支付</span> </div>
+										</div>
+										<div class="center-li-content">
+											<div class="center-li-content-div1">
+												<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
+											</div>
+											<div class="center-li-content-div2">
+												<div class="center-li-content-span1">
+													<span class="center-li-content-kind1">长期券&nbsp;</span><span class="center-li-content-kind2">7折&nbsp;</span>
+												</div>
+												<div class="center-li-content-span1">
+													线路：常州-长沙、湖南全境、湖北全境
+												</div>
+												<div class="center-li-content-span2">
+													订单号：20181030043300209
+												</div>
+											</div>
+											<div class="center-li-content-div3">
+												<div>¥500</div>
+												<div>x1</div>
+											</div>	
+										</div>
+										<div class="center-li-content-button">
+											<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints();">立刻支付</button>
+										</div>
+									</li>
+									<li class="">
+										<div class="center-li-title">
+											<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" />&nbsp;<span>轩程物流</span>&nbsp;&nbsp;<img class="center-li-title-img2" src="../img/buycontent/next.png" /></div>
+											<div class="center-li-title-div3"> <span>待评价</span> </div>
+										</div>
+										<div class="center-li-content">
+											<div class="center-li-content-div1">
+												<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
+											</div>
+											<div class="center-li-content-div2">
+												<div class="center-li-content-span1">
+													<span class="center-li-content-kind1">短期券&nbsp;</span><span class="center-li-content-kind2">重货&nbsp;7折&nbsp;</span><span class="center-li-content-kind3">(有效期还有30天)</span>
+												</div>
+												<div class="center-li-content-span1">
+													线路：常州-长沙、湖南全境、湖北全境
+												</div>
+												<div class="center-li-content-span2">
+													订单号：20181030043300209
+												</div>
+											</div>
+											<div class="center-li-content-div3">
+												<div>¥500</div>
+												<div>x1</div>
+											</div>	
+										</div>
+										<div class="center-li-content-button">
+											<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints();">立刻评价</button>
+										</div>
+									</li>
+									<li class="">
+										<div class="center-li-title">
+											<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" />&nbsp;<span>轩程物流</span>&nbsp;&nbsp;<img class="center-li-title-img2" src="../img/buycontent/next.png" /></div>
+											<div class="center-li-title-div2"> <span>未支付</span> </div>
+										</div>
+										<div class="center-li-content">
+											<div class="center-li-content-div1">
+												<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
+											</div>
+											<div class="center-li-content-div2">
+												<div class="center-li-content-span1">
+													<span class="center-li-content-kind1">通用券&nbsp;</span><span class="center-li-content-kind2">7折&nbsp;</span><span class="center-li-content-kind3">(有效期还有30天)</span>
+												</div>
+												<div class="center-li-content-span1">
+													线路：常州-长沙、湖南全境、湖北全境
+												</div>
+												<div class="center-li-content-span2">
+													订单号：20181030043300209
+												</div>
+											</div>
+											<div class="center-li-content-div3">
+												<div>¥500</div>
+												<div>x1</div>
+											</div>	
+										</div>
+										<div class="center-li-content-button">
+											<button type="button" class="mui-btn mui-btn-danger" onclick="Buypoints();">再次购买</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="mui-btn mui-btn-xs" onclick="Buypoints();">已失效</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第2个选项卡子项-1
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第3个选项卡子项-1
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第4个选项卡子项-1
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" data-webview="buylist.html">
+				<img class="bottom-div-img" src="../img/buylist/quan1.png" />
+				<div class="bottom-div-span-1">运费券</div>
+			</a>
+			<a class="mui-tab-item" data-webview="orderlist.html">
+				<img class="bottom-div-img-1" src="../img/buylist/order2.png" />
+				<div class="bottom-div-span">订单</div>
+			</a>
+			<a class="mui-tab-item" data-webview="my.html">
+				<img class="bottom-div-img-1" src="../img/buylist/my1.png" />
+				<div class="bottom-div-span-1">我的</div>
+			</a>
+		</nav>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.pullToRefresh.js"></script>
+		<script src="../js/mui.pullToRefresh.material.js"></script>
+		<script>
+			mui.init();
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+//							down: {
+//								callback: function() {
+//									var self = this;
+//									setTimeout(function() {
+//										var ul = self.element.querySelector('.mui-table-view');
+//										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
+//										self.endPullDownToRefresh();
+//									}, 1000);
+//								}
+//							},
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.appendChild(createFragment(ul, index, 5));
+										self.endPullUpToRefresh();
+									}, 1000);
+								}
+							}
+						});
+					});
+					var createFragment = function(ul, index, count, reverse) {
+						return document.createDocumentFragment();
+//						var length = ul.querySelectorAll('li').length;
+//						var fragment = document.createDocumentFragment();
+//						var li;
+//						for (var i = 0; i < count; i++) {
+//							li = document.createElement('li');
+//							li.className = 'mui-table-view-cell';
+//							li.innerHTML = '第' + (index + 1) + '个选项卡子项-' + (length + (reverse ? (count - i) : (i + 1)));
+//							fragment.appendChild(li);
+//						}
+//						return fragment;
+					};
+				});
+				$('.mui-bar-tab').on('tap','.mui-tab-item',function(){
+					var curr = plus.webview.currentWebview();
+					var wvs = plus.webview.all();
+					for(var i = 0, len = wvs.length; i < len; i++) {
+						if(wvs[i].id == curr.id)
+							continue;
+						plus.webview.close(wvs[i],'none');
+					}
+					var webview = this.getAttribute('data-webview');
+					var webview_id = this.getAttribute('data-webview') + new Date().getTime();
+					if(webview) {
+						mui.openWindow({
+							url: webview,
+							id: webview_id,
+							createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								aniShow: 'none'
+							},
+							extras: {
+								refresh: true
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							}
+						});
+						var openw = plus.webview.getWebviewById(webview);
+						if(openw) {
+							mui.fire(openw, 'refresh');
+						}
+					}
+				})
+			})(mui);
+		</script>
+	</body>
+
+</html>

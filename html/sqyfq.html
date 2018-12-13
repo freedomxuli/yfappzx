@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>申请运费券</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/style.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.8;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">申请运费券</span>
+			</div>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+                <div class="mui-input-row">
+					<label>申请运费券:</label>
+					<input id='Points' type="number" class="mui-input-clear mui-input" placeholder="请输入申请运费券数量">
+				</div>
+                <div class="mui-input-row">
+					<label>申请理由:</label>
+				</div>
+                <textarea id="ApplyMemo" rows="5" placeholder="请输入申请理由"></textarea>
+			</form>
+			<div class="mui-content-padded">
+				<button id='tijiaoshenqing' class="mui-btn mui-btn-block mui-btn-primary">提交申请</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/app.js"></script>
+	</body>
+</html>

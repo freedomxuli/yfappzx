@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>交易记录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+        <style type="text/css">
+            .menuClass {
+                position:absolute;
+                left:0;
+                top:80px;
+            }
+            body{
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.5;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+            .center-list-span{
+				font-size: 1rem;
+				font-weight: bold;
+				padding: 1rem 0rem 0.5rem 0rem;
+			}
+			.center-list-span-color1{
+				color: rgb(24,146,211);
+			}
+			.center-list-div{
+				display:flex;
+				justify-content: center;
+				padding: 0rem 0rem 1rem 1rem;
+			}
+			.center-li-content-div1{
+				flex: 4;
+				padding: 0rem;
+			}
+			.center-li-content-div2{
+				flex: 1;
+			}
+			.center-li-content-div1-span1{
+				font-size: 0.8rem;
+			}
+			.center-li-content-div1-span2{
+				font-size: 0.8rem;
+				color: #999999;
+			}
+			.center-li-content-div1-tel{
+				color: blue;
+			}
+			.mui-table-view li{
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.center-list-span-color2{
+				color: red;
+			}
+			.center-list-span-color3{
+				color: green;
+			}
+        </style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">交易记录</span>
+			</div>
+		</header>
+        <br />
+		<!--<div style="display:none;" class="myPoints"><h3>我的专线运费券：<span id="MyPoints" style="color:red;font-weight:bold;">1690</span></h3></div>
+        <br />-->
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color2">[支]</span>查货宝测试账号1-长期运费券-<span class="center-list-span-color2">412分</span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span2">
+										交易对象：查货宝
+									</div>
+									<div class="center-li-content-div1-span2">
+										交易日期：2018-10-22 17:37:22
+									</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color2">[支]</span>查货宝测试账号1-长期运费券-<span class="center-list-span-color2">412分</span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span2">
+										交易对象：查货宝
+									</div>
+									<div class="center-li-content-div1-span2">
+										交易日期：2018-10-22 17:37:22
+									</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color2">[支]</span>查货宝测试账号1-长期运费券-<span class="center-list-span-color2">412分</span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span2">
+										交易对象：查货宝
+									</div>
+									<div class="center-li-content-div1-span2">
+										交易日期：2018-10-22 17:37:22
+									</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color3">[收]</span>查货宝测试账号1-长期运费券-<span class="center-list-span-color3">412分</span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span2">
+										交易对象：查货宝
+									</div>
+									<div class="center-li-content-div1-span2">
+										交易日期：2018-10-22 17:37:22
+									</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color3">[收]</span>查货宝测试账号1-长期运费券-<span class="center-list-span-color3">412分</span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span2">
+										交易对象：查货宝
+									</div>
+									<div class="center-li-content-div1-span2">
+										交易日期：2018-10-22 17:37:22
+									</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color1">[收]</span>查货宝测试账号1-长期运费券-<span class="center-list-span-color1">412分</span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span2">
+										交易对象：查货宝
+									</div>
+									<div class="center-li-content-div1-span2">
+										交易日期：2018-10-22 17:37:22
+									</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+        <script src="../js/app.js"></script>
+		<script>
+		    mui.init({
+		        pullRefresh: {
+		            container: '#pullrefresh',
+		            up: {
+		                contentrefresh: '正在加载...',
+		                callback: pullupRefresh
+		            }
+		        }
+		        
+		    });
+		    var count = 0;
+		    /**
+			 * 上拉加载具体业务实现
+			 */
+		    function pullupRefresh() {
+		        mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 1));
+		    }
+		    if (mui.os.plus) {
+		        mui.plusReady(function () {
+		            setTimeout(function () {
+		                mui('#pullrefresh').pullRefresh().pullupLoading();
+		            }, 1000);
+
+		        });
+		    } else {
+		        mui.ready(function () {
+		            mui('#pullrefresh').pullRefresh().pullupLoading();
+		        });
+		    }
+        </script>
+	</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title></title>
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			body{
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.8;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			.ewmClass{
+				margin-top: 6rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">接收运费券</span>
+			</div>
+		</header>
+		<section>
+			<table class="ewmClass" border="0" cellspacing="0" cellpadding="0" width="100%">
+	            <tr>
+	                <td align="center"> <div id="qrcodeTable"></div></td>
+	            </tr>
+	        </table>
+	        <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-top:50px;">
+	            <tr>
+	                <td align="center" style="font-size:1.5rem;font-weight:bold;">我的收券码</td>
+	            </tr>
+	        </table>
+		</section>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/qrcode/jquery-1.8.3.min.js" ></script>
+	<script type="text/javascript" src="../js/qrcode/jquery.qrcode.js" ></script>
+    <script type="text/javascript" src="../js/qrcode/qrcode.js" ></script> 
+    <script type="text/javascript" src="../js/qrcode/utf.js" ></script>
+     <script> 
+		     var fnZoom = function (dw) {
+		         var iw = $(window).width();// document.documentElement.clientWidth;
+		         var r = iw / dw;
+		         if (document.body.style.zoom != r)
+		             document.body.style.zoom = r;
+		     };
+		     fnZoom(480);
+		     setInterval(function () {
+		         fnZoom(480);
+		     }, 50);
+		     jQuery('#qrcodeTable').qrcode({
+		         render    : "table",                
+		         text:  "http://www.baidu.com",//localStorage.getItem("mgps_UserName"),
+		         width : "350",               //二维码的宽度
+		         height : "350",
+		     });    
+		     //jQuery('#qrcodeCanvas').qrcode({
+		     //    render    : "canvas",
+		     //    text    : "http://www.baidu.com",
+		     //    width : "200",               //二维码的宽度
+		     //    height : "200",              //二维码的高度
+		     //    background : "#ffffff",       //二维码的后景色
+		     //    foreground : "#000000",        //二维码的前景色
+		     //    src: 'img/gray.jpg'             //二维码中间的图片
+		     //});    
+		 </script>
+</html>
