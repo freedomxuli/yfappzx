@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>申请运费券</title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/style.css" rel="stylesheet" />
 		<style>
 			html,
 			body {
@@ -46,14 +45,14 @@
 				<img class="top-div-img" src="../img/buycontent/back.png" />
 			</div>
 			<div class="top-box-item2 top-box-item-center">
-				<span class="top-div-span">申请运费券</span>
+				<span class="top-div-span">申请额度</span>
 			</div>
 		</header>
 		<div class="mui-content">
 			<form class="mui-input-group">
                 <div class="mui-input-row">
-					<label>申请运费券:</label>
-					<input id='Points' type="number" class="mui-input-clear mui-input" placeholder="请输入申请运费券数量">
+					<label>申请额度:</label>
+					<input id='Points' type="number" class="mui-input-clear mui-input" placeholder="请输入申请额度">
 				</div>
                 <div class="mui-input-row">
 					<label>申请理由:</label>
@@ -65,6 +64,45 @@
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
 		<script src="../js/app.js"></script>
+		<script type="text/javascript">
+			document.getElementById('tijiaoshenqing').addEventListener('tap',function(event){
+				if(!/^\d+$/.test(document.getElementById('Points').value))
+				{
+					mui.toast('申请额度为整数，且为必填');
+					return;
+				}
+				if(!document.getElementById('ApplyMemo').value)
+				{
+					mui.toast('申请理由为整数');
+					return;
+				}
+				var data = {
+					queryData:{
+						tradeCode:'tbbjfsq.insertSelective',
+						userid:localStorage.getItem('userid'),
+						memo:document.getElementById('ApplyMemo').value,
+						sqjf:document.getElementById('Points').value,
+						returnSelect:'null'
+					}
+				};
+				lnjoy.GetDataByPost(data,function(rs){
+					console.log('%o',rs);
+					if(rs.success)
+					{
+						mui.toast('申请成功，请等待审核');
+						mui.back();
+					}else
+					{
+						mui.toast('申请失败');
+						mui.back();
+					}
+				});
+			});
+		</script>
 	</body>
 </html>

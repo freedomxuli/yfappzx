@@ -1,9 +1,9 @@
-﻿{
+{
     "@platforms": ["android", "iPhone", "iPad"],
     "id": "FSHZXD001",/*应用的标识，创建应用时自动生成，勿手动修改*/
     "name": "freight_zx",/*应用名称，程序桌面图标名称*/
     "version": {
-        "name": "1.0",/*应用版本名称*/
+        "name": "1.0.4",/*应用版本名称*/
         "code": ""
     },
     "description": "",/*应用描述信息*/
@@ -37,7 +37,7 @@
         },
         "Speech": {
             "description": "管理语音识别插件"
-        }
+        },"Push":{},"Share":{},"OAuth":{}
     },
     "plus": {
         "splashscreen": {
@@ -47,7 +47,7 @@
         "popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
         "runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-        "distribute": {
+        "distribute": {"plugins":{"share":{"weixin":{"appid":"wxf7e69e44d20b01e7","appsecret":"5c32e7b7e85e9fc57427ccadfaaa6add","description":"可选，微信分享"}},"push":{"igexin":{"appid":"1","appkey":"1","appsecret":"1"}}},
             "apple": {
                 "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
                 "mobileprovision": "",/*iOS应用打包配置文件*/
@@ -62,7 +62,7 @@
                 "keystore": "",/*Android应用打包使用的密钥库文件*/
                 "password": "",/*Android应用打包使用密钥库中证书的密码*/
                 "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-               "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
+               "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.INTERNET\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
 				/*使用Native.js调用原生安卓API需要使用到的系统权限*/
             },
             "orientation": [
@@ -143,7 +143,52 @@
 					"img/buylist/券@2x.png",
 					"img/buylist/quan2.png"
 				],
-				"refer": [],
+				"refer": [
+					"html/login.html",
+					"html/my.html",
+					"html/buycontent.html",
+					"html/release.html",
+					"html/MyCard.html"
+				],
+				"priority": 0
+			},
+			"html/advertisement.html": {
+				"resources": [],
+				"refer": [
+					"html/buylist.html"
+				],
+				"priority": 0
+			},
+			"html/my.html": {
+				"resources": [],
+				"refer": [
+					"html/setting.html",
+					"html/buylist.html",
+					"html/mysx.html",
+					"html/headsel.html"
+				],
+				"priority": 0
+			},
+			"html/setting.html": {
+				"resources": [],
+				"refer": [
+					"html/buylist.html",
+					"html/czmm.html"
+				],
+				"priority": 0
+			},
+			"html/buycontent.html": {
+				"resources": [],
+				"refer": [
+					"html/map.html"
+				],
+				"priority": 0
+			},
+			"html/mysx.html": {
+				"resources": [],
+				"refer": [
+					"html/tradelist.html"
+				],
 				"priority": 0
 			}
 		},

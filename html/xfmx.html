@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>消费明细</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+        <style type="text/css">
+            .menuClass {
+                position:absolute;
+                left:0;
+                top:80px;
+            }
+            body{
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.5;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+            .center-list-span{
+				font-size: 1rem;
+				font-weight: bold;
+				padding: 1rem 0rem 0.5rem 0rem;
+			}
+			.center-list-span-color1{
+				color: rgb(24,146,211);
+			}
+			.center-list-div{
+				display:flex;
+				justify-content: center;
+				padding: 0rem 0rem 1rem 1rem;
+			}
+			.center-li-content-div1{
+				flex: 4;
+				padding: 0rem;
+			}
+			.center-li-content-div1-red{
+				color: red;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.center-li-content-div2{
+				flex: 1;
+			}
+			.center-li-content-div1-span1{
+				font-size: 0.8rem;
+			}
+			.center-li-content-div1-span2{
+				font-size: 0.8rem;
+				color: #999999;
+			}
+			.center-li-content-div1-tel{
+				color: blue;
+			}
+			.mui-table-view li{
+				border-bottom: 1px solid #CCCCCC;
+			}
+        </style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">消费明细</span>
+			</div>
+		</header>
+        <br />
+		<!--<div style="display:none;" class="myPoints"><h3>我的专线运费券：<span id="MyPoints" style="color:red;font-weight:bold;">1690</span></h3></div>
+        <br />-->
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul id="ul_card" class="mui-table-view mui-table-view-chevron">
+					
+				</ul>
+			</div>
+		</div>
+		<script src="../js/template.min.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/html" id="cardlist">
+			<%
+				for(var i = 0;i < list.length;i++)
+				{
+					%>
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell">
+									<div class="center-list-span">
+										运费券-<span class="center-list-span-color1"><%=list[i].points%>券</span>
+									</div>
+									<div class="center-li-content-div1">
+										<div class="center-li-content-div1-span1">
+											消费账户：<span class="center-li-content-div1-tel"><%=list[i].payusername%></span>
+										</div>
+									</div>
+									<div class="center-li-content-div1">
+										<div class="center-li-content-div1-span1">
+											消费时间：<span class="center-li-content-div1"><%=list[i].addtime%></span>
+										</div>
+									</div>
+									<div class="center-li-content-div1">
+										<div class="center-li-content-div1-span1">
+											折扣：<span class="center-li-content-div1-red">
+												<%=list[i].discount%>
+											</span>
+										</div>
+									</div>
+									<div class="center-li-content-div1">
+										<div class="center-li-content-div1-span1">
+											消费金额：<span class="center-li-content-div1-red">
+												<%
+													if(list[i].zxmoney)
+													{
+														%>
+														<%=list[i].zxmoney%>
+														<%
+													}else{
+														%>
+														--
+														<%
+													}
+												%>
+											</span>元
+										</div>
+									</div>
+									<div class="center-li-content-div1">
+										<div class="center-li-content-div1-span1">
+											使用条件：<%
+												if(!list[i].desc1)
+												{
+													%>
+													<span class="font-color-red">货品不限，包装不限，单次购买不超过500运费券；</sapn>
+													<%
+												}else
+												{
+													if(list[i].desc2)
+													{
+														if(list[i].ZhLx||list[i].PhLx)
+														{
+															%>
+															<span class="font-color-red"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+															<%
+														}else
+														{
+															%>
+															<span class="font-color-red"><%=list[i].desc1%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+															<%
+														}
+													}else
+													{
+														if(list[i].ZhLx||list[i].PhLx)
+														{
+															%>
+															<span class="font-color-red"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+															<%
+														}else
+														{
+															%>
+															<span class="font-color-red"><%=list[i].desc1%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+															<%
+														}
+													}
+												}
+											%>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					<%
+				}
+			%>
+		</script>
+		<script>
+		    mui.init({
+		        pullRefresh: {
+		            container: '#pullrefresh',
+		            up: {
+		                contentrefresh: '正在加载...',
+		                callback: pullupRefresh
+		            }
+		        }
+		        
+		    });
+		    var count = 1;
+			var pageSize = 10;
+		    /**
+			 * 上拉加载具体业务实现
+			 */
+		    function pullupRefresh() {
+		    		var data = {
+					queryData:{
+						tradeCode:'tbbpay.zxPaySanfang',
+						currentPage:count,
+						carduserid:localStorage.getItem('userid'),
+						pageSize:pageSize
+					}
+				};
+				lnjoy.GetDataByPost(data,function(rs){
+					console.log('%o',rs);
+					for(var i = 0;i<rs.list.length;i++)
+					{
+						if(rs.list[i].discount)
+						{
+							rs.list[i].discount = parseFloat(rs.list[i].discount)*10+"折";
+						}
+					}
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > parseInt(rs.pagination.totalPage))); //参数为true代表没有更多数据了。
+					var html = template('cardlist',rs);
+					$('#ul_card').append(html);
+					//document.getElementById('wp').innerHTML = html;
+				});
+		        //mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 1));
+		    }
+		    if (mui.os.plus) {
+		        mui.plusReady(function () {
+		            setTimeout(function () {
+		                mui('#pullrefresh').pullRefresh().pullupLoading();
+		            }, 500);
+
+		        });
+		    } else {
+		        mui.ready(function () {
+		            mui('#pullrefresh').pullRefresh().pullupLoading();
+		        });
+		    }
+        </script>
+	</body>
+
+</html>

@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>分流点列表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+        <style type="text/css">
+            .menuClass {
+                position:absolute;
+                left:0;
+                top:80px;
+            }
+            body{
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 3;
+			}
+			.top-box-item-left{
+				text-align: center;
+			}
+			.top-box-item-center{
+				text-align: center;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			.top-box-item-right{
+				text-align: right;
+				color:#FFFFFF;
+			}
+            .center-list-span{
+				font-size: 1rem;
+				font-weight: bold;
+				padding: 1rem 0rem 0.5rem 0rem;
+			}
+			.center-list-span-color1{
+				color: rgb(24,146,211);
+			}
+			.center-list-div{
+				display:flex;
+				justify-content: center;
+				padding: 0rem 0rem 1rem 1rem;
+			}
+			.center-li-content-div1{
+				flex: 4;
+				padding: 0rem;
+			}
+			.center-li-content-div2{
+				flex: 1;
+			}
+			.center-li-content-div1-span1{
+				font-size: 0.8rem;
+			}
+			.center-li-content-div1-span2{
+				font-size: 0.8rem;
+				color: #999999;
+			}
+			.center-li-content-div1-tel{
+				color: blue;
+			}
+			.mui-table-view li{
+				border-bottom: 1px solid #CCCCCC;
+			}
+        </style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">分流点</span>
+			</div>
+			<div class="top-box-item top-box-item-right" id="addpoints">
+				新增
+			</div>
+		</header>
+        <br />
+		<!--<div style="display:none;" class="myPoints"><h3>我的专线运费券：<span id="MyPoints" style="color:red;font-weight:bold;">1690</span></h3></div>
+        <br />-->
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul id="ul_card" class="mui-table-view mui-table-view-chevron">
+					
+				</ul>
+			</div>
+		</div>
+		<script src="../js/template.min.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/html" id="cardlist">
+			<%
+				for(var i = 0;i < list.length;i++)
+				{
+					%>
+					<li class="mui-table-view-cell">
+						<div class="mui-slider-right mui-disabled">
+							<a class="mui-btn mui-btn-yellow mui-icon mui-icon-compose action-edit" data-networkid='<%=list[i].networkid%>'></a>
+							<a class="mui-btn mui-btn-red mui-icon mui-icon-trash action-del" data-networkid='<%=list[i].networkid%>'></a>
+						</div>
+						<div class="mui-slider-handle">
+							<div class="mui-table-cell">
+								<div class="center-list-span">
+									<span class="center-list-span-color1"><%=list[i].networkname%></span>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span1">
+										地址：<span class="center-li-content-div1"><%=list[i].networkaddress%></span>
+									</div>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span1">
+										联系人：<span class="center-li-content-div1-tel"><%=list[i].networkperson%></span>
+									</div>
+								</div>
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-span1">
+										联系电话：<span class="center-li-content-div1"><%=list[i].networktel%></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+				}
+			%>
+		</script>
+		<script>
+		    mui.init({
+		        pullRefresh: {
+		            container: '#pullrefresh',
+		            up: {
+		                contentrefresh: '正在加载...',
+		                callback: pullupRefresh
+		            }
+		        }
+		        
+		    });
+		    var count = 1;
+			var pageSize = 10;
+			var totalnum = 0;
+		    /**
+			 * 上拉加载具体业务实现
+			 */
+		    function pullupRefresh() {
+		    		var data = {
+					queryData:{
+						tradeCode:'tbbnetwork.selectByPrimaryKey',
+						currentPage:count,
+						userid:localStorage.getItem('userid'),
+						networktype:1,
+						pageSize:pageSize
+					}
+				};
+				lnjoy.GetDataByPost(data,function(rs){
+					console.log('%o',rs);
+					totalnum = rs.pagination.total;
+//					for(var i = 0;i<rs.list.length;i++)
+//					{
+//						console.log(rs.list[i].addtime);
+//						console.log(new Date(rs.list[i].addtime));
+//						rs.list[i].addtime = new Date(rs.list[i].addtime).Format("yyyy-MM-dd HH:mm:ss");
+//					}
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > parseInt(rs.pagination.totalPage))); //参数为true代表没有更多数据了。
+					var html = template('cardlist',rs);
+					$('#ul_card').append(html);
+					//document.getElementById('wp').innerHTML = html;
+				});
+		        //mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 1));
+		    }
+		    document.getElementById('addpoints').addEventListener('tap',function(event){
+		    		if(totalnum<3)
+		    			clicked('flpointsadd.html',{networkId:''},'slide-in-right');
+		    		else
+		    			mui.toast('最多只能添加三个分流点！');
+		    			return;
+		    });
+		    $('#ul_card').on('tap', '.action-edit', function() {
+		    		var id = $(this).data('networkid');
+		    		clicked('flpointsadd.html',{networkId:id},'slide-in-right');
+		    })
+		    $('#ul_card').on('tap', '.action-del', function() {
+		    		var id = $(this).data('networkid');
+		    		mui.confirm('确认删除该分流点吗？', '', ['取消', '确认'], function(e) {
+		          if(e.index == 1) {
+		            var data_del = {
+		            		queryData:{
+		            			tradeCode:'tbbnetwork.deleteByPrimaryKey',
+		            			networkid:id,
+		            			returnSelect:'null'
+		            		}
+		            }
+		            lnjoy.GetDataByPost(data_del,function(rs){
+		            		if(rs.hasOwnProperty("success"))
+						{
+							mui.toast('删除成功！');
+							location.reload();
+						}else
+						{
+							mui.toast('删除失败！'+rs.details);
+							return;
+						}
+		            })
+		          }
+		        });
+		    });
+		    if (mui.os.plus) {
+		        mui.plusReady(function () {
+		            setTimeout(function () {
+		                mui('#pullrefresh').pullRefresh().pullupLoading();
+		            }, 500);
+					 window.addEventListener('refresh', function(e){//执行刷新
+					 	location.reload();
+				    		//console.log(1);
+					});
+		        });
+		    } else {
+		        mui.ready(function () {
+		            mui('#pullrefresh').pullRefresh().pullupLoading();
+		        });
+		    }
+        </script>
+	</body>
+
+</html>

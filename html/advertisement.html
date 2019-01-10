@@ -60,48 +60,118 @@
                     <!-- 第一张 --> 
                     <div class="mui-slider-item" style="background-color: #5dcbe2;"> 
                         <div class="img_content"> 
-                            <img id="into" src="../img/ydy/ydy.png"> 
+                            <img src="../img/welcome/01-1080.png"> 
+                        </div> 
+ 
+                    </div> 
+ 
+                    <!-- 第二张 --> 
+                    <div class="mui-slider-item" style="background-color: #68d8b0;"> 
+                        <div class="img_content"> 
+                            <img src="../img/welcome/02-1080.png"> 
+                        </div> 
+                    </div> 
+                    <!-- 第三张--> 
+                    <div class="mui-slider-item" style="background-color: #c1392b;"> 
+                        <div class="img_content"> 
+                            <img id="into" src="../img/welcome/03-1080.png"> 
                         </div> 
  
                     </div> 
                 </div> 
-                <div class="mui-slider-indicator"> 
+                <!--<div class="mui-slider-indicator"> 
                     <div class="mui-indicator mui-active"></div> 
-                </div> 
+                    <div class="mui-indicator"></div> 
+                    <div class="mui-indicator"></div> 
+                </div> -->
             </div> 
  
         </div>
     </body> 
     <script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>  
+    <script src="../js/zepto.js"></script>
+	<script src="../js/app1.js"></script>
     <script type="text/javascript" charset="utf-8"> 
         mui.init(); 
-        mui.plusReady(function(){            
+        mui.plusReady(function(){
             //mui.os.ios&&plus.navigator.setFullscreen(true);          
             var slider = mui('.mui-slider').slider();            
-            initPageguid();          
-            setStatusBarBackgroud();             
+            initPageguid();        
+            setStatusBarBackgroud ()
             plus.navigator.closeSplashscreen(); 
-            mui('.mui-content')[0].style.display = 'block'; 
-//          if(!plus.storage.getItem("launchFlag"))
-//          {
-//          	mui('.mui-content')[0].style.display = 'block'; 
-//          }else{
-//          	mui.openWindow({
-//					url: 'buylist.html',
-//					id: 'buylist.html' + new Date().getTime(),
-//					createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-//					show: {
-//						autoShow: true, //页面loaded事件发生后自动显示，默认为true
-//						aniShow: 'none'
-//					},
-//					extras: {
-//						refresh: true
-//					},
-//					waiting: {
-//						autoShow: true //自动显示等待框，默认为true
-//					}
-//				});
-//          }
+            if(!plus.storage.getItem("launchFlag"))
+            {
+            	mui('.mui-content')[0].style.display = 'block'; 
+            }else{
+            		var dangqianbanbenhao = plus.runtime.version;
+				var xitong = null;
+				if(mui.os.ios) {
+					xitong = "IOS";
+				} else {
+					xitong = "Android";
+				}
+				jiachabanben("login", xitong, dangqianbanbenhao);
+				function jiachabanben(type, xitong, dangqianbanbenhao) {
+					var data = {
+						queryData:{
+							tradeCode:'getVersion',
+						}
+					}
+					lnjoy.GetDataByPost(data,function(rs){
+						if(rs.hasOwnProperty('success'))
+						{
+							if(rs.data.versionzx>dangqianbanbenhao)
+							{
+			        				var zuixinbanben = rs.data.versionzx;
+								mui.alert('当前版本:' + dangqianbanbenhao + ',最新版本:' + zuixinbanben, '确认更新', function(e) {
+									var genxinurl = "http://47.110.134.105:8011/yfq/downloads/fshzxd.apk";
+									var ua = navigator.userAgent.toLowerCase(); 
+					                if(/iphone|ipad|ipod/.test(ua)) {
+					                		plus.runtime.openURL(rs.data.ios_zx_url);
+					                }else
+					                {
+						                	var wt = plus.nativeUI.showWaiting('下载更新中，请勿关闭');
+						                	var dtask = plus.downloader.createDownload(genxinurl, {}, function(d, status) {   
+					                        if (status == 200) { // 下载成功   
+					                            var path = d.filename;    
+					                            plus.runtime.install(path);   
+					                        } else { //下载失败   
+					                            mui.alert("Download failed: " + status);
+					                        }   
+					                    });
+						                	dtask.start();
+					                }
+								})
+			        			}else{
+			        				setTimeout(function()
+								{
+									plus.webview.currentWebview().close();
+								},1000);
+								localStorage.setItem("firstopen",1);
+			        				mui.openWindow({
+									url: 'buylist.html',
+									id: 'buylist.html' + new Date().getTime(),
+									createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										aniShow: 'none'
+									},
+									extras: {
+										refresh: true
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									}
+								});
+			        			}
+						}else
+						{
+							mui.toast(rs.details);
+							return;
+						}
+					});
+				}
+            }
             mui("#into")[0].addEventListener('tap', function() {  
             	plus.storage.setItem("launchFlag","true");
                 mui.openWindow({
@@ -135,7 +205,7 @@
                     setContainerBackg(num); 
                 }); 
             } 
-             
+            
             function setStatusBarBackgroud () { 
                 if (mui.os.ios) { 
                     plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
@@ -143,6 +213,7 @@
                     plus.navigator.setStatusBarBackground("#3A75B8");
                 } 
             }; 
+             
             function setContainerBackg(num) { 
                 //提前设置背景色 
                 if (num == 0) { 

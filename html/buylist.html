@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	    <title></title>
-		<!--标准mui.css-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<style>
 			body{
 				background-color: #FFFFFF;
@@ -18,6 +19,12 @@
 				margin-top: 0.5rem;
 				width: 1.2rem;
 			}
+			.bottom-div-img-2{
+				width:4rem;
+				position: absolute;
+				bottom: 0.5rem;
+				left: 42%;
+			}
 			.bottom-div-span{
 				font-size: 0.8rem;
 				color:  #0078B9;
@@ -25,6 +32,13 @@
 			.bottom-div-span-1{
 				font-size: 0.8rem;
 				color:  #999999;
+			}
+			.bottom-div-span-2{
+				font-size: 0.8rem;
+				color:  #999999;
+				position: absolute;
+				bottom: 0rem;
+				left: 42%;
 			}
 			.top-box{
 				display: flex;
@@ -35,14 +49,11 @@
 			.top-box-item{
 				flex: 1;
 			}
-			.top-box-item1{
-				flex: 1.4;
-			}
 			.top-box-item-left{
 				text-align: left;
 			}
 			.top-box-item-center{
-				text-align: right;
+				text-align: center;
 			}
 			.top-box-item-right{
 				text-align: right;
@@ -54,9 +65,19 @@
 			}
 			.top-search{
 				margin-top: 3.5rem;
-				height:2.2rem;
+				height:1.5rem;
 				display:flex;
 				justify-content: center; 
+			}
+			.top-div1{
+				flex: 1;
+				font-size: 0.8rem;
+				text-align: center;
+				font-weight: bold;
+			}
+			.top-div1-color{
+				color: red;
+				font-size: 1.2rem;
 			}
 			.search-div1{
 				flex: 2;
@@ -65,7 +86,7 @@
 				padding: 0.2rem !important;
 				width:3.6rem;
 				height: 2rem;
-				line-height: 1rem;;
+				line-height: 1rem;
 				margin: 0 auto;
 			}
 			.img-div1{
@@ -143,10 +164,12 @@
 				padding: 1.2rem 0rem 0.8rem 0rem;
 			}
 			.center-li-title-div1{
-				flex:1.5;
+				flex:2.5;
 				font-size: 1rem;
 				font-family: "微软雅黑";
-				text-align: center;
+				padding: 0rem 0rem 0rem 0.5rem;
+				color: rgb(24,146,211);
+				font-weight: bold;
 			}
 			.center-li-title-img1{
 				width:1.4rem;
@@ -157,7 +180,9 @@
 				font-size: 0.7rem;
 				text-align: center;
 				font-family: "微软雅黑";
-				color: rgb(153,153,153);
+				color: rgb(24,146,211);
+				font-weight: bold;
+				/*color: rgb(153,153,153);*/
 			}
 			.center-li-title-img2{
 				width: 0.6rem;
@@ -171,10 +196,12 @@
 			}
 			.center-li-content-div1{
 				flex: 1.5;
+				justify-content: center;
 			}
 			.center-li-content-img1{
 				width: 5rem;
 				text-align: center;
+				margin-bottom: 1rem;
 			}
 			.center-li-content-div2{
 				flex: 4;
@@ -185,6 +212,14 @@
 			}
 			.center-ckxq{
 				color: rgb(24,146,211);
+				border:0rem;
+				padding: 0rem;
+			}
+			.background-gray{
+				background-color: #CCCCCC;
+			}
+			.center-ckxq1{
+				color:red;
 			}
 			.center-li-content-img2{
 				width: 0.5rem;
@@ -193,286 +228,449 @@
 			}
 			.center-li-content-div3{
 				flex: 1;
+				display: flex;
+		    		align-items: center;
+		    		margin: 0rem 0rem 0rem 0.2rem;
+			}
+			.center-li-content-div1-child{
+				display: flex;
+				flex-direction: column;
+			}
+			.gzbutton{
+				width: 3rem;
+				padding: 0.2rem;
+				margin: 0 auto;
+			}
+			.font-color-red{
+				color: red;
+				font-weight:bold ;
+			}
+			.center-li-content-div3-span1{
+				color: red;
+				font-size:1rem ;
+				flex: 1;
+				text-align: center;
+				font-weight: bold;
+			}
+			.center-li-content-div3-span2{
+				color: red;
+				font-size:0.6rem ;
+				flex: 1;
+				text-align: center;
+			}
+			.cell-background{
+				background-color: #CCCCCC;
+			}
+			.center-li-content-span2{
+				font-size: 0.8rem;
+				color: #FFFFFF;
+			}
+			.font-color-white{
+				font-weight: bold;
 			}
 		</style>
-	    <!--<script type="text/javascript">
-	    	
-	   		document.addEventListener('plusready', function(){
-	   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-	   			
-	   		});
-	   		
-	    </script>-->
 	</head>
-	<body>
-		<header class="mui-bar mui-bar-nav top-box">
-			<!--<div class="top-box-item" id="ewmclass">
-				<img class="bottom-div-img" src="../img/buylist/sys.png" />
-			</div>-->
-			<div class="top-box-item1 top-box-item-center">
-				<span class="top-div-span">发啥货</span>
+	<header class="mui-bar mui-bar-nav top-box">
+		<div class="top-box-item" id="ewmclass">
+			&nbsp;
+		</div>
+		<div class="top-box-item top-box-item-center">
+			<span class="top-div-span">发啥货</span>
+		</div>
+		<div class="top-box-item top-box-item-right" id="mycard">
+			<img class="bottom-div-img" src="../img/buylist/card.png" />
+		</div>
+	</header>
+	<section>
+		<div class="top-search" id='showzj'>
+			<div class="top-div1">收货战绩：<span class="top-div1-color" id="shzj">0</span>单</div>
+			<div class="top-div1">收货总额：<span class="top-div1-color" id="shze">0</span>元</div>
+		</div>
+	</section>
+	<hr class="hr1" />
+	<section>
+		<div class="center-search">
+			<div class="search-div1">
+				<button id='showCityPicker' class="mui-btn mui-btn-block button-div1" type='button'>
+					<span class="span-div1">常州</span>
+					<img class="img-div1" src="../img/buylist/down.png" />
+				</button>
 			</div>
-			<div class="top-box-item top-box-item-right" id="mycard">
-				<img class="bottom-div-img" src="../img/buylist/card.png" />
+			<div class="input-div1">
+				<input id="keyword" class="text-div1" type="text" placeholder="输入专线名称或目的地进行搜索">
 			</div>
-		</header>
-		<section>
-			<div class="top-search">
-				<div class="search-div1">
-					<button id='showUserPicker' class="mui-btn mui-btn-block button-div1" type='button'>
-						<span class="span-div1">城市</span>
-						<img class="img-div1" src="../img/buylist/down.png" />
-					</button>
-				</div>
-				<div class="input-div1">
-					<input class="text-div1" type="text" placeholder="输入专线名称或目的地进行搜索">
-				</div>
-				<div class="search-div1">
-					<button type="button" class="mui-btn mui-btn-primary button-div2">搜索</button>
-				</div>
+			<div class="search-div1">
+				<button type="button" class="mui-btn mui-btn-primary button-div2">搜索</button>
 			</div>
-		</section>
-		<hr class="hr1" />
-		<section>
-			<div class="center-search">
-				<div class="center-div1">
-					<button id='salepx' class="button-div3" type='button'>
-						<span class="span-div2">销量</span>
-						<img class="img-div2" src="../img/buylist/px1.png" />
-					</button>
-				</div>
-				<div class="center-div1">
-					<button id='discountpx' class="button-div3" type='button'>
-						<span class="span-div2">折扣</span>
-						<img class="img-div2" src="../img/buylist/px1.png" />
-					</button>
-				</div>
-				<div class="center-div1">
-					<button id='flowerpx' class="button-div3" type='button'>
-						<span class="span-div2">关注数</span>
-						<img class="img-div2" src="../img/buylist/px1.png" />
-					</button>
-				</div>
-				<div class="center-div2">
-					<button id='showPointsPicker' class="button-div3" type='button'>
-						<span class="span-div2">运费券类型</span>
-						<img class="img-div2" src="../img/buylist/px1.png" />
-					</button>
-				</div>
+		</div>
+	</section>
+	<hr class="hr1" />
+	<section>
+		<div class="center-search">
+			<div class="center-div1">
+				<button id='salepx' class="button-div3" type='button'>
+					<span class="span-div2">销量</span>
+					<img class="img-div2 salepx-img" src="../img/buylist/px1.png" />
+				</button>
 			</div>
-		</section>
-		<section>
-			<div class="div-space1">&nbsp;</div>
-		</section>
-		<section>
-			<div id="pullrefresh" class="mui-scroll-wrapper center-list">
-				<div class="mui-scroll">
-					<!--数据列表-->
-					<ul class="mui-table-view mui-table-view-chevron">
-						<li class="">
-							<div class="center-li-title">
-								<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" /> <span>轩程物流</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 600</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 500</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/dwdz.png" /> <span>常州市</span> </div>
-							</div>
-							<div class="center-li-content">
-								<div class="center-li-content-div1">
-									<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
-								</div>
-								<div class="center-li-content-div2">
-									<div class="center-li-content-span1">
-										券类型：长期券
-									</div>
-									<div class="center-li-content-span1">
-										折扣：7折
-									</div>
-									<div class="center-li-content-span1">
-										销售：300点&nbsp;&nbsp;剩余：100点
-									</div>
-									<div class="center-li-content-span1">
-										线路：常州-长沙、湖南全境、湖北全境
-									</div>
-									<!--<div>
-										推荐指数：300点
-									</div>-->
-									<!--<div class="center-li-content-span1 center-ckxq showdetails">
-										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
-									</div>-->
-								</div>
-								<div class="center-li-content-div3">
-									<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints();">查看</button>
-								</div>	
-							</div>
-						</li>
-						<li class="">
-							<div class="center-li-title">
-								<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" /> <span>轩程物流</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 600</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 500</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/dwdz.png" /> <span>常州市</span> </div>
-							</div>
-							<div class="center-li-content">
-								<div class="center-li-content-div1">
-									<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
-								</div>
-								<div class="center-li-content-div2">
-									<div class="center-li-content-span1">
-										券类型：长期券
-									</div>
-									<div class="center-li-content-span1">
-										折扣：7折
-									</div>
-									<div class="center-li-content-span1">
-										销售：300点&nbsp;&nbsp;剩余：100点
-									</div>
-									<div class="center-li-content-span1">
-										线路：常州-长沙、湖南全境、湖北全境
-									</div>
-									<!--<div>
-										推荐指数：300点
-									</div>-->
-									<!--<div class="center-li-content-span1 center-ckxq showdetails">
-										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
-									</div>-->
-								</div>
-								<div class="center-li-content-div3">
-									<button type="button" class="mui-btn mui-btn-primary" onclick="ZhuCe();">查看</button>
-								</div>	
-							</div>
-						</li>
-						<li class="">
-							<div class="center-li-title">
-								<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" /> <span>轩程物流</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 600</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 500</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/dwdz.png" /> <span>常州市</span> </div>
-							</div>
-							<div class="center-li-content">
-								<div class="center-li-content-div1">
-									<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
-								</div>
-								<div class="center-li-content-div2">
-									<div class="center-li-content-span1">
-										券类型：长期券
-									</div>
-									<div class="center-li-content-span1">
-										折扣：7折
-									</div>
-									<div class="center-li-content-span1">
-										销售：300点&nbsp;&nbsp;剩余：100点
-									</div>
-									<div class="center-li-content-span1">
-										线路：常州-长沙、湖南全境、湖北全境
-									</div>
-									<!--<div>
-										推荐指数：300点
-									</div>-->
-									<!--<div class="center-li-content-span1 center-ckxq">
-										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
-									</div>-->
-								</div>
-								<div class="center-li-content-div3">
-									<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints();">查看</button>
-								</div>	
-							</div>
-						</li>
-						<li class="">
-							<div class="center-li-title">
-								<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" /> <span>轩程物流</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 600</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 500</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/dwdz.png" /> <span>常州市</span> </div>
-							</div>
-							<div class="center-li-content">
-								<div class="center-li-content-div1">
-									<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
-								</div>
-								<div class="center-li-content-div2">
-									<div class="center-li-content-span1">
-										券类型：长期券
-									</div>
-									<div class="center-li-content-span1">
-										折扣：7折
-									</div>
-									<div class="center-li-content-span1">
-										销售：300点&nbsp;&nbsp;剩余：100点
-									</div>
-									<div class="center-li-content-span1">
-										线路：常州-长沙、湖南全境、湖北全境
-									</div>
-									<!--<div>
-										推荐指数：300点
-									</div>-->
-									<!--<div class="center-li-content-span1 center-ckxq showdetails">
-										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
-									</div>-->
-								</div>
-								<div class="center-li-content-div3">
-									<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints();">查看</button>
-								</div>	
-							</div>
-						</li>
-						<li class="">
-							<div class="center-li-title">
-								<div class="center-li-title-div1"><img class="center-li-title-img1" src="../img/buylist/zxbs.png" /> <span>轩程物流</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 600</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 500</span> </div>
-								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/dwdz.png" /> <span>常州市</span> </div>
-							</div>
-							<div class="center-li-content">
-								<div class="center-li-content-div1">
-									<img class="center-li-content-img1" src="../img/buylist/timg.png"/>
-								</div>
-								<div class="center-li-content-div2">
-									<div class="center-li-content-span1">
-										券类型：长期券
-									</div>
-									<div class="center-li-content-span1">
-										折扣：7折
-									</div>
-									<div class="center-li-content-span1">
-										销售：300点&nbsp;&nbsp;剩余：100点
-									</div>
-									<div class="center-li-content-span1">
-										线路：常州-长沙、湖南全境、湖北全境
-									</div>
-									<!--<div>
-										推荐指数：300点
-									</div>-->
-									<!--<div class="center-li-content-span1 center-ckxq showdetails">
-										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
-									</div>-->
-								</div>
-								<div class="center-li-content-div3">
-									<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints();">查看</button>
-								</div>	
-							</div>
-						</li>
-					</ul>
-				</div>
+			<div class="center-div1">
+				<button id='discountpx' class="button-div3" type='button'>
+					<span class="span-div2">折扣</span>
+					<img class="img-div2 discountpx-img" src="../img/buylist/px1.png" />
+				</button>
 			</div>
-		</section>
-		<nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item mui-active" data-webview="buylist.html">
-				<img class="bottom-div-img" src="../img/buylist/quan2.png" />
-				<div class="bottom-div-span">运费券</div>
-			</a>
-			<a class="mui-tab-item" data-webview="release.html">
-				<img class="bottom-div-img-1" src="../img/buylist/order1.png" />
-				<div class="bottom-div-span-1">发布</div>
-			</a>
-			<a class="mui-tab-item" data-webview="my.html">
-				<img class="bottom-div-img-1" src="../img/buylist/my1.png" />
-				<div class="bottom-div-span-1">我的</div>
-			</a>
-		</nav>
-	</body>
+			<div class="center-div1">
+				<button id='flowerpx' class="button-div3" type='button'>
+					<span class="span-div2">关注数</span>
+					<img class="img-div2 flowerpx-img" src="../img/buylist/px1.png" />
+				</button>
+			</div>
+			<div class="center-div2">
+				<button id='buynumpx' class="button-div3" type='button'>
+					<span class="span-div2">购买次数</span>
+					<img class="img-div2 buynumpx-img" src="../img/buylist/px1.png" />
+				</button>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="div-space1">&nbsp;</div>
+	</section>
+	<section>
+		<div id="pullrefresh" class="mui-scroll-wrapper center-list">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul id="wp" class="mui-table-view mui-table-view-chevron">
+				</ul>
+			</div>
+		</div>
+	</section>
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" data-webview="buylist.html">
+			<img class="bottom-div-img" src="../img/buylist/quan2.png" />
+			<div class="bottom-div-span">运费券</div>
+		</a>
+		<a class="mui-tab-item" data-webview="release.html">
+			<img class="bottom-div-img-2" src="../img/buylist/order.png" />
+			<!--<div class="bottom-div-span-2">发布</div>-->
+		</a>
+		<a class="mui-tab-item" data-webview="my.html">
+			<img class="bottom-div-img-1" src="../img/buylist/my1.png" />
+			<div class="bottom-div-span-1">我的</div>
+		</a>
+	</nav>
+	<script src="../js/template.min.js"></script>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/zepto.js"></script>
+	<script src="../js/reconnecting-websocket.min.js"></script>
+	<script src="../js/stomp.min.js"></script>
+	<script src="../js/sockjs.min.js"></script>
 	<script src="../js/app.js"></script>
-	<scrpit type="text/html" id="content-freight-list">
-		
-	</scrpit>
+	<script src="../js/mui.picker.min.js"></script>
+	<script src="../js/mui.poppicker.js"></script>
+    <script id="tpl" type="text/html">
+	    <%for(var i in list){
+	    		if(list[i].points > 0)
+	    		{
+	    			if(list[i].diffhour > 0)
+	    			{
+	    				%>
+	    					<li>
+							<div class="center-li-title">
+								<div class="center-li-title-div1"><span><%=list[i].UserXM%></span> </div>
+								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 <%=list[i].GZCount%></span> </div>
+								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>购买数 <%=list[i].SaleCount%></span> </div>
+								<!--<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 50000</span> </div>-->
+							</div>
+							<div class="center-li-content">
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-child">
+										<%
+											if(list[i].avatarUrl)
+											{
+												%>
+													<img class="center-li-content-img1" src="<%=list[i].avatarUrl%>"  onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',1);"/>
+												<%
+											}else
+											{
+												%>
+													<img class="center-li-content-img1" src="../img/buylist/timg.png"  onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',1);"/>
+												<%
+											}
+										%>
+										<!--<button id="<%=list[i].userid%>gz" type="button" class="mui-btn mui-btn-danger gzbutton" onclick="gz('<%=list[i].userid%>');"><%if(list[i].GZ_ID){%>已关注<%}else{%>关注<%}%></button>-->
+									</div>
+								</div>
+								<div class="center-li-content-div2">
+									<div class="center-li-content-span1">
+										消费总券额：<%=list[i].sum%>
+									</div>
+									<div class="center-li-content-span1">
+										运费券：<span class="font-color-red"><%=list[i].points%></span>&nbsp;&nbsp;折扣：<span class="font-color-red"><%=list[i].discountmemo%></span>
+									</div>
+									<div class="center-li-content-span1">
+										线路：<span class="font-color-red"><%=list[i].ToRoute%></span>
+									</div>
+									<div class="center-li-content-span1">
+										运费券有效时间：<span class="font-color-red"><%=list[i].diffhour%>小时</span>
+									</div>
+									<div class="center-li-content-span1">
+										使用条件：
+										<%
+											if(list[i].pointkindname == "查货宝平台券")
+											{
+												%>
+												<span class="font-color-red">货品不限，包装不限，单次购买不超过500运费券；</sapn>
+												<%
+											}else
+											{
+												if(list[i].desc2)
+												{
+													if(list[i].ZhLx||list[i].PhLx)
+													{
+														%>
+														<span class="font-color-red"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}else
+													{
+														%>
+														<span class="font-color-red"><%=list[i].desc1%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}
+												}else
+												{
+													if(list[i].ZhLx||list[i].PhLx)
+													{
+														%>
+														<span class="font-color-red"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}else
+													{
+														%>
+														<span class="font-color-red"><%=list[i].desc1%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}
+												}
+											}
+										%>
+									</div>
+									<!--<div>
+										推荐指数：300点
+									</div>-->
+									<button class="center-li-content-span1 center-ckxq showdetails" onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',2);">
+										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
+									</button>
+								</div>
+								<div class="center-li-content-div3">
+									<button id="<%=list[i].userid%>gz" type="button" class="mui-btn mui-btn-danger gzbutton" onclick="gz('<%=list[i].userid%>');"><%if(list[i].GZ_ID){%>已关注<%}else{%>关注<%}%></button>
+									<!--<button type="button" class="mui-btn mui-btn-primary" onclick="Buypoints('<%=list[i].userid%>');">抢购</button>-->
+								</div>	
+							</div>
+						</li>
+	    				<%
+	    			}else{
+	    				%>
+	    					<li class="cell-background">
+							<div class="center-li-title">
+								<div class="center-li-title-div1"><span><%=list[i].UserXM%></span> </div>
+								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 <%=list[i].GZCount%></span> </div>
+								<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>购买数 <%=list[i].SaleCount%></span> </div>
+								<!--<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 50000</span> </div>-->
+							</div>
+							<div class="center-li-content">
+								<div class="center-li-content-div1">
+									<div class="center-li-content-div1-child">
+										<%
+											if(list[i].avatarUrl)
+											{
+												%>
+													<img class="center-li-content-img1" src="<%=list[i].avatarUrl%>"  onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',1);"/>
+												<%
+											}else
+											{
+												%>
+													<img class="center-li-content-img1" src="../img/buylist/timg.png"  onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',1);"/>
+												<%
+											}
+										%>
+										<!--<button id="<%=list[i].userid%>gz" type="button" class="mui-btn mui-btn-danger gzbutton" onclick="gz('<%=list[i].userid%>');"><%if(list[i].GZ_ID){%>已关注<%}else{%>关注<%}%></button>-->
+									</div>
+								</div>
+								<div class="center-li-content-div2">
+									<div class="center-li-content-span2">
+										消费总券额：<%=list[i].sum%>
+									</div>
+									<div class="center-li-content-span2">
+										运费券：<span class="font-color-white"><%=list[i].points%></span>&nbsp;&nbsp;折扣：<span class="font-color-white"><%=list[i].discountmemo%></span>
+									</div>
+									<div class="center-li-content-span2">
+										线路：<span class="font-color-white"><%=list[i].ToRoute%></span>
+									</div>
+									<div class="center-li-content-span2">
+										运费券有效时间：<span class="font-color-white"><%=list[i].diffhour%>小时</span>
+									</div>
+									<div class="center-li-content-span2">
+										使用条件：
+										<%
+											if(list[i].pointkindname == "查货宝平台券")
+											{
+												%>
+												<span class="font-color-white">货品不限，包装不限，单次购买不超过500运费券；</sapn>
+												<%
+											}else
+											{
+												if(list[i].desc2)
+												{
+													if(list[i].ZhLx||list[i].PhLx)
+													{
+														%>
+														<span class="font-color-white"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}else
+													{
+														%>
+														<span class="font-color-white"><%=list[i].desc1%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}
+												}else
+												{
+													if(list[i].ZhLx||list[i].PhLx)
+													{
+														%>
+														<span class="font-color-white"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}else
+													{
+														%>
+														<span class="font-color-white"><%=list[i].desc1%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+														<%
+													}
+												}
+											}
+										%>
+									</div>
+									<!--<div>
+										推荐指数：300点
+									</div>-->
+									<button class="center-li-content-span1 center-ckxq showdetails background-gray" onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',2);">
+										查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
+									</button>
+								</div>
+								<div class="center-li-content-div3">
+									<button id="<%=list[i].userid%>gz" type="button" class="mui-btn mui-btn-danger gzbutton" onclick="gz('<%=list[i].userid%>');"><%if(list[i].GZ_ID){%>已关注<%}else{%>关注<%}%></button>
+									<!--<div>
+								    		<div class="center-li-content-div3-span1">过期</div>
+										<div class="center-li-content-div3-span2">期待下次</div>
+								    </div>-->
+								</div>	
+							</div>
+						</li>
+	    				<%
+	    			}
+	    		}else
+	    		{
+	    			%>
+	    				<li class="cell-background">
+						<div class="center-li-title">
+							<div class="center-li-title-div1"><span><%=list[i].UserXM%></span> </div>
+							<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/gzs.png" /> <span>关注数 <%=list[i].GZCount%></span> </div>
+							<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>购买数 <%=list[i].SaleCount%></span> </div>
+							<!--<div class="center-li-title-div2"><img class="center-li-title-img2" src="../img/buylist/lls.png" /> <span>浏览数 50000</span> </div>-->
+						</div>
+						<div class="center-li-content">
+							<div class="center-li-content-div1">
+								<div class="center-li-content-div1-child">
+									<%
+										if(list[i].avatarUrl)
+										{
+											%>
+												<img class="center-li-content-img1" src="<%=list[i].avatarUrl%>"  onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',1);"/>
+											<%
+										}else
+										{
+											%>
+												<img class="center-li-content-img1" src="../img/buylist/timg.png"  onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',1);"/>
+											<%
+										}
+									%>
+									<!--<button id="<%=list[i].userid%>gz" type="button" class="mui-btn mui-btn-danger gzbutton" onclick="gz('<%=list[i].userid%>');"><%if(list[i].GZ_ID){%>已关注<%}else{%>关注<%}%></button>-->
+								</div>
+							</div>
+							<div class="center-li-content-div2">
+								<div class="center-li-content-span2">
+									消费总券额：<%=list[i].sum%>
+								</div>
+								<div class="center-li-content-span2">
+									运费券：<span class="font-color-white"><%=list[i].points%></span>&nbsp;&nbsp;折扣：<span class="font-color-white"><%=list[i].discountmemo%></span>
+								</div>
+								<div class="center-li-content-span2">
+									线路：<span class="font-color-white"><%=list[i].ToRoute%></span>
+								</div>
+								<div class="center-li-content-span2">
+									运费券有效时间：<span class="font-color-white"><%=list[i].diffhour%>小时</span>
+								</div>
+								<div class="center-li-content-span2">
+									使用条件：
+									<%
+										if(list[i].pointkindname == "查货宝平台券")
+										{
+											%>
+											<span class="font-color-white">货品不限，包装不限，单次购买不超过500运费券；</sapn>
+											<%
+										}else
+										{
+											if(list[i].desc2)
+											{
+												if(list[i].ZhLx||list[i].PhLx)
+												{
+													%>
+													<span class="font-color-white"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+													<%
+												}else
+												{
+													%>
+													<span class="font-color-white"><%=list[i].desc1%>；包装：<%=list[i].desc5%>；目的地：<%=list[i].desc3%>；<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+													<%
+												}
+											}else
+											{
+												if(list[i].ZhLx||list[i].PhLx)
+												{
+													%>
+													<span class="font-color-white"><%=list[i].desc1%>；<%=list[i].ZhLx%><%=list[i].PhLx%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+													<%
+												}else
+												{
+													%>
+													<span class="font-color-white"><%=list[i].desc1%>；包装不限；目的地：<%=list[i].desc3%>；<%=list[i].desc4%>；每票货使用券额不限</sapn>
+													<%
+												}
+											}
+										}
+									%>
+								</div>
+								<!--<div>
+									推荐指数：300点
+								</div>-->
+								<button class="center-li-content-span1 center-ckxq showdetails background-gray" onclick="showdetailsfuc('<%=list[i].userid%>','<%=list[i].plattosaleid%>',2);">
+									查看详情<img class="center-li-content-img2" src="../img/buylist/ckxq.png" />
+								</button>
+							</div>
+							<div class="center-li-content-div3">
+								<button id="<%=list[i].userid%>gz" type="button" class="mui-btn mui-btn-danger gzbutton" onclick="gz('<%=list[i].userid%>');"><%if(list[i].GZ_ID){%>已关注<%}else{%>关注<%}%></button>
+								<!--<div>
+							    		<div class="center-li-content-div3-span1">售罄</div>
+									<div class="center-li-content-div3-span2">期待下次</div>
+							    </div>-->
+							</div>	
+						</div>
+					</li>
+	    			<%
+	    		}
+	    	%>
+	        
+	    <%}%>
+	</script>
 	<script>
 		mui.init({
 			swipeBack:true, //启用右滑关闭功能
@@ -484,27 +682,132 @@
 				}
 			}
 		});
-		var count = 0;
+		var data_user = {
+			queryData:{
+				tradeCode:'tbborder.mySale',
+				saleuserid:localStorage.getItem('userid')
+			}
+		};
+		console.log('%o',data_user);
+		lnjoy.GetDataByPost(data_user,function(rs){
+			console.log('%o',rs);
+			var shzj = rs.list.length;
+			var shze = 0;
+			for(var i = 0;i < rs.list.length; i++)
+			{
+				
+				shze += parseFloat(rs.list[i].money);
+			}
+			$('#shzj').html(shzj);
+			$('#shze').html(shze.toFixed(2));
+		});
+		
+		mui.toast("有"+parseInt(Math.random()*(100-70+1)+70,10)+"个发货人在线等着抢购您的运费券哦");
+		
+		var oIframe = document.getElementsByClassName("center-list")[0];
+        var oBody = document.getElementsByTagName("body")[0];
+        
+        var cHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight)
+      	var sHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+      	var height  = Math.max(cHeight, sHeight)
+      	oIframe.style.height = window.screen.height-180+"px";
+
+		var salepx = 0;
+		var discountpx = 0;
+		var flowerpx = 0;
+		var buynumpx = 0;
+		var salepx_str = "";
+		var discountpx_str = "";
+		var flowerpx_str = "";
+		var buynumpx_str = "";
+		var fromroute = "常州"; 
+		var userxm = "";
+		var count = 1;
+		var pageSize = 10;
+		var userid = "";
+		
+//		if(localStorage.getItem('fromroute'))
+//			fromroute = localStorage.getItem('fromroute');
+//		if (navigator.geolocation)
+//	    {
+//	    		//console.log("定位服务");
+//	    		navigator.geolocation.getCurrentPosition(showPosition);
+//	    }
+//	    function showPosition(position)
+//		{
+//			//console.log("数据上传："+position.coords.latitude+"，"+position.coords.longitude);
+//			var data_place = {
+//				queryData:{
+//					tradeCode:'getLocation',
+//					location:position.coords.longitude+","+position.coords.latitude
+//				}
+//			}
+//			lnjoy.GetDataByPost(data_place,function(rs){
+//				//console.log('%o',rs);
+//				
+//				if((rs.regeocode.addressComponent.city&&rs.regeocode.addressComponent.city.length>0)||(rs.regeocode.addressComponent.province&&rs.regeocode.addressComponent.city.province>0))
+//				{
+//					var place = rs.regeocode.addressComponent.province;
+//					if(rs.regeocode.addressComponent.city)
+//						place = rs.regeocode.addressComponent.city;
+//					if(!localStorage.getItem('fromroute')||localStorage.getItem('fromroute')!=place.replace('市',''))
+//					{
+//						var btnArray = ['否', '是'];
+//						mui.confirm('您当前所在地为：'+place.replace('市','')+'，是否要使用当前定位？', '提示', btnArray, function(e) {
+//							if (e.index == 1) {
+//								localStorage.setItem('fromroute',place.replace('市',''));
+//								count = 1;
+//								$('.span-div1').html(place.replace('市',''));
+//								$('#wp').empty();
+//								fromroute = place.replace('市','');
+//								pullupRefresh();	
+//								mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+//							}
+//						})
+//					}
+//				}
+//			});
+//		}
 		/**
 		 * 上拉加载具体业务实现
 		 */
 		function pullupRefresh() {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 1));
-//			setTimeout(function() {
-//				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-//				var table = document.body.querySelector('.mui-table-view');
-//				var cells = document.body.querySelectorAll('.mui-table-view-cell');
-//				for (var i = cells.length, len = i + 20; i < len; i++) {
-//					var li = document.createElement('li');
-//					li.className = 'mui-table-view-cell';
-//					li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-//					table.appendChild(li);
-//				}
-//			}, 1500);
+			if(localStorage.getItem('userid'))
+				userid = localStorage.getItem('userid');
+			var orderby = salepx_str+discountpx_str+flowerpx_str+buynumpx_str;
+			if(orderby.length>0)
+				orderby = orderby.substr(0, orderby.length - 1);
+			var data = {
+				queryData:{
+					tradeCode:'tbbplattosale.selectPlattosale104',
+					orderby:orderby,
+					currentPage:count,
+					fromroute:fromroute,
+					userxm:$('#keyword').val(),
+					userid:userid,
+					pageSize:pageSize
+				}
+			};
+			console.log('%o',data);
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs);
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > parseInt(rs.pagination.totalPage))); //参数为true代表没有更多数据了。
+				var html = template('tpl',rs);
+				$('#wp').append(html);
+				//document.getElementById('wp').innerHTML = html;
+			});
+
 		}
 		function Buypoints()
 		{
-			clicked('companydetail.html', {}, 'slide-in-right');
+			if(!localStorage.getItem('userid'))
+				mui.alert('您还未登陆，请立即登陆！', '提示',function(){
+					clicked('login.html', {}, 'slide-in-right');
+				});
+			else
+			{
+				clicked('buycontent.html', {}, 'slide-in-right');
+			}
 		}
 		function ZhuCe(){
 			var btnArray = ['关闭', '立即登陆'];
@@ -515,58 +818,383 @@
 			});
 		}
 		mui('.mui-bar-tab').on('tap','.mui-tab-item',function(){
-			var curr = plus.webview.currentWebview();
-			var wvs = plus.webview.all();
-			for(var i = 0, len = wvs.length; i < len; i++) {
-				if(wvs[i].id == curr.id)
-					continue;
-				plus.webview.close(wvs[i],'none');
-			}
-			var webview = this.getAttribute('data-webview');
-			var webview_id = this.getAttribute('data-webview') + new Date().getTime();
-			if(webview) {
-				mui.openWindow({
-					url: webview,
-					id: webview_id,
-					createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-					show: {
-						autoShow: true, //页面loaded事件发生后自动显示，默认为true
-						aniShow: 'none'
-					},
-					extras: {
-						refresh: true
-					},
-					waiting: {
-						autoShow: true //自动显示等待框，默认为true
+			if(localStorage.getItem('userid'))
+			{
+				var curr = plus.webview.currentWebview();
+				var wvs = plus.webview.all();
+				for(var i = 0, len = wvs.length; i < len; i++) {
+					if(wvs[i].id == curr.id)
+						continue;
+					plus.webview.close(wvs[i],'none');
+				}
+				var webview = this.getAttribute('data-webview');
+				var webview_id = this.getAttribute('data-webview') + new Date().getTime();
+				if(webview) {
+					mui.openWindow({
+						url: webview,
+						id: webview_id,
+						createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: 'none'
+						},
+						extras: {
+							refresh: true
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+					var openw = plus.webview.getWebviewById(webview);
+					if(openw) {
+						mui.fire(openw, 'refresh');
 					}
+				}
+			}else
+			{
+				clicked('login.html', {}, 'slide-in-right');
+			}
+			
+		})
+		function gz(userid)
+		{
+			if(!localStorage.getItem('userid')){
+				mui.alert('您还未登陆，请立即登陆！', '提示',function(){
+					clicked('login.html', {}, 'slide-in-right');
 				});
-				var openw = plus.webview.getWebviewById(webview);
-				if(openw) {
-					mui.fire(openw, 'refresh');
+			}
+			else
+			{
+				if(document.getElementById(userid+"gz").innerText=="关注")
+				{
+					var data = {
+						queryData:{
+							tradeCode:'tbbusergz.insert',
+							userid:localStorage.getItem('userid'),
+							gzuserid:userid,
+							returnSelect:'null'
+						}
+					};
+					lnjoy.GetDataByPost(data,function(rs){
+						mui.toast("关注成功");
+						document.getElementById(userid+"gz").innerText = "已关注";
+					});
+				}
+				else
+				{
+					var btnArray = ['是', '否'];
+					mui.confirm('取消关注后，您会收不到该专线的优惠信息哦？', '提醒', btnArray, function(e) {
+						if (e.index == 0) {
+							var data = {
+								queryData:{
+									tradeCode:'tbbusergz.deleteByPrimaryKey',
+									userid:localStorage.getItem('userid'),
+									gzuserid:userid,
+									returnSelect:'null'
+								}
+							};
+							lnjoy.GetDataByPost(data,function(rs){
+								mui.toast("取消关注");
+								document.getElementById(userid+"gz").innerText = "关注";
+							});
+						}
+					})
 				}
 			}
-		})
-		mui('.center-li-content-div2').on('tap','.showdetails',function(){
-			//clicked('companydetail.html', {}, 'slide-in-right');
-			clicked('buycontent.html', {}, 'slide-in-right');
-		})
-//		document.getElementById('ewmclass').addEventListener('tap',function(){
-//			clicked('pointslist.html', {}, 'slide-in-right');
+		}
+		function showdetailsfuc(userid,plattosaleid,lx){
+			clicked('buycontent.html', {userid:userid,plattosaleid:plattosaleid,lx:lx}, 'slide-in-right');
+		}
+		$('.button-div2').click(function(){
+			count = 1;
+			$('#wp').empty();
+			mui('#pullrefresh').pullRefresh().refresh(true);
+//					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
+//					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+					//pullupRefresh();	
+			mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+			mui('#pullrefresh').pullRefresh().pullupLoading();
+		});
+//		mui('.center-li-content-div2').on('tap','.showdetails',function(){
+//			//alert(1);
+//			//alert($(this).data("index"));
+//			clicked('buycontent.html', {}, 'slide-in-right');
 //		})
+		/*document.getElementById('ewmclass').addEventListener('tap',function(){
+			clicked('pointslist.html', {}, 'slide-in-right');
+		})*/
 		document.getElementById('mycard').addEventListener('tap',function(){
-			clicked('MyCard.html', {}, 'slide-in-right');
+			if(localStorage.getItem('userid'))
+			{
+				clicked('MyCard.html', {}, 'slide-in-right');
+			}else
+			{
+				mui.alert('您还未登陆，请立即登陆！', '提示',function(){
+					clicked('login.html', {}, 'slide-in-right');
+				});
+			}
+		});
+//		document.getElementById('showUserPicker').addEventListener('tap',function(){
+//			
+//		});
+		document.getElementById('salepx').addEventListener('tap',function(){
+			switch(salepx)
+			{
+				case 0:
+					salepx = 1;
+					$('.salepx-img').attr("src", "../img/buylist/px2.png");
+					salepx_str = "b.points desc,";
+					break;
+				case 1:
+					salepx = 2;
+					$('.salepx-img').attr("src", "../img/buylist/px3.png");
+					salepx_str = "b.points asc,";
+					break;
+				case 2:
+					salepx = 0;
+					$('.salepx-img').attr("src", "../img/buylist/px1.png");
+					salepx_str = "";
+					break;
+			}
+			discountpx = 0;
+			$('.discountpx-img').attr("src", "../img/buylist/px1.png");
+			discountpx_str = "";
+			flowerpx = 0;
+			$('.flowerpx-img').attr("src", "../img/buylist/px1.png");
+			flowerpx_str = "";
+			buynumpx = 0;
+			$('.buynumpx-img').attr("src", "../img/buylist/px1.png");
+			buynumpx_str = "";
+			count = 1;
+			$('#wp').empty();
+			mui('#pullrefresh').pullRefresh().refresh(true);
+//					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
+//					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+			//pullupRefresh();	
+			mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+			mui('#pullrefresh').pullRefresh().pullupLoading();
+		});
+		document.getElementById('discountpx').addEventListener('tap',function(){
+			switch(discountpx)
+			{
+				case 0:
+					discountpx = 1;
+					$('.discountpx-img').attr("src", "../img/buylist/px2.png");
+					discountpx_str = "b.discount desc,";
+					break;
+				case 1:
+					discountpx = 2;
+					$('.discountpx-img').attr("src", "../img/buylist/px3.png");
+					discountpx_str = "b.discount asc,";
+					break;
+				case 2:
+					discountpx = 0;
+					$('.discountpx-img').attr("src", "../img/buylist/px1.png");
+					discountpx_str = "";
+					break;
+			}
+			salepx = 0;
+			$('.salepx-img').attr("src", "../img/buylist/px1.png");
+			salepx_str = "";
+			flowerpx = 0;
+			$('.flowerpx-img').attr("src", "../img/buylist/px1.png");
+			flowerpx_str = "";
+			buynumpx = 0;
+			$('.buynumpx-img').attr("src", "../img/buylist/px1.png");
+			buynumpx_str = "";
+			count = 1;
+			$('#wp').empty();
+			mui('#pullrefresh').pullRefresh().refresh(true);
+//					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
+//					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+			//pullupRefresh();	
+			mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+			mui('#pullrefresh').pullRefresh().pullupLoading();
+		});
+		document.getElementById('flowerpx').addEventListener('tap',function(){
+			switch(flowerpx)
+			{
+				case 0:
+					flowerpx = 1;
+					$('.flowerpx-img').attr("src", "../img/buylist/px2.png");
+					flowerpx_str = "c.GZCount desc,";
+					break;
+				case 1:
+					flowerpx = 2;
+					$('.flowerpx-img').attr("src", "../img/buylist/px3.png");
+					flowerpx_str = "c.GZCount asc,";
+					break;
+				case 2:
+					flowerpx = 0;
+					$('.flowerpx-img').attr("src", "../img/buylist/px1.png");
+					flowerpx_str = "";
+					break;
+			}
+			salepx = 0;
+			$('.salepx-img').attr("src", "../img/buylist/px1.png");
+			salepx_str = "";
+			discountpx = 0;
+			$('.discountpx-img').attr("src", "../img/buylist/px1.png");
+			discountpx_str = "";
+			buynumpx = 0;
+			$('.buynumpx-img').attr("src", "../img/buylist/px1.png");
+			buynumpx_str = "";
+			count = 1;
+			$('#wp').empty();
+			mui('#pullrefresh').pullRefresh().refresh(true);
+//					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
+//					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+			//pullupRefresh();	
+			mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+			mui('#pullrefresh').pullRefresh().pullupLoading();
+		});
+		document.getElementById('buynumpx').addEventListener('tap',function(){
+			switch(buynumpx)
+			{
+				case 0:
+					buynumpx = 1;
+					$('.buynumpx-img').attr("src", "../img/buylist/px2.png");
+					buynumpx_str = "d.SaleCount desc,";
+					break;
+				case 1:
+					buynumpx = 2;
+					$('.buynumpx-img').attr("src", "../img/buylist/px3.png");
+					buynumpx_str = "d.SaleCount asc,";
+					break;
+				case 2:
+					buynumpx = 0;
+					$('.buynumpx-img').attr("src", "../img/buylist/px1.png");
+					buynumpx_str = "";
+					break;
+			}
+			salepx = 0;
+			$('.salepx-img').attr("src", "../img/buylist/px1.png");
+			salepx_str = "";
+			discountpx = 0;
+			$('.discountpx-img').attr("src", "../img/buylist/px1.png");
+			discountpx_str = "";
+			flowerpx = 0;
+			$('.flowerpx-img').attr("src", "../img/buylist/px1.png");
+			flowerpx_str = "";
+			count = 1;
+			$('#wp').empty();
+			mui('#pullrefresh').pullRefresh().refresh(true);
+//					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
+//					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+			//pullupRefresh();	
+			mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+			mui('#pullrefresh').pullRefresh().pullupLoading();
+		}); 
+		document.getElementById('showzj').addEventListener('tap',function(event){
+			clicked('MyCard.html',{},'slide-in-right');
 		})
-//		if (mui.os.plus) {
-//			mui.plusReady(function() {
-//				setTimeout(function() {
-//					mui('#pullrefresh').pullRefresh().pullupLoading();
-//				}, 1000);
+		function scaned(t, r, f) {
+			//console.log(r);
+		}
+		if (mui.os.plus) {
+			mui.plusReady(function() {
+				if(localStorage.getItem('firstopen')==1)
+				{
+					localStorage.setItem('firstopen',2);
+					var player = plus.audio.createPlayer("_www/resource/fshzx.mp3");
+					player.play(function (e) {
+						console.log('播放完成后，运行代码');
+					},function (e) {
+						console.log(e.message);
+				    },false);
+				}
+				setTimeout(function(){
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				},500);
+				var rainPage = 0;
+				mui.back = function() {
+					rainPage++;
+					if (rainPage>1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用，你会收不到提醒信息哦');
+					}
+					setTimeout(function(){
+						rainPage = 0;
+					}, 1000);
+					return false;
+				}
+//				var btn_scan =document.getElementById("ewmclass");
+//				btn_scan.addEventListener('tap', function(e) {
 //
-//			});
-//		} else {
-//			mui.ready(function() {
-//				mui('#pullrefresh').pullRefresh().pullupLoading();
-//			});
-//		}
+//				});
+				//index向a页面传值：
+//				if(window.WebSocket){
+//		        	var socket = new WebSocket('ws://......'); 
+//		        	// 打开Socket  
+//		        	socket.onopen = function(event) {
+//		         		// 发送一个初始化消息
+//		         		socket.send('data');
+//		        	}
+//					socket.onmessage = function(event) {
+//						var resultdata=JSON.parse(event.data);
+//						var main = plus.webview.getWebviewById("a.html");
+//						mui.fire(main,"toa",{
+//				    		data:resultdata
+//						});
+//					}
+//				}
+//				//a页面接收传值：
+//				document.addEventListener('toa', function(event) {
+//					var GetData=event.data;
+//					//业务逻辑
+//				})
+			});
+		} else {
+			mui.ready(function() {
+				console.log(1);
+				mui('#pullrefresh').pullRefresh().pullupLoading();
+			});
+		}
+		var citydata = {
+			queryData:{
+				tradeCode:'dq',
+				dqBm:'000000'
+			}
+		};
+		lnjoy.GetDataByPost(citydata,function(rs){
+			var citys = [];
+			for(var i = 0;i < rs[0].child.length;i++)
+			{
+				var city_arr = [];
+				for(var j = 0; j<rs[0].child[i].child.length;j++)
+				{
+					var citys_2 = {
+						value:rs[0].child[i].child[j].dqBm,
+						text:rs[0].child[i].child[j].dqMc
+					}
+					city_arr.push(citys_2);
+				}
+				var citys_1 = {
+					value:rs[0].child[i].dqBm,
+					text:rs[0].child[i].dqMc,
+					children:city_arr
+				}
+				citys.push(citys_1);
+			}
+			var cityPicker = new mui.PopPicker({
+				layer: 2
+			});
+			cityPicker.setData(citys);
+			var showCityPickerButton = document.getElementById('showCityPicker');
+			showCityPickerButton.addEventListener('tap', function(event) {
+				cityPicker.show(function(items) {
+					$('.span-div1').html(items[1].text.replace('市',''));
+					$('#wp').empty();
+					fromroute = items[1].text.replace('市','');
+					mui('#pullrefresh').pullRefresh().refresh(true);
+//					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
+//					mui('#pullrefresh').pullRefresh().enablePullupToRefresh();
+					//pullupRefresh();	
+					mui('#pullrefresh').pullRefresh().scrollTo(0,0,100);
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}, false); 
+		});
 	</script>
 </html>

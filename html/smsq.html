@@ -73,27 +73,85 @@
 				<img class="top-div-img" src="../img/buycontent/back.png" />
 			</div>
 			<div class="top-box-item2 top-box-item-center">
-				<span class="top-div-span">扫码授权</span>
+				<span class="top-div-span">扫码授额</span>
 			</div>
 		</header>
 		<section>
 			<div class="center-list-span">
-				我的专线运费券-<span class="center-list-span-color1">412分</span>
+				我的专线可使用额度-<span class="center-list-span-color1"></span>
 			</div>
 			<div class="mui-input-row">
-				<label>授予运费券</label>
-				<input type="tel" class="mui-input-clear" placeholder="请输入大于50的整数">
+				<label>授予额度</label>
+				<input id="money" type="number" class="mui-input-clear" placeholder="请输入大于50的整数">
 			</div>
 			<div class="center-list-memo">
-				*仅用于扫平台二维码，授予平台运费券
+				*仅用于扫平台二维码，授予额度
 			</div>
 			<div class="center-list-button">
-				<button type="button" class="mui-btn mui-btn-primary center-list-button">
-					扫码授权
+				<button id="sq" type="button" class="mui-btn mui-btn-primary center-list-button">
+					扫码授额
 				</button>
 			</div>
 		</section>
 	</body>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/zepto.js"></script>
+	<script src="../js/reconnecting-websocket.min.js"></script>
+	<script src="../js/stomp.min.js"></script>
+	<script src="../js/sockjs.min.js"></script>
 	<script src="../js/app.js"></script>
+	<script type="text/javascript">
+		var points = 0;
+		var data = {
+			queryData:{
+				tradeCode:'tbbuser.selectByPrimaryKey',
+				userid:localStorage.getItem('userid')
+			}
+		};
+		lnjoy.GetDataByPost(data,function(rs){
+			$(".center-list-span-color1").html(rs.list[0].points+"券");
+			points = rs.list[0].points;
+		});
+		document.getElementById('sq').addEventListener('tap',function(event){
+			if(!/^\d+$/.test(document.getElementById('money').value))
+			{
+               mui.toast("请输入大于50的整数");
+               return;
+            }else{
+            		if(parseInt(document.getElementById('money').value)>=50)
+            		{
+            			var money = parseInt(document.getElementById('money').value);
+            			if(money > points)
+            			{
+            				mui.toast("超过授予额度");
+               			return;
+            			}else
+            			{
+            				var data1 = {
+							queryData:{
+								tradeCode:'scan',
+								userid:localStorage.getItem('userid'),
+								issh:1,
+								points:money
+							}
+						};
+						lnjoy.GetDataByPost(data1,function(rs1){
+							if(rs1.hasOwnProperty('success'))
+							{
+								mui.toast('授予成功');
+								mui.back();
+							}else
+							{
+								mui.toast('授予失败');
+								return;
+							}
+						});
+            			}
+            		}else{
+            			mui.toast("请输入大于50整数");
+               		return;
+            		}
+            }
+		});
+	</script>
 </html>

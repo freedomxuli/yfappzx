@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>分流点新增</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			body{
+				background-color: #FFFFFF !important;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.5;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			.font-color-blue{
+				color:#0078B9;
+				font-size: 0.8rem;
+			}
+			.checkbox-class{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">分流点新增</span>
+			</div>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>分流点名称:</label>
+							<input id='networkName' type="text" class="mui-input-clear mui-input" placeholder="请输入分流点名称">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>联系地址:</label>
+							<input id='networkAddress' type="text" class="mui-input-clear mui-input" placeholder="请输入联系地址">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>联系人:</label>
+							<input id='networkPerson' type="text" class="mui-input-clear mui-input" placeholder="请输入联系人">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>联系电话:</label>
+							<input id='networkTel' type="text" class="mui-input-clear mui-input" placeholder="请输入联系电话">
+						</div>
+					</li>
+				</ul>
+			</form>
+			<div class="mui-content-padded">
+				<button id='add' class="mui-btn mui-btn-block mui-btn-primary">新增分流点</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/javascript">
+			mui.init({
+			    beforeback: function() {
+			　　　　 //获得父页面的webview
+			        var list = plus.webview.currentWebview().opener();
+			　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+			        mui.fire(list, 'refresh');
+			        //返回true,继续页面关闭逻辑
+			        return true;
+			    }
+			});
+			mui.plusReady(function() {
+				var networkId = plus.webview.currentWebview().networkId;
+				if(networkId)
+				{
+					var data_sel = {
+						queryData:{
+							tradeCode:'tbbnetwork.selectByPrimaryKey',
+							networkid:networkId
+						}
+					}
+					console.log('%o',data_sel);
+					lnjoy.GetDataByPost(data_sel,function(rs){
+						console.log('%o',rs);
+						if(rs.list.length > 0)
+						{
+							document.getElementById('networkName').value = rs.list[0].networkname;
+							document.getElementById('networkAddress').value = rs.list[0].networkaddress;
+							document.getElementById('networkPerson').value = rs.list[0].networkperson;
+							document.getElementById('networkTel').value = rs.list[0].networktel;
+						}else
+						{
+							mui.toast('更新获取失败！'+rs.details);
+							mui.back();
+						}
+					});
+				}
+				(function ($, doc) {
+				    doc.getElementById('add').addEventListener('tap',function(event){
+				    		if(!doc.getElementById('networkName').value)
+				    		{
+				    			$.toast('请输入分流点名称');
+			                return;
+				    		}
+				    		if(!doc.getElementById('networkAddress').value)
+				    		{
+				    			$.toast('请输入联系地址');
+			                return;
+				    		}
+				    		if(!doc.getElementById('networkPerson').value)
+				    		{
+				    			$.toast('请输入联系人');
+			                return;
+				    		}
+				    		if(!doc.getElementById('networkTel').value)
+				    		{
+				    			$.toast('请输入联系电话');
+			                return;
+				    		}
+				    		if(doc.getElementById('networkTel').value.length > 13)
+				    		{
+				    			$.toast('请输入小于13个字符');
+			                return;
+				    		}
+				    		var data = {
+			            		queryData:{
+								tradeCode:"tbbnetwork.insertSelective",
+								networkname:doc.getElementById('networkName').value,
+								networkaddress:doc.getElementById('networkAddress').value,
+								networkperson:doc.getElementById('networkPerson').value,
+								networktel:doc.getElementById('networkTel').value,
+								networktype:1,
+								status:0,
+								userid:localStorage.getItem('userid'),
+								returnSelect:'null'
+							}
+			            }
+				    		if(networkId)
+				    		{
+				    			data = {
+				            		queryData:{
+									tradeCode:"tbbnetwork.updateByPrimaryKeySelective",
+									networkid:networkId,
+									networkname:doc.getElementById('networkName').value,
+									networkaddress:doc.getElementById('networkAddress').value,
+									networkperson:doc.getElementById('networkPerson').value,
+									networktel:doc.getElementById('networkTel').value,
+									networktype:1,
+									status:0,
+									userid:localStorage.getItem('userid'),
+									returnSelect:'null'
+								}
+				            }
+				    		}
+				    		console.log('%o',data);
+						lnjoy.GetDataByPost(data,function(rs){
+							console.log('%o',rs);
+							if(rs.hasOwnProperty("success"))
+							{
+								mui.toast('保存成功！');
+								mui.back();
+							}else
+							{
+								mui.toast('保存失败！'+rs.details);
+								return;
+							}
+						});
+				   });
+			    }(mui, document));
+			})
+		</script>
+	</body>
+</html>

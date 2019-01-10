@@ -5,6 +5,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>补充信息</title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/feedback.css"/>
+		<link href="../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<style>
 			body{
 				background-color: #FFFFFF;
@@ -43,6 +46,13 @@
 				width: 40px;
 				height: 40px;
 			}
+			#yyzz-img{
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
 			#sfz-img {
 				position: absolute;
 				bottom: 10px;
@@ -57,7 +67,21 @@
 				width: 40px;
 				height: 40px;
 			}
+			#sfz-img2 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
 			#mtz-img {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#zxfc-img {
 				position: absolute;
 				bottom: 10px;
 				right: 40px;
@@ -79,7 +103,15 @@
 				line-height: 40px;
 				padding-left: 2rem;
 			}
+			#sfz2 {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
 			#mtz {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#zxfc {
 				line-height: 40px;
 				padding-left: 2rem;
 			}
@@ -106,47 +138,79 @@
 			<ul class="mui-table-view">
 					<li class="mui-table-view-cell">
 						<div class="mui-input-row">
+							<label>门店地址:</label>
+							<input id='MDDZ' type="text" class="mui-input-clear mui-input" placeholder="请输入门店地址">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>联系电话:</label>
+							<input id='usertel' type="text" class="mui-input-clear mui-input" placeholder="请输入联系电话">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
 							<label>线路起点:</label>
-							<input id='XLQD' type="password" class="mui-input-clear mui-input" placeholder="请输入线路起点">
+							<input id='XLQD' type="text" class="mui-input-clear mui-input" readonly="readonly" placeholder="请选择线路起点">
 						</div>
 					</li>
 					<li class="mui-table-view-cell">
 						<div class="mui-input-row">
 							<label>线路终点:</label>
-							<input id='XLZD' type="password" class="mui-input-clear mui-input" placeholder="请输入线路终点">
+							<textarea id="XLZD" rows="5" placeholder="请输入线路终点"></textarea>
 						</div>
 					</li>
 					<li class="mui-table-view-cell">
 						<div class="mui-input-row">
-							<label>支付密码:</label>
-							<input id='paypassword' type="password" class="mui-input-clear mui-input" placeholder="请输入支付密码">
+							<label>专线简介:</label>
+							<textarea id="textarea" rows="5" placeholder="请输入简介"></textarea>
 						</div>
 					</li>
-					<li class="mui-table-view-cell">
+					<li class="mui-table-view-cell" id="img-1">
 						<a id="head" class="mui-navigate-right">营业执照
 							<span class="mui-pull-right head">
-								<img class="head-img mui-action-preview" id="head-img1" src=""/>
+								<input type="hidden" id="yyzz-img-src" value="">
+								<img class="head-img mui-action-preview" id="yyzz-img" src="../img/my/addphoto.png"/>
 							</span>
 						</a>
 					</li>
-					<li class="mui-table-view-cell">
+					<li class="mui-table-view-cell" id="img-2">
 						<a id="sfz" class="mui-navigate-right">身份证正面
 							<span class="mui-pull-right head">
-								<img class="head-img mui-action-preview" id="sfz-img" src=""/>
+								<input type="hidden" id="sfz-img-src" value="">
+								<img class="head-img mui-action-preview" id="sfz-img" src="../img/my/addphoto.png"/>
 							</span>
 						</a>
 					</li>
-					<li class="mui-table-view-cell">
-						<a id="sfz1" class="mui-navigate-right">身份证正面
+					<li class="mui-table-view-cell" id="img-3">
+						<a id="sfz1" class="mui-navigate-right">身份证反面
 							<span class="mui-pull-right head">
-								<img class="head-img mui-action-preview" id="sfz-img1" src=""/>
+								<input type="hidden" id="sfz-img1-src" value="">
+								<img class="head-img mui-action-preview" id="sfz-img1" src="../img/my/addphoto.png"/>
 							</span>
 						</a>
 					</li>
-					<li class="mui-table-view-cell">
+					<li class="mui-table-view-cell" id="img-4">
+						<a id="sfz2" class="mui-navigate-right">身份证手持照
+							<span class="mui-pull-right head">
+								<input type="hidden" id="sfz-img2-src" value="">
+								<img class="head-img mui-action-preview" id="sfz-img2" src="../img/my/addphoto.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="img-0">
 						<a id="mtz" class="mui-navigate-right">门头照
 							<span class="mui-pull-right head">
-								<img class="head-img mui-action-preview" id="mtz-img" src=""/>
+								<input type="hidden" id="mtz-img-src" value="">
+								<img class="head-img mui-action-preview" id="mtz-img" src="../img/my/addphoto.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="img-5">
+						<a id="zxfc" class="mui-navigate-right">专线风采
+							<span class="mui-pull-right head">
+								<input type="hidden" id="zxfc-img-src" value="">
+								<img class="head-img mui-action-preview" id="zxfc-img" src="../img/my/addphoto.png"/>
 							</span>
 						</a>
 					</li>
@@ -156,127 +220,421 @@
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
+		<script src='../js/feedback.js'></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
 		<script>
-			setTimeout(function () {
-				defaultImg(); 
-			},500);
-		    //更换头像
-			mui(".mui-table-view-cell").on("tap", "#head", function(e) {
-				if(mui.os.plus){
-					var a = [{
-						title: "拍照"
-					}, {
-						title: "从手机相册选择"
-					}];
-					plus.nativeUI.actionSheet({
-						title: "修改头像",
-						cancel: "取消",
-						buttons: a
-					}, function(b) {
-						switch (b.index) {
-							case 0:
-								break;
-							case 1:
-								getImage();
-								break;
-							case 2:
-								galleryImg();
-								break;
-							default:
-								break
-						}
-					})	
+			document.addEventListener("plusready", plusReady, false);  
+            function plusReady() {
+                document.getElementById("img-1").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(1);//拍照还是相册  
+                });
+                document.getElementById("img-2").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(2);//拍照还是相册  
+                });
+                document.getElementById("img-3").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(3);//拍照还是相册  
+                });
+                document.getElementById("img-4").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(4);//拍照还是相册  
+                });
+                document.getElementById("img-0").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(0);//拍照还是相册  
+                });
+                document.getElementById("img-5").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(5);//拍照还是相册  
+                });
+                plus.nativeUI.closeWaiting();
+                var data = {
+					queryData:{
+						tradeCode:'tbbuser.selectByPrimaryKey',
+						userid:localStorage.getItem('userid')
+					}
+				};
+				lnjoy.GetDataByPost(data,function(rs){
+					console.log('%o',rs);
+					$('#MDDZ').val(rs.list[0].address);
+					$('#XLQD').val(rs.list[0].fromroute);
+					$('#XLZD').val(rs.list[0].toroute);
+					$('#textarea').val(rs.list[0].usercontent);
+					$('#usertel').val(rs.list[0].usertel);
+				});
+            }
+            function showActionSheet(imgindex) {  
+                var bts = [{  
+                    title: "拍照"  
+                }, {  
+                    title: "从相册选择"  
+                }];  
+                plus.nativeUI.actionSheet({  
+                        cancel: "取消",  
+                        buttons: bts  
+                    },  
+                    function(e) {  
+                        if (e.index == 1) {  
+                            getImage(imgindex);  
+                        } else if (e.index == 2) {  
+                            galleryImgs(imgindex);
+                        }  
+                    }  
+                );  
+            }
+            
+            var citydata = {
+				queryData:{
+					tradeCode:'dq',
+					dqBm:'000000'
 				}
-				
+			};
+			lnjoy.GetDataByPost(citydata,function(rs){
+				var citys = [];
+				for(var i = 0;i < rs[0].child.length;i++)
+				{
+					var city_arr = [];
+					for(var j = 0; j<rs[0].child[i].child.length;j++)
+					{
+						var citys_2 = {
+							value:rs[0].child[i].child[j].dqBm,
+							text:rs[0].child[i].child[j].dqMc
+						}
+						city_arr.push(citys_2);
+					}
+					var citys_1 = {
+						value:rs[0].child[i].dqBm,
+						text:rs[0].child[i].dqMc,
+						children:city_arr
+					}
+					citys.push(citys_1);
+				}
+				var cityPicker = new mui.PopPicker({
+					layer: 2
+				});
+				cityPicker.setData(citys);
+				var showCityPickerButton = document.getElementById('XLQD');
+				showCityPickerButton.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+						$('#XLQD').val(items[1].text.replace('市',''));
+					});
+				}, false); 
 			});
-			function getImage() {
-			var c = plus.camera.getCamera();
-			c.captureImage(function(e) {
-				plus.io.resolveLocalFileSystemURL(e, function(entry) {
-					var s = entry.toLocalURL() + "?version=" + new Date().getTime();
-					console.log(s);
-					//document.getElementById("head-img").src = s;
-					document.getElementById("head-img1").src = s;
-					//变更大图预览的src
-					//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
-					document.querySelector("#__mui-imageview__group .mui-slider-item img").src = s + "?version=" + new Date().getTime();
-				}, function(e) {
-					console.log("读取拍照文件错误：" + e.message);
-				});
-			}, function(s) {
-				console.log("error" + s);
-			}, {
-				filename: "_doc/head.jpg"
-			})
-		}
-
-		function galleryImg() {
-			plus.gallery.pick(function(a) {
-				plus.io.resolveLocalFileSystemURL(a, function(entry) {
-					plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
-						root.getFile("head.jpg", {}, function(file) {
-							//文件已存在
-							file.remove(function() {
-								console.log("file remove success");
-								entry.copyTo(root, 'head.jpg', function(e) {
-										var e = e.fullPath + "?version=" + new Date().getTime();
-										//document.getElementById("head-img").src = e;
-										document.getElementById("head-img1").src = e;
-										//变更大图预览的src
-										//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
-										document.querySelector("#__mui-imageview__group .mui-slider-item img").src = e + "?version=" + new Date().getTime();;
-									},
-									function(e) {
-										console.log('copy image fail:' + e.message);
-									});
-							}, function() {
-								console.log("delete image fail:" + e.message);
-							});
-						}, function() {
-							//文件不存在
-							entry.copyTo(root, 'head.jpg', function(e) {
-									var path = e.fullPath + "?version=" + new Date().getTime();
-									//document.getElementById("head-img").src = path;
-									document.getElementById("head-img1").src = path;
-									//变更大图预览的src
-									//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
-									document.querySelector("#__mui-imageview__group .mui-slider-item img").src = path;
-								},
-								function(e) {
-									console.log('copy image fail:' + e.message);
-								});
-						});
-					}, function(e) {
-						console.log("get _www folder fail");
-					})
-				}, function(e) {
-					console.log("读取拍照文件错误：" + e.message);
-				});
-			}, function(a) {}, {
-				filter: "image"
-			})
-		};
-
-		function defaultImg() {
-			if(mui.os.plus){
-				plus.io.resolveLocalFileSystemURL("_doc/head.jpg", function(entry) {
-					var s = entry.fullPath + "?version=" + new Date().getTime();;
-					//document.getElementById("head-img").src = s;
-					document.getElementById("head-img1").src = s;
-				}, function(e) {
-					//document.getElementById("head-img").src = '../img/buycontent/titpic.png';
-					document.getElementById("head-img1").src = '../img/buycontent/titpic.png';
-				})
-			}else{
-				//document.getElementById("head-img").src = '../img/buycontent/titpic.png';
-				document.getElementById("head-img1").src = '../img/buycontent/titpic.png';
-			}
-			
-		}
-		document.getElementById("head-img1").addEventListener('tap', function(e) {
-			e.stopPropagation();
-		});
+            
+            document.getElementById('chongzhimima').addEventListener('tap', function() {
+            		if(!$('#MDDZ').val())
+            		{
+            			mui.toast('请输入门店地址');
+            			return;
+            		}
+            		if(!$('#usertel').val())
+            		{
+            			mui.toast('请输入联系电话');
+            			return;
+            		}
+            		if(!$('#XLQD').val())
+            		{
+            			mui.toast('请输入线路起点');
+            			return;
+            		}
+            		if(!$('#XLZD').val())
+            		{
+            			mui.toast('请输入线路终点');
+            			return;
+            		}
+            		if($('#XLZD').val().length>13)
+            		{
+            			mui.toast('线路终点字数过多，请重新填写');
+            			return;
+            		}
+            		if(!$('#textarea').val())
+            		{
+            			mui.toast('请输入专线简介');
+            			return;
+            		}
+            		var data = {
+            			queryData:{
+            				tradeCode:"tbbuser.updateByPrimaryKeySelective104",
+            				userid:localStorage.getItem('userid'),
+            				address:$('#MDDZ').val(),
+            				fromroute:$('#XLQD').val(),
+            				toroute:$('#XLZD').val(),
+            				usercontent:$('#textarea').val(),
+            				usertel:$('#usertel').val(),
+            				returnSelect:'null'
+            			}
+            		}
+            		console.log('%o',data);
+            		lnjoy.GetDataByPost(data,function(rs){
+            			console.log('%o',rs);
+            			if(rs.hasOwnProperty("success"))
+            			{
+            				mui.toast('补充信息成功');
+            				mui.back();
+            			}else
+            			{
+            				mui.toast('补充信息失败');
+            				return;
+            			}
+            		});
+            });
+             
+            // 上传文件  
+            function upload(files,imgindex) {
+            		console.log("开始上传");
+            		console.log('%O',files);
+                var task = plus.uploader.createUpload('http://jeremyda.cn:8010/api/yfq/uploadMultipleFiles', {
+                        method: "POST"  
+                    },
+                    function(t, status) { //上传完成
+                    		console.log("结束了");
+                    		console.log('%o',status);
+                        if (status == 200) {
+                        		console.log('%o',t);
+                        		var result =JSON.parse(t.responseText);
+                        		console.log('%o',result);
+                            var data1 = {
+                            		queryData:{
+									tradeCode:"tbbuserphoto.update104",
+									userid:localStorage.getItem('userid'),
+									userphotogltype:imgindex,
+									fileList:result
+								}
+                            }
+                            lnjoy.GetDataByPost(data1,function(rs1){
+                            		console.log('%o',rs1);
+                            })
+                        } else {  
+                            console.log("上传失败：" + status);
+                        }  
+                    }
+                );  
+            
+                for (var i = 0; i < files.length; i++) {
+                    var f = files[i];
+                    task.addFile(f.path, {  
+                        key:f.name
+                    });
+                    
+                  }
+                task.start();
+                  
+            }  
+            
+            function compressImage(src,dstname) {  
+                //var dstname="_downloads/"+getUid()+".jpg";  
+                plus.zip.compressImage({  
+                        src: src,  
+                        dst: dstname,  
+                        overwrite:true,  
+                        quality: 20  
+                    },  
+                    function(event) {  
+                        //console.log("Compress success:"+event.target);  
+                        return event.target;  
+                    },  
+                    function(error) {  
+                        console.log(error);  
+                        return src;  
+                        //alert("Compress error!");  
+                    });
+            }
+              
+            // 添加文件  
+            var index = 1;  
+            var newUrlAfterCompress;  
+            function appendFile(p) {  
+                files.push({ 
+                    path: p,
+                    name: "uploadkey_" + index
+                });  
+                index++;  
+            }  
+            // 产生一个随机数  
+            function getUid() {  
+                return Math.floor(Math.random() * 100000000 + 10000000).toString();  
+            }  
+            //拍照  
+            function getImage(imgindex) {  
+                var cmr = plus.camera.getCamera();  
+                cmr.captureImage(function(p) {  
+                    plus.io.resolveLocalFileSystemURL(p, function(entry) {  
+                        var localurl = entry.toLocalURL(); //  
+                        if(imgindex == 1)
+	                		{
+	                			$('#yyzz-img').attr('src',localurl);
+							$('#yyzz-img-src').val(localurl);
+							var file_obj = {path: localurl,name:'yyzz'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+	                		}else if(imgindex == 2)
+	                		{
+	                			$('#sfz-img').attr('src',localurl);
+							$('#sfz-img-src').val(localurl);
+							var file_obj = {path: localurl,name:'sfz'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+	                		}else if(imgindex == 3)
+	                		{
+	                			$('#sfz-img1').attr('src',localurl);
+							$('#sfz-img1-src').val(localurl);
+							var file_obj = {path: localurl,name:'sfz1'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+	                		}else if(imgindex == 4)
+	                		{
+	                			$('#sfz-img2').attr('src',localurl);
+							$('#sfz-img2-src').val(localurl);
+							var file_obj = {path: localurl,name:'sfz2'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+	                		}else if(imgindex == 0)
+	                		{
+	                			$('#mtz-img').attr('src',localurl);
+							$('#mtz-img-src').val(localurl);
+							var file_obj = {path: localurl,name:'mtz'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+	                		}else if(imgindex == 5)
+	                		{
+	                			$('#zxfc-img').attr('src',localurl);
+							$('#zxfc-img-src').val(localurl);
+							var file_obj = {path: localurl,name:'zxfc'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+	                		}
+                        //$(".dynamic_images ul li").remove(".pickimg");  
+//                      $(".dynamic_images ul").prepend("<li class='pickimg'><img src='" + localurl + "' /></li>");
+//                       var dstname="_downloads/"+getUid()+".jpg";//设置压缩后图片的路径  
+//                          newUrlAfterCompress=compressImage(localurl,dstname);  
+//                          appendFile(dstname); 
+                    });  
+                });  
+            }  
+            function galleryImgs(imgindex) { // 从相册中选择图片  
+                plus.gallery.pick(function(e) {  
+                		if(imgindex == 1)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('营业执照最多上传一张');
+							return;
+						}else
+						{
+							$('#yyzz-img').attr('src',e.files[0]);
+							$('#yyzz-img-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'yyzz'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+						}
+                		}else if(imgindex == 2)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('身份证正面照最多上传一张');
+							return;
+						}else
+						{
+							$('#sfz-img').attr('src',e.files[0]);
+							$('#sfz-img-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'sfz'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+						}
+                		}else if(imgindex == 3)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('身份证反面照最多上传一张');
+							return;
+						}else
+						{
+							$('#sfz-img1').attr('src',e.files[0]);
+							$('#sfz-img1-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'sfz1'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+						}
+                		}else if(imgindex == 4)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('身份证手持照最多上传一张');
+							return;
+						}else
+						{
+							$('#sfz-img2').attr('src',e.files[0]);
+							$('#sfz-img2-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'sfz2'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+						}
+                		}else if(imgindex == 0)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('门头照最多上传一张');
+							return;
+						}else
+						{
+							$('#mtz-img').attr('src',e.files[0]);
+							$('#mtz-img-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'mtz'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+						}
+                		}else if(imgindex == 5)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('专线风采最多上传一张');
+							return;
+						}else
+						{
+							$('#zxfc-img').attr('src',e.files[0]);
+							$('#zxfc-img-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'zxfc'};
+							var files = [];
+							files.push(file_obj);
+							upload(files,imgindex);
+						}
+                		}
+                    //$(".dynamic_images ul li").remove(".pickimg");  
+                    //console.log("选择了"+e.files.length+"个图片");  
+//                  for (var i = 0; i < e.files.length; i++) {  
+//                      if (i < 9) {  
+//                          $(".dynamic_images ul").prepend("<li class='pickimg'><img src='" + e.files[i] + "' /></li>");  
+//                          var dstname="_downloads/"+getUid()+".jpg";//设置压缩后图片的路径  
+//                          newUrlAfterCompress=compressImage(e.files[i],dstname);
+//                          appendFile(dstname);
+//                      }  
+//                  }  
+                }, function(e) {  
+                    console.log("取消选择图片");  
+                }, {  
+                    filter: "image",  
+                    multiple: true  
+                });  
+            }  
 		</script>
 	</body>
 </html>

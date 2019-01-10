@@ -59,17 +59,20 @@
 	        </table>
 	        <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-top:50px;">
 	            <tr>
-	                <td align="center" style="font-size:1.5rem;font-weight:bold;">我的收券码</td>
+	                <td align="center" style="font-size:1.5rem;font-weight:bold;color:rgb(24,146,211) ;">我的二维码</td>
 	            </tr>
 	        </table>
 		</section>
 	</body>
 	<script src="../js/mui.min.js"></script>
-	<script src="../js/app.js"></script>
 	<script type="text/javascript" src="../js/qrcode/jquery-1.8.3.min.js" ></script>
 	<script type="text/javascript" src="../js/qrcode/jquery.qrcode.js" ></script>
     <script type="text/javascript" src="../js/qrcode/qrcode.js" ></script> 
     <script type="text/javascript" src="../js/qrcode/utf.js" ></script>
+    <script src="../js/reconnecting-websocket.min.js"></script>
+	<script src="../js/stomp.min.js"></script>
+	<script src="../js/sockjs.min.js"></script>
+	<script src="../js/app.js"></script>
      <script> 
 		     var fnZoom = function (dw) {
 		         var iw = $(window).width();// document.documentElement.clientWidth;
@@ -83,7 +86,7 @@
 		     }, 50);
 		     jQuery('#qrcodeTable').qrcode({
 		         render    : "table",                
-		         text:  "http://www.baidu.com",//localStorage.getItem("mgps_UserName"),
+		         text:  localStorage.getItem('ewmbs'),//localStorage.getItem("mgps_UserName"),
 		         width : "350",               //二维码的宽度
 		         height : "350",
 		     });    

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>头像设置</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/feedback.css"/>
+		<style>
+			body{
+				background-color: #FFFFFF;
+			}
+			.top-box{
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				background-color: #0078B9;
+			}
+			.top-box-item{
+				flex: 1;
+			}
+			.top-box-item2{
+				flex: 1.5;
+			}
+			.top-box-item-left{
+				text-align: left;
+			}
+			.top-box-item-center{
+				text-align: left;
+			}
+			.top-div-span{
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.top-div-img{
+				height:1rem;
+				vertical-align: middle;
+			}
+			#head-img1 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#yyzz-img{
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#sfz-img {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#sfz-img1 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#sfz-img2 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#mtz-img {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			#zxfc-img {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			.head {
+				height: 40px;
+			}
+			#head {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#sfz {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#sfz1 {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#sfz2 {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#mtz {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			#zxfc {
+				line-height: 40px;
+				padding-left: 2rem;
+			}
+			.head-img {
+				width: 40px;
+				height: 40px;
+			}
+			.content-div-list{
+				display: flex;
+				background-color: #FFFFFF;
+			}
+			.content-div-list-child{
+				flex: 1;
+				text-align: center;
+				padding:0.8rem;
+				border:0.5px dashed #0078B9;
+			}
+			.content-div-list-img{
+				border-radius:2rem ;
+				height: 4rem;
+				width: 4rem;
+				vertical-align: middle;
+			}
+			.img-active{
+				background-color:#87CEFF;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav top-box">
+			<div class="top-box-item mui-action-back">
+				<img class="top-div-img" src="../img/buycontent/back.png" />
+			</div>
+			<div class="top-box-item2 top-box-item-center">
+				<span class="top-div-span">头像设置</span>
+			</div>
+		</header>
+		<br />
+		<div class="mui-content">
+			<div class="content-div-list">
+				<div class="content-div-list-child img-active">
+					<img class="content-div-list-img" src="../img/head/3.jpg" />
+				</div>
+				<div class="content-div-list-child">
+					<img class="content-div-list-img" src="../img/head/1.jpg" />
+				</div>
+				<div class="content-div-list-child">
+					<img class="content-div-list-img" src="../img/head/2.jpg" />
+				</div>
+			</div>
+			<div class="content-div-list">
+				<div class="content-div-list-child">
+					<img class="content-div-list-img" src="../img/head/4.jpg" />
+				</div>
+				<div class="content-div-list-child">
+					<img class="content-div-list-img" src="../img/head/5.jpg" />
+				</div>
+				<div class="content-div-list-child">
+					<img class="content-div-list-img" src="../img/head/6.jpg" />
+				</div>
+			</div>
+			<br />
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" id="img-0">
+					<a id="mtz" class="mui-navigate-right">自定义照片
+						<span class="mui-pull-right head">
+							<input type="hidden" id="mtz-img-src" value="">
+							<img class="head-img mui-action-preview" id="mtz-img" src="../img/my/addphoto.png"/>
+						</span>
+					</a>
+				</li>
+			</ul>
+			<div class="mui-content-padded">
+				<button id='lksz' class="mui-btn mui-btn-block mui-btn-primary">立刻设置</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src='../js/feedback.js'></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script>
+			mui.init({
+			    beforeback: function() {
+			　　　　 //获得父页面的webview
+			        var list = plus.webview.currentWebview().opener();
+			　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+			        mui.fire(list, 'refresh');
+			        //返回true,继续页面关闭逻辑
+			        return true;
+			    }
+			});
+			var index_type = 0;
+			var files = [];
+			document.addEventListener("plusready", plusReady, false);  
+            function plusReady() {
+                document.getElementById("img-0").addEventListener("tap", function() {  
+                		//clicked('photo.html',{},'slide-in-right');
+                    showActionSheet(6);//拍照还是相册
+                });
+                document.getElementById('lksz').addEventListener('tap',function(){
+                		if(index_type == 0)
+                		{
+                			localStorage.setItem('headsrc',$('.img-active').find('.content-div-list-img')[0].src);
+                			var file_obj = {path: '',name:'head'};
+						files = [];
+						files.push(file_obj);
+						upload(files,6);
+                		}else{
+                			upload(files,6);
+                		}
+                })
+                $('.content-div-list-child').click(function(){
+                		$('.content-div-list-child').removeClass('img-active')
+                		$(this).addClass('img-active');
+                		index_type = 0;
+                })
+            }
+            function showActionSheet(imgindex) {  
+                var bts = [{  
+                    title: "拍照"  
+                }, {  
+                    title: "从相册选择"  
+                }];  
+                plus.nativeUI.actionSheet({  
+                        cancel: "取消",  
+                        buttons: bts  
+                    },  
+                    function(e) {  
+                        if (e.index == 1) {  
+                            getImage(imgindex);  
+                        } else if (e.index == 2) {  
+                            galleryImgs(imgindex);
+                        }  
+                    }  
+                );  
+            }
+            
+            var citydata = {
+				queryData:{
+					tradeCode:'dq',
+					dqBm:'000000'
+				}
+			};
+            
+            // 上传文件  
+            function upload(files,imgindex) {
+            		console.log("开始上传");
+            		console.log('%O',files);
+                var task = plus.uploader.createUpload('http://47.110.134.105:8010/api/yfq/uploadMultipleFiles', {
+                        method: "POST"  
+                    },
+                    function(t, status) { //上传完成
+                    		console.log("结束了");
+                    		console.log('%o',status);
+                        if (status == 200) {
+                        		if(files[0].path)
+                        		{
+                        			console.log('%o',t);
+	                        		var result =JSON.parse(t.responseText);
+	                        		console.log('%o',result);
+	                            var data1 = {
+	                            		queryData:{
+										tradeCode:"tbbuserphoto.update",
+										userid:localStorage.getItem('userid'),
+										userphotogltype:imgindex,
+										fileList:result
+									}
+	                            }
+	                            lnjoy.GetDataByPost(data1,function(rs1){
+	                            		console.log('%o',rs1);
+	                            		if(rs1.hasOwnProperty('success'))
+	                            		{
+	                            			mui.toast('设置成功');
+	                            			mui.back();
+	                            		}
+	                            })
+                        		}else{
+                        			mui.toast('设置成功');
+	                            	mui.back();
+                        		}
+                        } else {  
+                            console.log("上传失败：" + status);
+                        }  
+                    }
+                );  
+            
+                for (var i = 0; i < files.length; i++) {
+                    var f = files[i];
+                    task.addFile(f.path, {  
+                        key:f.name
+                    });
+                    
+                  }
+                task.start();
+                  
+            }  
+            
+            function compressImage(src,dstname) {  
+                //var dstname="_downloads/"+getUid()+".jpg";  
+                plus.zip.compressImage({  
+                        src: src,  
+                        dst: dstname,  
+                        overwrite:true,  
+                        quality: 20  
+                    },  
+                    function(event) {  
+                        //console.log("Compress success:"+event.target);  
+                        return event.target;  
+                    },  
+                    function(error) {  
+                        console.log(error);  
+                        return src;  
+                        //alert("Compress error!");  
+                    });
+            }
+              
+            // 添加文件  
+            var index = 1;  
+            var newUrlAfterCompress;  
+            function appendFile(p) {  
+                files.push({ 
+                    path: p,
+                    name: "uploadkey_" + index
+                });  
+                index++;  
+            }  
+            // 产生一个随机数  
+            function getUid() {  
+                return Math.floor(Math.random() * 100000000 + 10000000).toString();  
+            }  
+            //拍照  
+            function getImage(imgindex) {  
+                var cmr = plus.camera.getCamera();  
+                cmr.captureImage(function(p) {  
+                    plus.io.resolveLocalFileSystemURL(p, function(entry) {  
+                        var localurl = entry.toLocalURL(); //  
+                        if(imgindex == 6)
+	                		{
+	                			$('#mtz-img').attr('src',localurl);
+							$('#mtz-img-src').val(localurl);
+							var file_obj = {path: localurl,name:'head'};
+							files = [];
+							files.push(file_obj);
+							index_type = 1;
+							//upload(files,imgindex);
+	                		}
+                        //$(".dynamic_images ul li").remove(".pickimg");  
+//                      $(".dynamic_images ul").prepend("<li class='pickimg'><img src='" + localurl + "' /></li>");
+//                       var dstname="_downloads/"+getUid()+".jpg";//设置压缩后图片的路径  
+//                          newUrlAfterCompress=compressImage(localurl,dstname);  
+//                          appendFile(dstname); 
+                    });  
+                });  
+            }  
+            function galleryImgs(imgindex) { // 从相册中选择图片  
+                plus.gallery.pick(function(e) {
+                		if(imgindex == 6)
+                		{
+                			if(e.files.length>1)
+						{
+							mui.toast('自定义头像最多上传一张');
+							return;
+						}else
+						{
+							$('#mtz-img').attr('src',e.files[0]);
+							$('#mtz-img-src').val(e.files[0]);
+							var file_obj = {path: e.files[0],name:'head'};
+							files = [];
+							files.push(file_obj);
+							index_type = 1;
+							//upload(files,imgindex);
+						}
+                		}
+                    //$(".dynamic_images ul li").remove(".pickimg");  
+                    //console.log("选择了"+e.files.length+"个图片");  
+//                  for (var i = 0; i < e.files.length; i++) {  
+//                      if (i < 9) {  
+//                          $(".dynamic_images ul").prepend("<li class='pickimg'><img src='" + e.files[i] + "' /></li>");  
+//                          var dstname="_downloads/"+getUid()+".jpg";//设置压缩后图片的路径  
+//                          newUrlAfterCompress=compressImage(e.files[i],dstname);
+//                          appendFile(dstname);
+//                      }  
+//                  }  
+                }, function(e) {  
+                    console.log("取消选择图片");  
+                }, {  
+                    filter: "image",  
+                    multiple: true  
+                });  
+            }  
+		</script>
+	</body>
+</html>

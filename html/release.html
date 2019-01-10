@@ -21,6 +21,12 @@
 				margin-top: 0.5rem;
 				width: 1.2rem;
 			}
+			.bottom-div-img-2{
+				width:4rem;
+				position: absolute;
+				bottom: 0.5rem;
+				left: 42%;
+			}
 			.bottom-div-span{
 				font-size: 0.8rem;
 				color:  #0078B9;
@@ -40,7 +46,7 @@
 				flex: 1;
 			}
 			.top-box-item2{
-				flex: 20;
+				flex: 1.5;
 			}
 			.top-box-item-left{
 				text-align: left;
@@ -58,7 +64,7 @@
 				vertical-align: middle;
 			}
 			.top-div-li{
-				margin-top: 2.8rem;
+				margin: 2.8rem 0rem 2rem 0rem;
 			}
 			#selectzwlx{
 				display: none;
@@ -75,6 +81,9 @@
 			.left-padding-0{
 				padding-left:0rem !important;
 			}
+			.left-padding-1{
+				padding-left:1rem !important;
+			}
 			.padding-button{
 				padding: 3rem 0rem 5rem 0rem;
 			}
@@ -82,106 +91,129 @@
 				margin: 0 auto;
 				width: 90%;
 			}
+			.mui-radio{
+    				zoom: 90%;
+			}
+			.mui-checkbox{
+    				zoom: 90%;
+			}
+			.lx{
+				display: flex;
+				align-items:center;
+				justify-content: center;
+			}
+			.lx-flex{
+				flex: 1;
+				vertical-align: middle;
+			}
+			.lx-flex1{
+				flex: 1.3;
+				vertical-align: middle;
+			}
+			.input-type{
+				padding: 0.5rem 0rem 0.5rem 0rem;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.title-class{
+				padding: 0.2rem 0rem 0.2rem 1rem;
+			}
+			.font-color-blue{
+				color: #007aff;
+			}
+			.top-box-item-right{
+				text-align: right;
+			}
+			.top-div-span1{
+				color: darkgoldenrod;
+				font-weight: bold;
+				font-size: 0.8rem;
+			}
 		</style>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav top-box">
-			<div class="top-box-item2 top-box-item-center">
+			<div class="top-box-item top-box-item-center">
 				<span class="top-div-span">发布需求</span>
 			</div>
+			<!--<div class="top-box-item top-box-item-right" id="jymx">
+				<span class="top-div-span1">交易明细</span>
+			</div>-->
 		</header>
 		<section>
 			<div class="top-div-li">
 				<ul class="mui-table-view">
-					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" id='hwlx'>
+					<li class="input-type">
+						<!--<a class="mui-navigate-right" id='hwlx'>
 							选择货物类型
+						</a>-->
+						<a class="title-class">
+							选择货物类型:
 						</a>
-					</li>
-					<li class="mui-table-view-cell" id='selectzwlx'>
-						<a class="mui-navigate-right" id='zwlxitems'>
-							选择重货类型
-						</a>
-					</li>
-					<li class="mui-table-view-cell" id='selectpwlx'>
-						<a class="mui-navigate-right" id='pwlxitems'>
-							选择泡货类型
-						</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" id='bzyqitems'>
-							选择外包装要求
-						</a>
-					</li>
-					<li class="mui-table-view-cell" id="selectbzitems">
-						<a>
-							选择外包装类型
-						</a>
-						<div>
-							<div class="mui-input-row mui-checkbox">
-								<label>纸箱</label>
-								<input name="bzcheck" value="1" type="checkbox" >
+						<div class="lx">
+							<div class="mui-input-row mui-radio mui-left lx-flex1" id="hpbxtap">
+								<label>货品不限</label>
+								<input name="hwlxcheck" value="1FFB876B-789C-49E0-A4E9-7CF817C73A40" type="radio">
 							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>木箱</label>
-								<input name="bzcheck" value="2" type="checkbox">
+							<div class="mui-input-row mui-radio mui-left lx-flex" id="zhtap">
+								<label>重货</label>
+								<input name="hwlxcheck" value="52A9D528-1A9F-461D-B88E-ADA76C784341" type="radio">
 							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>托盘</label>
-								<input name="bzcheck" value="3" type="checkbox">
-							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>袋装</label>
-								<input name="bzcheck" value="4" type="checkbox">
-							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>桶装</label>
-								<input name="bzcheck" value="5" type="checkbox">
-							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>裸装</label>
-								<input name="bzcheck" value="6" type="checkbox">
-							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>设备</label>
-								<input name="bzcheck" value="7" type="checkbox">
-							</div>
-							<div class="mui-input-row mui-checkbox">
-								<label>异形</label>
-								<input name="bzcheck" value="8" type="checkbox">
+							<div class="mui-input-row mui-radio mui-left lx-flex" id="phtap">
+								<label>泡货</label>
+								<input name="hwlxcheck" value="77878BEF-3370-453B-B20E-2927E3507E58" type="radio">
 							</div>
 						</div>
 					</li>
-					<li class="mui-table-view-cell">
+					<li class="input-type" id='selectzwlx'>
+						
+					</li>
+					<li class="input-type" id='selectpwlx'>
+						
+					</li>
+					<li class="input-type">
+						<a class="title-class">
+							选择包装要求:
+						</a>
+						<div class="lx">
+							<div class="mui-input-row mui-radio mui-left lx-flex" id="wbzbxtap">
+								<label>外包装不限</label>
+								<input name="wbzradio" value="75ECC903-1D1E-4397-A6AD-7F7D2ACDAA73" type="radio" >
+							</div>
+							<div class="mui-input-row mui-radio mui-left lx-flex" id="wbzyqtap">
+								<label>外包装要求</label>
+								<input name="wbzradio" value="48C9E16C-D22C-43B2-9796-575849214F8A" type="radio" >
+							</div>
+						</div>
+					</li>
+					<li class="input-type" id="selectbzitems">
+						
+					</li>
+					<li class="input-type">
 						<div class="mui-input-row">
-							<label class="left-padding-0">有效时间：</label>
-							<input type="number" class="mui-input-clear left-padding-0" placeholder="请输入3～168整数">
+							<label class="left-padding-1 font-color-blue">有效时间：</label>
+							<input id="ZXSaleListHours" type="number" class="mui-input-clear left-padding-0" placeholder="请输入4～168小时">
 						</div>
 					</li>
-					<li class="mui-table-view-cell">
+					<li class="input-type">
 						<div class="mui-input-row">
-							<label class="left-padding-0">目的地：</label>
-							<input type="text" class="mui-input-clear left-padding-0" placeholder="请输入目的地">
+							<label class="left-padding-1 font-color-blue">目的地：</label>
+							<input id="ZXSaleListCitys" type="text" class="mui-input-clear left-padding-0" placeholder="请输入目的地">
 						</div>
 					</li>
-					<li class="mui-table-view-cell" id='selectzk'>
-						<a class="mui-navigate-right" id='zkitems'>
-							选择折扣
-						</a>
+					<li class="input-type" id='selectzk'>
+						
 					</li>
-					<li class="mui-table-view-cell">
+					<li class="input-type">
 						<div class="mui-input-row">
-							<label class="left-padding-0">开放券额：</label>
-							<input type="text" class="mui-input-clear left-padding-0" placeholder="请输入1000～50000整数">
+							<label class="left-padding-1 font-color-blue">发布券额：</label>
+							<input id="ZXSaleListMoney" type="text" class="mui-input-clear left-padding-0" placeholder="请输入1000～50000运费券">
 						</div>
 					</li>
-					<li class="mui-table-view-cell" id='selectfcsj'>
-						<a class="mui-navigate-right" id='fcsjitems'>
-							选择发车时间
-						</a>
+					<li class="input-type" id='selectfcsj'>
+						
 					</li>
 					<li class="padding-button">
-						<button type="button" class="mui-btn mui-btn-primary mui-btn-block top-margin width-button-90">确认发布</button>
+						<button id="release" type="button" class="mui-btn mui-btn-primary mui-btn-block top-margin width-button-90">确认发布</button>
 					</li>
 				</ul>
 			</div>
@@ -191,9 +223,8 @@
 				<img class="bottom-div-img" src="../img/buylist/quan1.png" />
 				<div class="bottom-div-span-1">运费券</div>
 			</a>
-			<a class="mui-tab-item" data-webview="orderlist.html">
-				<img class="bottom-div-img-1" src="../img/buylist/order2.png" />
-				<div class="bottom-div-span">发布</div>
+			<a class="mui-tab-item" data-webview="release.html">
+				<img class="bottom-div-img-2" src="../img/buylist/order.png" />
 			</a>
 			<a class="mui-tab-item" data-webview="my.html">
 				<img class="bottom-div-img-1" src="../img/buylist/my1.png" />
@@ -201,199 +232,640 @@
 			</a>
 		</nav>
 	</body>
+	<script src="../js/template.min.js"></script>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/zepto.js"></script>
 	<script src="../js/mui.picker.min.js"></script>
 	<script src="../js/mui.poppicker.js"></script>
+	<script src="../js/zepto.js"></script>
+	<script src="../js/reconnecting-websocket.min.js"></script>
+	<script src="../js/stomp.min.js"></script>
+	<script src="../js/sockjs.min.js"></script>
 	<script src="../js/app.js"></script>
+	<script type="text/html" id="zhitems">
+		<a href="javascript:void(0);" class="title-class">
+			选择重货类型:
+		</a>
+		<%
+			for(var i = 0;i < tv.length / 2;i++)
+			{
+				%>
+				<div class="lx">
+					<%
+						for(var j = 2*i;j < 2*(i+1);j++)
+						{
+							if(j<tv.length)
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										<label><%=tv[j].text %></label>
+										<input name="zhlxradio" value="<%=tv[j].value %>" type="radio">
+									</div>
+								<%
+							}else
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										
+									</div>
+								<%
+							}
+						}
+					%>
+				</div>
+				<%
+			}
+		%>
+	</script>
+	<script type="text/html" id="phitems">
+		<a href="javascript:void(0);" class="title-class">
+			选择泡货类型:
+		</a>
+		<%
+			for(var i = 0;i < tv.length / 2;i++)
+			{
+				%>
+				<div class="lx">
+					<%
+						for(var j = 2*i;j < 2*(i+1);j++)
+						{
+							if(j<tv.length)
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										<label><%=tv[j].text %></label>
+										<input name="phlxradio" value="<%=tv[j].value %>" type="radio">
+									</div>
+								<%
+							}else
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										&nbsp;
+									</div>
+								<%
+							}
+						}
+					%>
+				</div>
+				<%
+			}
+		%>
+	</script>
+	<script type="text/html" id="wbzitems">
+		<a href="javascript:void(0);" class="title-class">
+			选择外包装类型(可多选):
+		</a>
+		<%
+			for(var i = 0;i < tv.length / 3;i++)
+			{
+				%>
+				<div class="lx">
+					<%
+						for(var j = 3*i;j < 3*(i+1);j++)
+						{
+							if(j<tv.length)
+							{
+								%>
+									<div class="mui-input-row mui-checkbox mui-left lx-flex">
+										<label><%=tv[j].text %></label>
+										<input name="wbzcheck" value="<%=tv[j].value %>" type="checkbox">
+									</div>
+								<%
+							}else
+							{
+								%>
+									<div class="mui-input-row mui-checkbox mui-left lx-flex">
+										&nbsp;
+									</div>
+								<%
+							}
+						}
+					%>
+				</div>
+				<%
+			}
+		%>
+	</script>
+	<script type="text/html" id="zkitems">
+		<a href="javascript:void(0);" class="title-class">
+			选择折扣:
+		</a>
+		<%
+			for(var i = 0;i < tv.length / 2;i++)
+			{
+				%>
+				<div class="lx">
+					<%
+						for(var j = 2*i;j < 2*(i+1);j++)
+						{
+							if(j<tv.length)
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										<label><%=tv[j].text %>折</label>
+										<input name="zkradio" value="<%=tv[j].value %>" type="radio">
+									</div>
+								<%
+							}else
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										
+									</div>
+								<%
+							}
+						}
+					%>
+				</div>
+				<%
+			}
+		%>
+	</script>
+	<script type="text/html" id="fcsjitems">
+		<a href="javascript:void(0);" class="title-class">
+			选择发车时间:
+		</a>
+		<%
+			for(var i = 0;i < tv.length / 2;i++)
+			{
+				%>
+				<div class="lx">
+					<%
+						for(var j = 2*i;j < 2*(i+1);j++)
+						{
+							if(j<tv.length)
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										<label><%=tv[j].text %></label>
+										<input name="fcsjradio" value="<%=tv[j].value %>" type="radio">
+									</div>
+								<%
+							}else
+							{
+								%>
+									<div class="mui-input-row mui-radio mui-left lx-flex">
+										
+									</div>
+								<%
+							}
+						}
+					%>
+				</div>
+				<%
+			}
+		%>
+	</script>
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
 		});
 		mui('.mui-bar-tab').on('tap','.mui-tab-item',function(){
-			var curr = plus.webview.currentWebview();
-			var wvs = plus.webview.all();
-			for(var i = 0, len = wvs.length; i < len; i++) {
-				if(wvs[i].id == curr.id)
-					continue;
-				plus.webview.close(wvs[i],'none');
-			}
-			var webview = this.getAttribute('data-webview');
-			var webview_id = this.getAttribute('data-webview') + new Date().getTime();
-			if(webview) {
-				mui.openWindow({
-					url: webview,
-					id: webview_id,
-					createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-					show: {
-						autoShow: true, //页面loaded事件发生后自动显示，默认为true
-						aniShow: 'none'
-					},
-					extras: {
-						refresh: true
-					},
-					waiting: {
-						autoShow: true //自动显示等待框，默认为true
-					}
-				});
-				var openw = plus.webview.getWebviewById(webview);
-				if(openw) {
-					mui.fire(openw, 'refresh');
+			if(localStorage.getItem('userid'))
+			{
+				var curr = plus.webview.currentWebview();
+				var wvs = plus.webview.all();
+				for(var i = 0, len = wvs.length; i < len; i++) {
+					if(wvs[i].id == curr.id)
+						continue;
+					plus.webview.close(wvs[i],'none');
 				}
+				var webview = this.getAttribute('data-webview');
+				var webview_id = this.getAttribute('data-webview') + new Date().getTime();
+				if(webview) {
+					mui.openWindow({
+						url: webview,
+						id: webview_id,
+						createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: 'none'
+						},
+						extras: {
+							refresh: true
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+					var openw = plus.webview.getWebviewById(webview);
+					if(openw) {
+						mui.fire(openw, 'refresh');
+					}
+				}
+			}else
+			{
+				clicked('login.html', {}, 'slide-in-right');
 			}
 		})
-		var HWLXPickerButton = document.getElementById('hwlx');
-		var HWLXPicker = new mui.PopPicker();
-		HWLXPicker.setData([{
-			value: '1',
-			text: '重物'
-		}, {
-			value: '2',
-			text: '泡物'
-		}, {
-			value: '3',
-			text: '货品不限'
-		}]);
-		HWLXPickerButton.addEventListener('tap', function(event) {
-			HWLXPicker.show(function(items) {
-				HWLXPickerButton.innerText = items[0].text;
-				if(items[0].value == 1){
-					document.getElementById('selectzwlx').style.display="block";
-					document.getElementById('selectpwlx').style.display="none";
+		init();
+		var isok = false;
+		var iscanrealse = false;
+		function init(){
+			//SendMsg();
+			GetZhList();
+			GetPhList();
+			GetWbzList();
+			GetZkList();
+			GetFcsjList();
+			GetUserDetails();
+		}
+		function SendMsg(){
+			mui.toast("有"+parseInt(Math.random()*(100-70+1)+70,10)+"个发货人在线等着抢购您的运费券哦");
+		}
+		function GetUserDetails()
+		{
+			var data = {
+				queryData:{
+					tradeCode:'tbbuser.selectByPrimaryKey',
+					userid:localStorage.getItem('userid')
 				}
-				else if(items[0].value == 2){
-					document.getElementById('selectpwlx').style.display="block";
-					document.getElementById('selectzwlx').style.display="none";
+			};
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs);
+				if(rs.list[0].address&&rs.list[0].fromroute&&rs.list[0].usertel&&rs.list[0].usercontent&&rs.list[0].toroute){
+					isok = true;
+					IsCanRealse();
 				}else
 				{
-					document.getElementById('selectzwlx').style.display="none";
-					document.getElementById('selectpwlx').style.display="none";
+					mui.alert('请先补充材料再发布！', '提示',function(){
+						clicked('bcxx.html', {}, 'slide-in-right');
+					});
 				}
-				//返回 false 可以阻止选择框的关闭
-				//return false;
 			});
-		}, false);
-		var ZWLXPickerButton = document.getElementById('zwlxitems');
-		var ZWLXPicker = new mui.PopPicker();
-		ZWLXPicker.setData([{
-			value: '1',
-			text: '1T/1m³内'
-		}, {
-			value: '2',
-			text: '1T/2m³内'
-		}, {
-			value: '3',
-			text: '1T/3m³内'
-		}, {
-			value: '4',
-			text: '1T/4m³内'
-		}]);
-		ZWLXPickerButton.addEventListener('tap', function(event) {
-			ZWLXPicker.show(function(items) {
-				ZWLXPickerButton.innerText = items[0].text;
-				//返回 false 可以阻止选择框的关闭
-				//return false;
-			});
-		}, false);
-		var PWLXPickerButton = document.getElementById('pwlxitems');
-		var PWLXPicker = new mui.PopPicker();
-		PWLXPicker.setData([{
-			value: '1',
-			text: '1T/4m³内'
-		}, {
-			value: '2',
-			text: '1T/6m³内'
-		}, {
-			value: '3',
-			text: '1T/8m³内'
-		}, {
-			value: '4',
-			text: '1T/10m³内'
-		}]);
-		PWLXPickerButton.addEventListener('tap', function(event) {
-			PWLXPicker.show(function(items) {
-				WLXPickerButton.innerText = items[0].text;
-				//返回 false 可以阻止选择框的关闭
-				//return false;
-			});
-		}, false);
-		var BZPickerButton = document.getElementById('bzyqitems');
-		var BZPicker = new mui.PopPicker();
-		BZPicker.setData([{
-			value: '1',
-			text: '外包装要求'
-		}, {
-			value: '2',
-			text: '外包装不限'
-		}]);
-		BZPickerButton.addEventListener('tap', function(event) {
-			BZPicker.show(function(items) {
-				BZPickerButton.innerText = items[0].text;
-				if(items[0].value == 1)
-				{
-					document.getElementById('selectbzitems').style.display = "block";
-				}else
-				{
-					document.getElementById('selectbzitems').style.display = "none";
+		}
+		function IsCanRealse(){
+			var data_user = {
+				queryData:{
+					tradeCode:"tbbuser.selectByPrimaryKey",
+					userid:localStorage.getItem('userid')
 				}
-				//返回 false 可以阻止选择框的关闭
-				//return false;
+			}
+			lnjoy.GetDataByPost(data_user,function(rs){
+				console.log('%o',rs);
+				if(rs.list[0].iscanrelease!=1)
+				{
+					$('#release').hide();
+					mui.alert("您还未开通自主放券功能，请联系查货宝!","提示");
+					return;
+				}else{
+					iscanrealse = true;
+				}
+			})
+		}
+		function GetZhList()
+		{
+			var data = {
+				queryData:{
+					tradeCode:'selectCatKeyValue',
+					key:'ZdMxID',
+					value:'ZdMxMc',
+					table:'tb_b_zdmx',
+					like:'ZdMxCode',
+					catid:'002',
+					orderby:'ZdMxCode'
+				}
+			};
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs.tb_b_zdmx);
+				var html = template('zhitems',rs.tb_b_zdmx);
+				$('#selectzwlx').html(html);
 			});
-		}, false);
-		var ZKPickerButton = document.getElementById('zkitems');
-		var ZKPicker = new mui.PopPicker();
-		ZKPicker.setData([{
-			value: '5',
-			text: '5折'
-		}, {
-			value: '5.5',
-			text: '5.5折'
-		}, {
-			value: '6',
-			text: '6折'
-		}, {
-			value: '6.5',
-			text: '6.5折'
-		}, {
-			value: '7',
-			text: '7折'
-		}, {
-			value: '7.5',
-			text: '7.5折'
-		}, {
-			value: '8',
-			text: '8折'
-		}, {
-			value: '8.5',
-			text: '8.5折'
-		}, {
-			value: '9',
-			text: '9折'
-		}]);
-		ZKPickerButton.addEventListener('tap', function(event) {
-			ZKPicker.show(function(items) {
-				ZKPickerButton.innerText = items[0].text;
-				//返回 false 可以阻止选择框的关闭
-				//return false;
+		}
+		function GetPhList()
+		{
+			var data = {
+				queryData:{
+					tradeCode:'selectCatKeyValue',
+					key:'ZdMxID',
+					value:'ZdMxMc',
+					table:'tb_b_zdmx',
+					like:'ZdMxCode',
+					catid:'003',
+					orderby:'ZdMxCode'
+				}
+			};
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs.tb_b_zdmx);
+				var html = template('phitems',rs.tb_b_zdmx);
+				$('#selectpwlx').html(html);
 			});
-		}, false);
-		var FCSJPickerButton = document.getElementById('fcsjitems');
-		var FCSJPicker = new mui.PopPicker();
-		FCSJPicker.setData([{
-			value: '1',
-			text: '货到发车'
-		}, {
-			value: '2',
-			text: '今晚发车'
-		}, {
-			value: '3',
-			text: '天天发车'
-		}]);
-		FCSJPickerButton.addEventListener('tap', function(event) {
-			FCSJPicker.show(function(items) {
-				FCSJPickerButton.innerText = items[0].text;
-				//返回 false 可以阻止选择框的关闭
-				//return false;
+		}
+		function GetWbzList(){
+			var data = {
+				queryData:{
+					tradeCode:'selectCatKeyValue',
+					key:'ZdMxID',
+					value:'ZdMxMc',
+					table:'tb_b_zdmx',
+					like:'ZdMxCode',
+					catid:'004',
+					orderby:'ZdMxCode'
+				}
+			};
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs.tb_b_zdmx);
+				var html = template('wbzitems',rs.tb_b_zdmx);
+				$('#selectbzitems').html(html);
 			});
-		}, false);
+		}
+		var zkobj;
+		function GetZkList(){
+			var data = {
+				queryData:{
+					tradeCode:'selectCatKeyValue',
+					key:'ZdMxID',
+					value:'ZdMxMc',
+					table:'tb_b_zdmx',
+					like:'ZdMxCode',
+					catid:'005',
+					orderby:'ZdMxCode'
+				}
+			};
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs.tb_b_zdmx);
+				zkobj = rs.tb_b_zdmx.tv;
+				var html = template('zkitems',rs.tb_b_zdmx);
+				$('#selectzk').html(html);
+			});
+		}
+		function GetFcsjList(){
+			var data = {
+				queryData:{
+					tradeCode:'selectCatKeyValue',
+					key:'ZdMxID',
+					value:'ZdMxMc',
+					table:'tb_b_zdmx',
+					like:'ZdMxCode',
+					catid:'006',
+					orderby:'ZdMxCode'
+				}
+			};
+			lnjoy.GetDataByPost(data,function(rs){
+				console.log('%o',rs.tb_b_zdmx);
+				var html = template('fcsjitems',rs.tb_b_zdmx);
+				$('#selectfcsj').html(html);
+			});
+		}
+		document.getElementById('hpbxtap').addEventListener('tap',function(event){
+			$('#selectzwlx').hide();
+			$('#selectpwlx').hide();
+		})
+		document.getElementById('zhtap').addEventListener('tap',function(event){
+			$('#selectzwlx').show();
+			$('#selectpwlx').hide();
+		})
+		document.getElementById('phtap').addEventListener('tap',function(event){
+			$('#selectzwlx').hide();
+			$('#selectpwlx').show();
+		})
+		document.getElementById('wbzbxtap').addEventListener('tap',function(event){
+			$('#selectbzitems').hide();
+		})
+		document.getElementById('wbzyqtap').addEventListener('tap',function(event){
+			$('#selectbzitems').show();
+		})
+		document.getElementById('release').addEventListener('tap',function(event){
+			if(!localStorage.getItem('userid')){
+				mui.alert('请先登录再发布！', '提示',function(){
+					clicked('login.html', {}, 'slide-in-right');
+				});
+			}
+			if(!isok)
+			{
+				mui.alert('请先补充材料再发布！', '提示',function(){
+					clicked('bcxx.html', {}, 'slide-in-right');
+				});
+			}
+			if(!iscanrealse)
+			{
+				mui.alert('您还未开通自主放券功能，请联系查货宝!', '提示');
+				return;
+			}
+			var hwlxtype = "";
+			var salerecordlx = 3;
+			var hwlxcheck = document.getElementsByName("hwlxcheck");
+			for (var i = 0; i < hwlxcheck.length; i++) {
+                if(hwlxcheck[i].checked) {
+                		hwlxtype = hwlxcheck[i].value;
+                }
+	        }
+			if(!hwlxtype)
+			{
+				mui.toast("请选择货物类型");
+				return;
+			}
+			var zhlxtype = "";
+			var phlxtype = "";
+			
+			if(hwlxtype == "52A9D528-1A9F-461D-B88E-ADA76C784341")
+			{
+				salerecordlx = 1;
+				var zhlxradio = document.getElementsByName("zhlxradio");
+				for (var i = 0; i < zhlxradio.length; i++) {
+	                if(zhlxradio[i].checked) {
+	                		zhlxtype = zhlxradio[i].value;
+	                }
+		        }
+				if(!zhlxtype)
+				{
+					mui.toast("请选择重货类型");
+					return;
+				}
+			}else if(hwlxtype == "77878BEF-3370-453B-B20E-2927E3507E58")
+			{
+				salerecordlx = 2;
+				var phlxradio = document.getElementsByName("phlxradio");
+				for (var i = 0; i < phlxradio.length; i++) {
+	                if(phlxradio[i].checked) {
+	                		phlxtype = phlxradio[i].value;
+	                }
+		        }
+				if(!phlxtype)
+				{
+					mui.toast("请选择泡货类型");
+					return;
+				}
+			}
+			var wbztype = "";
+			var wbzradio = document.getElementsByName("wbzradio");
+			for (var i = 0; i < wbzradio.length; i++) {
+                if(wbzradio[i].checked) {
+                		wbztype = wbzradio[i].value;
+                }
+	        }
+			if(!wbztype)
+			{
+				mui.toast("请选择外包装要求");
+				return;
+			}
+			if(wbztype == '48C9E16C-D22C-43B2-9796-575849214F8A')
+			{
+				var wbzyqtype = "";
+				var wbzcheck = document.getElementsByName("wbzcheck");
+				for (var i = 0; i < wbzcheck.length; i++) {
+	                if(wbzcheck[i].checked) {
+	                		wbzyqtype += wbzcheck[i].value+',';
+	                }
+		        }
+				if(!wbzyqtype)
+				{
+					mui.toast("请选择外包装类型");
+					return;
+				}
+			}
+			var ZXSaleListHours = 0;
+			if(!/^\d+$/.test(document.getElementById('ZXSaleListHours').value))
+			{
+               mui.toast("请输入4～168的整小时数");
+               return;
+            }else{
+            		if(parseInt(document.getElementById('ZXSaleListHours').value)>=4&&parseInt(document.getElementById('ZXSaleListHours').value)<=168)
+            		{
+            			ZXSaleListHours = parseInt(document.getElementById('ZXSaleListHours').value);
+            		}else{
+            			mui.toast("请输入4～168的整小时数");
+               		return;
+            		}
+            }
+            var ZXSaleListCitys = "";
+            if(document.getElementById('ZXSaleListCitys').value)
+            {
+            		if(document.getElementById('ZXSaleListCitys').value.length<10)
+            		{
+            			ZXSaleListCitys = document.getElementById('ZXSaleListCitys').value;
+            		}else
+            		{
+            			mui.toast("填写内容不能超过9个字");
+               		return;
+            		}
+            }else
+            {
+            		mui.toast("请填写目的地");
+               	return;
+            }
+            var zktype = "";
+            var zknum = 0;
+			var zkradio = document.getElementsByName("zkradio");
+			for (var i = 0; i < zkradio.length; i++) {
+                if(zkradio[i].checked) {
+                		zktype = zkradio[i].value;
+                		for(var i = 0;i<zkobj.length;i++)
+                		{
+                			if(zktype == zkobj[i].value)
+                				zknum = parseFloat(zkobj[i].text);
+                		}
+                }
+	        }
+			if(!zktype)
+			{
+				mui.toast("请选择折扣"); 
+				return;
+			}
+			var ZXSaleListMoney = 0;
+			if(!/^\d+$/.test(document.getElementById('ZXSaleListMoney').value))
+			{
+               mui.toast("请输入1000～50000的整数");
+               return;
+            }else{
+            		if(parseInt(document.getElementById('ZXSaleListMoney').value)>=1000&&parseInt(document.getElementById('ZXSaleListMoney').value)<=50000)
+            		{
+            			ZXSaleListMoney = parseInt(document.getElementById('ZXSaleListMoney').value);
+            		}else{
+            			mui.toast("请输入1000～50000的整数");
+               		return;
+            		}
+            }
+            var fcsjtype = "";
+			var fcsjradio = document.getElementsByName("fcsjradio");
+			for (var i = 0; i < fcsjradio.length; i++) {
+                if(fcsjradio[i].checked) {
+                		fcsjtype = fcsjradio[i].value;
+                }
+	        }
+			if(!fcsjtype)
+			{
+				mui.toast("请选择发车时间"); 
+				return;
+			}
+			var btnArray = ['取消', '确认'];
+			mui.confirm('您确认发布吗？此发布不可撤回，不可修改!', '提醒', btnArray, function(e) {
+				if (e.index == 0) {
+					mui.toast('取消发布');
+					return;
+				} else {
+					var data = {
+						queryData:{
+							tradeCode:'release',
+							zxsalelistuserid:localStorage.getItem('userid'),
+							zxsalelistproducelx:hwlxtype,
+							zxsalelistpacklx:wbztype,
+							zxsalelisthours:ZXSaleListHours,
+							zxsalelistcitys:ZXSaleListCitys,
+							zxsalelistzk:zktype,
+							zxsalelistmoney:ZXSaleListMoney,
+							zxsalelistfc:fcsjtype,
+							zxsalelistzhlx:zhlxtype,
+							zxsalelistphlx:phlxtype,
+							zxsalelistpackmxlx:wbzyqtype,
+							adduser:localStorage.getItem('userid'),
+							salerecorduserid:localStorage.getItem('userid'),
+							salerecorduserxm:localStorage.getItem('userxm'),
+							salerecordpoints:ZXSaleListMoney,
+							salerecordlx:salerecordlx,
+							salerecordbelongid:localStorage.getItem('userid'),
+							validhour:ZXSaleListHours,
+							userid:localStorage.getItem('userid'),
+							points:ZXSaleListMoney,
+							discount:zknum/10,
+							discountmemo:zknum+"折",
+							pointkind:salerecordlx,
+							belongid:localStorage.getItem('userid')
+						}
+					}
+					console.log('%o',data);
+					lnjoy.GetDataByPost(data,function(rs){
+						console.log('%o',rs);
+						if(rs.hasOwnProperty('success'))
+						{
+//							var options = {
+//								cover: false
+//							};
+//							var str = "您关注的专线又上架运费券啦,快来抢购哦";
+//							plus.push.createMessage(str, "LocalMSG", options);
+//							if (plus.os.name == "iOS") {
+//								console.log('*如果无法创建消息，请到"设置"->"通知"中配置应用在通知中心显示!');
+//							}
+//							var player = plus.audio.createPlayer("../resource/up.mp3");
+//							player.play(function (e) {
+//								console.log('播放完成后，运行代码');
+//							},function (e) {
+//								console.log(e.message);
+//						    },false);
+							//sendsocket(localStorage.getItem('userid'),"acb9b85a-a2e1-4a2d-9bef-cec77e9dd090","上架");
+							mui.toast('发布成功');
+							location.reload();
+						}else{
+							mui.toast(rs.details);
+							return;
+						}
+					});
+				}
+			})
+		})
+		var rainPage = 0;
+		mui.back = function() {
+			rainPage++;
+			if (rainPage>1) {
+				plus.runtime.quit();
+			} else {
+				plus.nativeUI.toast('再按一次退出应用，你会收不到提醒信息哦');
+			}
+			setTimeout(function(){
+				rainPage = 0;
+			}, 1000);
+			return false;
+		}
 	</script>
 </html>

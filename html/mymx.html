@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<style>
+			.title{
+				margin: 20px 15px 7px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			.mui-pull-left{
+				color: #FFFFFF;
+			}
+			.mui-title{
+				color: #FFFFFF;
+			}
+			.mui-bar-nav{
+				background-color: #0078B9;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的明细</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" id="fbmx">
+					<a class="mui-navigate-right">
+						发布明细
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="qgmx">
+					<a class="mui-navigate-right">
+						抢购明细
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="xfmx">
+					<a class="mui-navigate-right">
+						消费明细
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="cgmx">
+					<a class="mui-navigate-right">
+						采购平台产品明细
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/app1.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		document.getElementById('fbmx').addEventListener('tap',function(){
+			clicked('releaselist.html',{},'slide-in-right');
+		})
+		document.getElementById('qgmx').addEventListener('tap',function(){
+			clicked('MyCard.html',{},'slide-in-right');
+		})
+		document.getElementById('xfmx').addEventListener('tap',function(){
+			clicked('xfmx.html',{},'slide-in-right');
+		})
+		document.getElementById('cgmx').addEventListener('tap',function(){
+			clicked('tradelist.html',{},'slide-in-right');
+		})
+	</script>
+</html>

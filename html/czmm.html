@@ -73,9 +73,51 @@
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/reconnecting-websocket.min.js"></script>
+		<script src="../js/stomp.min.js"></script>
+		<script src="../js/sockjs.min.js"></script>
 		<script src="../js/app.js"></script>
-		<script>
-		    
+		<script type="text/javascript">
+			(function ($, doc) {
+				var psd = doc.getElementById('UserPassword');
+				var psd_confirm = doc.getElementById('UserPassword_confirm');
+			    doc.getElementById('chongzhimima').addEventListener('tap',function(event){
+			    		if(!psd.value)
+			    		{
+			    			$.toast('请输入密码');
+		                return;
+			    		}
+			    		if(!psd_confirm.value)
+			    		{
+			    			$.toast('请输入确认密码');
+		                return;
+			    		}
+			    		if(psd.value!=psd_confirm.value)
+			    		{
+			    			$.toast('重置密码必须和密码一致！');
+		                return;
+			    		}
+			    		var data = {
+		            		queryData:{
+							tradeCode:'changepassword',
+							username:localStorage.getItem('username'),
+							password:psd.value
+						}
+		            }
+					lnjoy.GetDataByPost(data,function(rs){
+						if(rs.hasOwnProperty("success"))
+						{
+							mui.toast('重置密码成功！');
+							mui.back();
+						}else
+						{
+							mui.toast('重置密码失败！'+rs.details);
+							return;
+						}
+					});
+			    });
+		    }(mui, document));
 		</script>
 	</body>
 </html>

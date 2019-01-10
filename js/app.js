@@ -1,3 +1,35 @@
+var test_url = 'http://192.168.1.5:8010/api/yfq/';
+var real_url = 'http://jeremyda.cn:8010/api/yfq/';
+var ws_test_url = "ws://192.168.1.5:8010";
+var ws_real_url = "ws://jeremyda.cn:8010";
+var lnjoy = {
+	url:real_url,
+	dataType:'json',
+	type:'post',
+	timeout:10000,
+};
+lnjoy.GetDataByPost = function(data,callback){
+	//console.log('%o',data.queryData);
+	mui.ajax(lnjoy.url+data.queryData.tradeCode,{
+		data:data.queryData,
+		dataType:lnjoy.dataType,//服务器返回json格式数据
+		type:lnjoy.type,//HTTP请求类型
+		timeout:lnjoy.timeout,//超时时间设置为10秒；
+		headers:{'Content-Type':'application/json'},	              
+		success:function(data){
+			//服务器返回响应，根据响应结果，分析是否获取成功；
+			callback(data);
+		},
+		error:function(xhr,type,errorThrown){
+			//console.log('%o',xhr);
+			//console.log('%o',type);
+			//console.log('%o',errorThrown);
+			//异常处理；
+			console.log("报错了！");
+		}
+	});
+}
+
 var _openw = null;
 var preate = {};
 function clicked(id, param, a, s) {
@@ -46,3 +78,215 @@ function clicked(id, param, a, s) {
 		}, false);
 	}
 }
+
+/*mui.plusReady(function() {
+	setTimeout(function(){
+		if(plus.audio==='undefined'){
+			mui.toast('权限没有啊');
+		}
+		var player = plus.audio.createPlayer("../resource/music.mp3");
+		player.play(function (e) {
+			console.log('播放完成后，运行代码');
+		},function (e) {
+			console.log(e.message);
+	    },false);
+	},500);
+});*/
+
+function scanedError(url){
+	//提示鸣生
+	switch (plus.os.name) { //判断设备类型
+	    case "iOS":
+	    if ( plus.device.model.indexOf("iPhone") >= 0 ) {
+	        plus.device.beep();
+	        console.log = "设备蜂鸣中...";
+	    } else {
+	        console.log = "此设备不支持蜂鸣";
+	    }
+	    break;
+	    default:
+	    plus.device.beep();
+	    console.log = "设备蜂鸣中...";
+	    break;
+	}
+	var player = null;
+    var flag = false;
+     mui.plusReady(function (){
+        if(plus.audio==='undefined'){
+            mui.toast('权限没有啊');
+            return;
+        }
+        player = plus.audio.createPlayer(url);
+        player.play(function (e) {
+            console.log('播放完成后，运行代码');
+        },function (e) {
+            console.log(e.message);
+        },false);
+       
+    })
+}
+
+Date.prototype.Format = function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}
+
+  // 监听plusready事件  
+document.addEventListener("plusready", function(){
+	plus.push.setAutoNotification(true);
+	plus.push.addEventListener( "click", function(msg) {
+          clicked('_www/html/myzxplattosale.html',{},'slide-in-right');
+    }, false );
+	plus.runtime.setBadgeNumber(parseInt(localStorage.getItem('rightnum')));
+	if(!localStorage.getItem('rightnum'))
+		localStorage.setItem('rightnum',0);
+	if(!localStorage.getItem('startmessage'))
+		localStorage.setItem('startmessage',1);
+	if(!localStorage.getItem('startvideo'))
+		localStorage.setItem('startvideo',1);
+}, false);
+//window.setInterval(function(){ //每隔5秒钟发送一次心跳，避免websocket连接因超时而自动断开
+//	sendsocket(localStorage.getItem('userid'),localStorage.getItem('userid'),"上架");
+//},5000);
+var webSocket = null;
+var commWebSocket = null; 
+if ("WebSocket" in window)
+{
+    webSocket = new ReconnectingWebSocket(ws_real_url+"/websocket/"+localStorage.getItem('userid'));
+    //连通之后的回调事件
+    webSocket.onopen = function()
+    {
+      //console.log("已经连通了websocket");
+    };
+    //接收后台服务端的消息
+    webSocket.onmessage = function (evt)
+    {
+    	  console.log(received_msg);
+      var received_msg = evt.data;
+      var obj = JSON.parse(received_msg);
+      //1代表上线 2代表下线 3代表在线名单 4代表普通消息
+      if(obj.messageType==1){
+        console.log(localStorage.getItem('username')+"上线了");
+      }
+      else if(obj.messageType==2){
+        console.log(localStorage.getItem('username')+"下线了");
+      }
+      else if(obj.messageType==3){
+        console.log("获取了在线的名单");
+      }
+      else{
+      	if(obj.textMessage == "上架")
+      	{
+      		var rightnum = parseInt(localStorage.getItem('rightnum'));
+      		localStorage.setItem('rightnum',++rightnum);
+      		plus.runtime.setBadgeNumber(rightnum);
+      		if(localStorage.getItem('startvideo')==1)
+      		{
+      			var player = plus.audio.createPlayer("_www/resource/up.mp3");
+				player.play(function (e) {
+					console.log('播放完成后，运行代码');
+				},function (e) {
+					console.log(e.message);
+			    },false);
+	      	}
+			if(localStorage.getItem('startmessage')==1)
+			{
+				var options = {
+					cover: false
+				};
+				var str = "您关注的专线又上架运费券啦,快来抢购哦";
+				plus.push.createMessage(str, "LocalMSG", options);
+				if (plus.os.name == "iOS") {
+					console.log('*如果无法创建消息，请到"设置"->"通知"中配置应用在通知中心显示!');
+				}
+			}
+      	}else if(obj.textMessage == "购买")
+      	{
+      		if(localStorage.getItem('startvideo')==1)
+      		{
+      			var player = plus.audio.createPlayer("_www/resource/buy.mp3");
+				player.play(function (e) {
+					console.log('播放完成后，运行代码');
+				},function (e) {
+					console.log(e.message);
+			    },false);
+      		}
+      	}else if(obj.textMessage == "预警")
+      	{
+      		if(localStorage.getItem('startmessage')==1)
+      		{
+      			var options = {
+					cover: false
+				};
+				var str = "您购买的运费券即将到期,请尽快使用";
+				plus.push.createMessage(str, "LocalMSG", options);
+				if (plus.os.name == "iOS") {
+					console.log('*如果无法创建消息，请到"设置"->"通知"中配置应用在通知中心显示!');
+				}
+      		}
+      	}else if(obj.textMessage == "支付成功"){
+      		if(localStorage.getItem('startmessage')==1)
+      		{
+      			var player = plus.audio.createPlayer("_www/resource/music.mp3");
+				player.play(function (e) {
+					console.log('播放完成后，运行代码');
+				},function (e) {
+					console.log(e.message);
+			    },false);
+      		}
+	    }else if(obj.textMessage == "确认收货"){
+      		if(localStorage.getItem('startmessage')==1)
+      		{
+      			var player = plus.audio.createPlayer("_www/resource/sound.mp3");
+				player.play(function (e) {
+					console.log('播放完成后，运行代码');
+				},function (e) {
+					console.log(e.message);
+			    },false);
+      		}
+	    }
+        console.log(obj.fromusername+"对"+obj.tousername+"说："+obj.textMessage);
+      }
+   };
+    
+  }
+  else{
+    alert("您的浏览器不支持 WebSocket!");
+  }
+  
+//连接关闭的回调事件
+webSocket.onclose = function()
+{
+  console.log("连接已关闭...");
+};
+//将消息显示在网页上
+function setMessageInnerHTML(innerHTML) {
+    
+}
+function closeWebSocket() {
+  webSocket.close();
+}
+function sendsocket(userid,to,message1) {
+    var message = {
+      "message":message1,
+      "username":userid,
+      "to":to
+    };
+    webSocket.send(JSON.stringify(message));
+}
+//sendsocket(localStorage.getItem('userid'),localStorage.getItem('userid'),"上架");
+

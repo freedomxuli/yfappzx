@@ -26,12 +26,17 @@
 				text-align: left;
 			}
 			.top-box-item-center{
-				text-align: left;
+				text-align: center;
 			}
 			.top-div-span{
 				color: #FFFFFF;
 				font-weight: bold;
 				font-size: 1.2rem;
+			}
+			.top-div-span1{
+				color: darkgoldenrod;
+				font-weight: bold;
+				font-size: 0.8rem;
 			}
 			.top-div-img{
 				height:1rem;
@@ -41,7 +46,7 @@
 				font-size: 1rem;
 				color: #999999;
 				text-align: center;
-				margin-top: 4rem;
+				margin-top: 6rem;
 			}
 			.kyed_money{
 				font-size: 2rem;
@@ -124,6 +129,9 @@
 				border-radius: 0rem;
 				border: 0rem;
 			}
+			.top-box-item-right{
+				text-align: right;
+			}
 		</style>
 	</head>
 	<body>
@@ -131,17 +139,20 @@
 			<div class="top-box-item mui-action-back">
 				<img class="top-div-img" src="../img/buycontent/back.png" />
 			</div>
-			<div class="top-box-item2 top-box-item-center">
-				<span class="top-div-span">我的授信</span>
+			<div class="top-box-item top-box-item-center">
+				<span class="top-div-span">拿去买</span>
+			</div>
+			<div class="top-box-item top-box-item-right" id="jymx">
+				<span class="top-div-span1">交易明细</span>
 			</div>
 		</header>
 		<section>
 			<div class="center-div1">
 				<div class="kyed">
-					可用额度（券）
+					总额度（券）
 				</div>
 				<div class="kyed_money">
-					12988.00
+					<span id="allpoints"></span>
 				</div>
 			</div>
 		</section>
@@ -152,52 +163,91 @@
 						已使用（券）
 					</div>
 					<div class="kyed_money">
-						10876.00
+						<span id="userpoints"></span>
 					</div>
 				</div>
 				<div class="center-div2-child1">
 					<div class="syed">
-						已授权（券）
+						可用额度（券）
 					</div>
 					<div class="kyed_money">
-						3988.00
+						<span id="canuserpoints"></span>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section>
+		<!--<section>
 			<div class="center-div3">
 				<div class="zed">
 					总额度（券）
 				</div>
 				<div class="kyed_money">
-					12988.00
+					<span id="allpoints"></span>
 				</div>
 			</div>
-		</section>
+		</section>-->
 		<nav class="mui-bar  mui-bar-tab bottom-div">
 			<button class="bottom-button-div" id="sqsq">
-				申请授权
+				申请额度
 			</button>
 			<button class="bottom-button-div1" id="sysq">
-				授予授权
+				授予额度
 			</button>
-			<button class="bottom-button-div2" id="jymx">
+			<!--<button class="bottom-button-div2" id="jymx">
 				交易明细
-			</button>
+			</button>-->
 		</nav>
 	</body>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/zepto.js"></script>
+	<script src="../js/reconnecting-websocket.min.js"></script>
+	<script src="../js/stomp.min.js"></script>
+	<script src="../js/sockjs.min.js"></script>
 	<script src="../js/app.js"></script>
      <script> 
+	     	if (mui.os.plus) {
+				mui.plusReady(function() {
+					var btn_scan =document.getElementById("sysq");
+					btn_scan.addEventListener('tap', function(e) {
+						mui.openWindow({
+							id: 'scan',
+							url: 'scan.html'
+						});
+					});
+				});
+			}
+	     	var data = {
+	     		queryData : {
+	     			tradeCode:"tbbuser.myOuth",
+	     			userid:localStorage.getItem('userid')
+	     		}
+	     	}
+	     	console.log('%o',data);
+	     	lnjoy.GetDataByPost(data,function(rs){
+	     		console.log('%o',rs);
+	     		$('#canuserpoints').html(rs.list[0].CanUsePoints);
+	     		//$('#givepoints').html(rs.list[0].GivePoints);
+	     		$('#userpoints').html(rs.list[0].SalingPoints+rs.list[0].PlatPoints+rs.list[0].CardPoints);
+	     		$('#allpoints').html(rs.list[0].TotalPoints);
+	     	})
        		document.getElementById('sqsq').addEventListener('tap',function(){
 				clicked('sqyfq.html', {}, 'slide-in-right');
 			})
-			document.getElementById('sysq').addEventListener('tap',function(){
-				clicked('smsq.html', {}, 'slide-in-right');
-			})
+//			document.getElementById('sysq').addEventListener('tap',function(){
+//				clicked('smsq.html', {}, 'slide-in-right');
+//			})
 			document.getElementById('jymx').addEventListener('tap',function(){
 				clicked('tradelist.html', {}, 'slide-in-right');
 			})
+			function scaned(t, r, f) {
+				console.log(r);
+				if(r=="6E72B59D-BEC6-4835-A66F-8BC70BD82FE9")
+				{
+					clicked('smsq.html', {}, 'slide-in-right');
+				}else
+				{
+					mui.alert('请扫查货宝平台二维码', '提示');
+				}
+			}
 	 </script>
 </html>
