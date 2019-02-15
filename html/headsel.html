@@ -216,7 +216,7 @@
                 		if(index_type == 0)
                 		{
                 			localStorage.setItem('headsrc',$('.img-active').find('.content-div-list-img')[0].src);
-                			var file_obj = {path: '',name:'head'};
+                			var file_obj = {path: $('.img-active').find('.content-div-list-img')[0].src,name:'head'};
 						files = [];
 						files.push(file_obj);
 						upload(files,6);
@@ -261,7 +261,7 @@
             function upload(files,imgindex) {
             		console.log("开始上传");
             		console.log('%O',files);
-                var task = plus.uploader.createUpload('http://47.110.134.105:8010/api/yfq/uploadMultipleFiles', {
+                var task = plus.uploader.createUpload('http://'+host+':8010/api/yfq/uploadMultipleFiles', {
                         method: "POST"  
                     },
                     function(t, status) { //上传完成
@@ -285,6 +285,9 @@
 	                            		console.log('%o',rs1);
 	                            		if(rs1.hasOwnProperty('success'))
 	                            		{
+	                            			mui.toast('设置成功');
+	                            			mui.back();
+	                            		}else{
 	                            			mui.toast('设置成功');
 	                            			mui.back();
 	                            		}

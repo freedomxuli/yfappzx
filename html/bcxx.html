@@ -391,7 +391,7 @@
             function upload(files,imgindex) {
             		console.log("开始上传");
             		console.log('%O',files);
-                var task = plus.uploader.createUpload('http://jeremyda.cn:8010/api/yfq/uploadMultipleFiles', {
+                var task = plus.uploader.createUpload('http://'+host+':8010/api/yfq/uploadMultipleFiles', {
                         method: "POST"  
                     },
                     function(t, status) { //上传完成

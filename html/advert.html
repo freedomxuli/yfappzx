@@ -1,0 +1,207 @@
+<!DOCTYPE html> 
+<html> 
+ 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" /> 
+        <title></title> 
+        <meta name="apple-mobile-web-app-capable" content="yes"> 
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+        <link href="../css/mui.min.css" rel="stylesheet" /> 
+        <style> 
+            html, 
+            body { 
+                height: 100%; 
+            } 
+            body { 
+                margin: 0; 
+            } 
+            .mui-content { 
+                height: 100%; 
+                padding: 0; 
+            } 
+            .mui-slider { 
+                height: 100%; 
+            } 
+            .mui-slider-group { 
+                height: 100%; 
+            } 
+            .mui-slider-item { 
+                height: 100%; 
+                margin-left: 0px; 
+                margin-right: 0px; 
+                border: none; 
+            } 
+            a { 
+                height: 100%; 
+            } 
+            .img_content { 
+                position: relative; 
+                height: 100%; 
+            }
+            .timediv{
+            		width: 4rem;
+            		height: 2rem;
+            		position: absolute;
+            		right: 1rem;
+            		top: 1rem;
+            		z-index: 100000;
+            		background-color:#CCCCCC;
+            		border-radius: 1rem;
+            }
+            .timespan{
+            		position: absolute;
+            		right: 1.1rem;
+            		top: 0.3rem;
+            		color: #FFFFFF;
+            		font-weight:bold ;
+            		text-align: center !important;
+            }
+        </style> 
+    </head> 
+ 
+    <body> 
+        <div class="mui-content" style="height: 100%;overflow: hidden;padding: 0px;margin: 0px;"> 
+            <div id="slider" class="mui-slider"> 
+                <div class="mui-slider-group"> 
+                    <div class="mui-slider-item"> 
+                        <div class="img_content"> 
+                            <img id="advertimg" src=""> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+        <div class="timediv">
+        		<span id='timespan' class="timespan">3秒</span>
+        	</div>
+    </body> 
+    <script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>  
+    <script src="../js/zepto.js"></script>
+	<script src="../js/app1.js"></script>
+    <script type="text/javascript" charset="utf-8"> 
+        mui.init(); 
+        mui.plusReady(function(){
+            setStatusBarBackgroud ();
+            
+            setimg();
+            
+            function setimg(){
+            		if(plus.screen.resolutionHeight == "568"){
+            			var data = {
+						queryData:{
+							tradeCode:'tbbadvert.selectAdvert',
+							zxd:1,
+							screen:"640*1136",
+							status:0
+						}
+					}
+            			lnjoy.GetDataByPost(data,function(rs){
+            				console.log('%o',"开始："+rs);
+            				$('#advertimg').attr("src",rs.list[0].advertUrl);
+            				$('#advertimg').height('100%');
+            			})
+            		}
+            		else if(plus.screen.resolutionHeight == "667"){
+            			var data = {
+						queryData:{
+							tradeCode:'tbbadvert.selectAdvert',
+							zxd:1,
+							screen:"750*1334",
+							status:0
+						}
+					}
+            			lnjoy.GetDataByPost(data,function(rs){
+            				console.log('%o',rs);
+            				$('#advertimg').attr("src",rs.list[0].advertUrl);
+            				$('#advertimg').height('100%');
+            			})
+            		}
+            		else if(plus.screen.resolutionHeight == "736"){
+            			var data = {
+						queryData:{
+							tradeCode:'tbbadvert.selectAdvert',
+							zxd:1,
+							screen:"1242*2208",
+							status:0
+						}
+					}
+            			lnjoy.GetDataByPost(data,function(rs){
+            				console.log('%o',rs);
+            				$('#advertimg').attr("src",rs.list[0].advertUrl);
+            				$('#advertimg').height('100%');
+            			})
+            		}
+            		else if(plus.screen.resolutionHeight == "812"){
+            			var data = {
+						queryData:{
+							tradeCode:'tbbadvert.selectAdvert',
+							zxd:1,
+							screen:"1125*2436",
+							status:0
+						}
+					}
+            			lnjoy.GetDataByPost(data,function(rs){
+            				console.log('%o',rs);
+            				$('#advertimg').attr("src",rs.list[0].advertUrl);
+            				$('#advertimg').height('100%');
+            			})
+            		}
+            		else if(plus.screen.resolutionHeight == "896"){
+            			var data = {
+						queryData:{
+							tradeCode:'tbbadvert.selectAdvert',
+							zxd:1,
+							screen:"1242*2688",
+							status:0
+						}
+					}
+            			lnjoy.GetDataByPost(data,function(rs){
+            				console.log('%o',rs);
+            				$('#advertimg').attr("src",rs.list[0].advertUrl);
+            				$('#advertimg').height('100%');
+            			})
+            		}
+            		else {
+            			var data = {
+						queryData:{
+							tradeCode:'tbbadvert.selectAdvert',
+							zxd:1,
+							screen:"安卓(720*1280)",
+							status:0
+						}
+					}
+            			lnjoy.GetDataByPost(data,function(rs){
+            				console.log('%o',rs);
+            				$('#advertimg').attr("src",rs.list[0].advertUrl);
+            				$('#advertimg').height('100%');
+            			})
+            		}
+            		var timernum = 2;
+            		var myVar = setInterval(function(){ 
+            			if(timernum == 0)
+            			{
+            				clearInterval(myVar);
+            				clicked('buylist.html',{},'slide-in-right');
+            			}else{
+            				$('#timespan').html(timernum+"秒");
+            				timernum--;
+            			}
+            		}, 1000);
+            		document.getElementById('timespan').addEventListener('tap',function(event){
+	            		clearInterval(myVar);
+	            		clicked('buylist.html',{},'slide-in-right');
+	            })
+            }
+            
+            function setStatusBarBackgroud () { 
+                if (mui.os.ios) { 
+                    plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
+                    //提前设置登陆页背景颜色 
+                    plus.navigator.setStatusBarBackground("#3A75B8");
+                } 
+            };
+        })       
+    </script> 
+ 
+</html> 

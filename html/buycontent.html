@@ -44,6 +44,7 @@
 			}
 			.content-pic-div img{
 				width: 100%;
+				height:12rem;
 			}
 			.content-point-div{
 				background-color: rgb(243,243,243);
@@ -183,7 +184,7 @@
 		</header>
 		<section>
 			<div class="content-pic-div">
-				<img src="../img/buycontent/titpic.png" />
+				<img id="headsel" src="" />
 			</div>
 			<!--<div class="content-point-div">
 				<div class="content-point-kind-div">
@@ -364,6 +365,22 @@
 			var lx = plus.webview.currentWebview().lx;
 			if(lx == 1)
 				$('.bottom-button-div1').show();
+			var data_userphoto = {
+				queryData:{
+					tradeCode:'tbbuserphoto.selectUserphoto',
+					userid:userid,
+					userphotogltype:0
+				}
+			}
+			lnjoy.GetDataByPost(data_userphoto,function(rs){
+				console.log('%o',rs);
+				if(rs.data.length>0&&rs.data[0].photoUrl)
+				{
+					$('#headsel').attr("src", rs.data[0].photoUrl);
+				}else{
+					$('#headsel').attr("src", "../img/buycontent/titpic.png");
+				}
+			});
 			var data = {
 				queryData:{
 					tradeCode:"tbbuser.selectByPrimaryKey",

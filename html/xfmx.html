@@ -240,7 +240,7 @@
 					{
 						if(rs.list[i].discount)
 						{
-							rs.list[i].discount = parseFloat(rs.list[i].discount)*10+"折";
+							rs.list[i].discount = rs.list[i].discountmemo;
 						}
 					}
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > parseInt(rs.pagination.totalPage))); //参数为true代表没有更多数据了。

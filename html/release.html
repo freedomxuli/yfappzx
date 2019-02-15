@@ -627,6 +627,10 @@
 			$('#selectbzitems').show();
 		})
 		document.getElementById('release').addEventListener('tap',function(event){
+			if(new Date().getHours()>21||new Date().getHours()<9){
+				mui.alert('自主放券功能开发时间段为9～22时，目前不在开放时间段!', '提示');
+				return;
+			}
 			if(!localStorage.getItem('userid')){
 				mui.alert('请先登录再发布！', '提示',function(){
 					clicked('login.html', {}, 'slide-in-right');
@@ -643,6 +647,7 @@
 				mui.alert('您还未开通自主放券功能，请联系查货宝!', '提示');
 				return;
 			}
+			
 			var hwlxtype = "";
 			var salerecordlx = 3;
 			var hwlxcheck = document.getElementsByName("hwlxcheck");
@@ -845,6 +850,7 @@
 //						    },false);
 							//sendsocket(localStorage.getItem('userid'),"acb9b85a-a2e1-4a2d-9bef-cec77e9dd090","上架");
 							mui.toast('发布成功');
+							localStorage.setItem('issharelist',1);
 							location.reload();
 						}else{
 							mui.toast(rs.details);

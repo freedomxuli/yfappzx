@@ -386,6 +386,16 @@
 									</div>
 								</div>
 							</div>
+							<%
+								if(list[i].SaleRecordVerifyType == 0)
+								{
+									%>
+										<button type="button" class="mui-btn mui-btn-primary" onclick="cancelsh('<%=list[i].salerecordid%>');">
+											取消审核
+										</button>
+									<%
+								}
+							%>
 						</li>
 					<%
 				}
@@ -460,6 +470,16 @@
 									</div>
 								</div>
 							</div>
+							<%
+								if(list[i].SaleRecordVerifyType == 0)
+								{
+									%>
+										<button type="button" class="mui-btn mui-btn-primary" onclick="cancelsh('<%=list[i].salerecordid%>');">
+											取消审核
+										</button>
+									<%
+								}
+							%>
 						</li>
 					<%
 				}
@@ -534,6 +554,16 @@
 									</div>
 								</div>
 							</div>
+							<%
+								if(list[i].SaleRecordVerifyType == 0)
+								{
+									%>
+										<button type="button" class="mui-btn mui-btn-primary" onclick="cancelsh('<%=list[i].salerecordid%>');">
+											取消审核
+										</button>
+									<%
+								}
+							%>
 						</li>
 					<%
 				}
@@ -541,6 +571,19 @@
 		</script>
 		<script>
 			mui.init();
+			function cancelsh(salerecordid)
+			{
+				var data = {
+					queryData:{
+						tradeCode:'cancelCheck',
+						salerecordid:salerecordid
+					}
+				};
+				lnjoy.GetDataByPost(data,function(rs){
+					mui.toast('取消审核成功！');
+					window.location.reload();
+				});
+			}
 			(function($) {
 				//阻尼系数
 				var deceleration = mui.os.ios?0.003:0.0009;

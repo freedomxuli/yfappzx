@@ -1,40 +1,46 @@
 {
-	"html/buylist.html": {
-		"refer": [
-			"html/login.html",
-			"html/my.html",
-			"html/buycontent.html",
-			"html/release.html",
-			"html/MyCard.html"
-		]
-	},
-	"html/advertisement.html": {
-		"refer": [
-			"html/buylist.html"
-		]
-	},
-	"html/my.html": {
-		"refer": [
-			"html/setting.html",
-			"html/buylist.html",
-			"html/mysx.html",
-			"html/headsel.html"
-		]
-	},
-	"html/setting.html": {
-		"refer": [
-			"html/buylist.html",
-			"html/czmm.html"
-		]
-	},
-	"html/buycontent.html": {
-		"refer": [
-			"html/map.html"
-		]
-	},
-	"html/mysx.html": {
-		"refer": [
-			"html/tradelist.html"
-		]
-	}
+  "html/buylist.html": {
+    "refer": [
+      "html/login.html",
+      "html/my.html",
+      "html/buycontent.html",
+      "html/release.html",
+      "html/MyCard.html"
+    ]
+  },
+  "html/advertisement.html": {
+    "refer": [
+      "html/buylist.html",
+      "html/advert.html"
+    ]
+  },
+  "html/my.html": {
+    "refer": [
+      "html/setting.html",
+      "html/buylist.html",
+      "html/mysx.html",
+      "html/headsel.html"
+    ]
+  },
+  "html/setting.html": {
+    "refer": [
+      "html/buylist.html",
+      "html/czmm.html"
+    ]
+  },
+  "html/buycontent.html": {
+    "refer": [
+      "html/map.html"
+    ]
+  },
+  "html/mysx.html": {
+    "refer": [
+      "html/tradelist.html"
+    ]
+  },
+  "html/advert.html": {
+    "refer": [
+      "html/buylist.html"
+    ]
+  }
 }

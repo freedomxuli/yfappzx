@@ -1,7 +1,8 @@
+var host = '47.110.134.105';//jeremyda.cn//47.110.134.105
 var test_url = 'http://192.168.1.5:8010/api/yfq/';
-var real_url = 'http://jeremyda.cn:8010/api/yfq/';
+var real_url = 'http://'+host+':8010/api/yfq/';
 var ws_test_url = "ws://192.168.1.5:8010";
-var ws_real_url = "ws://jeremyda.cn:8010";
+var ws_real_url = "ws://"+host+":8010";
 var lnjoy = {
 	url:real_url,
 	dataType:'json',
